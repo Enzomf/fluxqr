@@ -114,7 +114,7 @@ Plans:
   4. Every QR code has a persistent scan counter visible to its owner
   5. Admin UI shows per-user QR code counts and per-code scan counts
   6. Users can choose between "display my default QR code" and "set my custom QR code" via a 2-option grid
-**Plans:** 2/5 plans executed
+**Plans:** 3/5 plans executed
 
 Plans:
 - [ ] 05-01-PLAN.md — Install deps (twilio, shadcn InputOTP), DB schema (profiles, phone_usage, qr_codes changes), Twilio + admin client utilities, types
@@ -135,4 +135,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5
 | 3. QR Management | 4/4 | Complete   | 2026-03-11 |
 | 3.1 Preview & Share | 1/2 | In Progress|  |
 | 4. Production | 0/TBD | Not started | - |
-| 5. Public QR Generation | 2/5 | In Progress|  |
+| 5. Public QR Generation | 3/5 | In Progress|  |
