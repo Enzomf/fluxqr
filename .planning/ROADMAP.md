@@ -63,7 +63,7 @@ Plans:
   3. User can edit label, contact target, and message — platform field is read-only with tooltip; save triggers pulse confirmation
   4. Deleting opens a confirmation dialog naming the QR code; confirming sets is_active = false and removes the row from the list
   5. User can download the QR image as a PNG; scan counts ≥ 1000 display as compact notation (e.g., 1.2k)
-**Plans:** 4 plans
+**Plans:** 1/4 plans executed
 
 Plans:
 - [ ] 03-01-PLAN.md — Install deps (qrcode, shadcn), create QR generator, hooks, slug-check API, shared components
@@ -91,5 +91,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete   | 2026-03-11 |
 | 2. Scanner | 2/2 | Complete   | 2026-03-11 |
-| 3. QR Management | 0/4 | Planning complete | - |
+| 3. QR Management | 1/4 | In Progress|  |
 | 4. Production | 0/TBD | Not started | - |

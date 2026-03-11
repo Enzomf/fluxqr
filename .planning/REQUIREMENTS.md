@@ -48,8 +48,8 @@ Requirements for initial release. Each maps to roadmap phases.
 ### QR Creation
 
 - [ ] **CREATE-01**: User can create QR code via form with label, slug, platform, contact target, message
-- [ ] **CREATE-02**: Slug validates format (lowercase letters, numbers, hyphens only) on blur
-- [ ] **CREATE-03**: Slug availability checked via debounced API call with inline feedback
+- [x] **CREATE-02**: Slug validates format (lowercase letters, numbers, hyphens only) on blur
+- [x] **CREATE-03**: Slug availability checked via debounced API call with inline feedback
 - [ ] **CREATE-04**: Duplicate slug (unique constraint violation) handled gracefully
 - [ ] **CREATE-05**: Successful creation redirects to `/dashboard`
 
@@ -74,15 +74,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### QR Generation
 
-- [ ] **GEN-01**: QR image points to `{SITE_URL}/q/{slug}` and is scannable
-- [ ] **GEN-02**: QR uses brand colors (dark #0F172A on white) with high error correction
+- [x] **GEN-01**: QR image points to `{SITE_URL}/q/{slug}` and is scannable
+- [x] **GEN-02**: QR uses brand colors (dark #0F172A on white) with high error correction
 - [ ] **GEN-03**: User can download QR as PNG named `{slug}-fluxqr.png`
 
 ### Analytics
 
 - [ ] **ANLYT-01**: Dashboard list rows display current scan_count
-- [ ] **ANLYT-02**: Scan counts ≥ 1000 formatted as compact notation (e.g., 1.2k)
-- [ ] **ANLYT-03**: Concurrent scans produce accurate count (no race conditions)
+- [x] **ANLYT-02**: Scan counts ≥ 1000 formatted as compact notation (e.g., 1.2k)
+- [x] **ANLYT-03**: Concurrent scans produce accurate count (no race conditions)
 
 ### Production
 
@@ -155,8 +155,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCAN-06 | Phase 2 | Complete |
 | SCAN-07 | Phase 2 | Complete |
 | CREATE-01 | Phase 3 | Pending |
-| CREATE-02 | Phase 3 | Pending |
-| CREATE-03 | Phase 3 | Pending |
+| CREATE-02 | Phase 3 | Complete |
+| CREATE-03 | Phase 3 | Complete |
 | CREATE-04 | Phase 3 | Pending |
 | CREATE-05 | Phase 3 | Pending |
 | LIST-01 | Phase 3 | Pending |
@@ -169,12 +169,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DEL-01 | Phase 3 | Pending |
 | DEL-02 | Phase 3 | Pending |
 | DEL-03 | Phase 3 | Pending |
-| GEN-01 | Phase 3 | Pending |
-| GEN-02 | Phase 3 | Pending |
+| GEN-01 | Phase 3 | Complete |
+| GEN-02 | Phase 3 | Complete |
 | GEN-03 | Phase 3 | Pending |
 | ANLYT-01 | Phase 3 | Pending |
-| ANLYT-02 | Phase 3 | Pending |
-| ANLYT-03 | Phase 3 | Pending |
+| ANLYT-02 | Phase 3 | Complete |
+| ANLYT-03 | Phase 3 | Complete |
 | PROD-01 | Phase 4 | Pending |
 | PROD-02 | Phase 4 | Pending |
 | PROD-03 | Phase 4 | Pending |

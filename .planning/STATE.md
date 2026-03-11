@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-11T12:52:53.508Z"
+stopped_at: Completed 03-qr-management-01-PLAN.md
+last_updated: "2026-03-11T14:02:42.211Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 10
+  completed_plans: 7
   percent: 6
 ---
 
@@ -55,6 +55,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 01-foundation P04 | 2 | 2 tasks | 5 files |
 | Phase 02-scanner P01 | 3 | 3 tasks | 4 files |
 | Phase 02-scanner P02 | 1 | 1 tasks | 2 files |
+| Phase 03-qr-management P01 | 3 | 2 tasks | 18 files |
 
 ## Accumulated Context
 
@@ -83,6 +84,8 @@ Recent decisions affecting current work:
 - [Phase 02-scanner]: ScannerLanding owns all state, TelegramFallback is controlled — single source of truth for message
 - [Phase 02-scanner]: Service-role client server-side to detect inactive vs missing slugs — anon RLS only sees active rows so slug existence check requires elevated access
 - [Phase 02-scanner]: after() with empty-cookie Supabase client for scan increment — createClient() from server.ts calls cookies() which throws inside after() callbacks
+- [Phase 03-qr-management]: pnpm instead of npm for package management — project uses pnpm (node_modules/.modules.yaml detected)
+- [Phase 03-qr-management]: No directive on qr-generator.ts — tree-shaking separates server generateQrDataUrl from client downloadQrPng
 
 ### Pending Todos
 
@@ -94,6 +97,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T12:52:53.506Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-qr-management/03-CONTEXT.md
+Last session: 2026-03-11T14:02:42.202Z
+Stopped at: Completed 03-qr-management-01-PLAN.md
+Resume file: None
