@@ -47,11 +47,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### QR Creation
 
-- [ ] **CREATE-01**: User can create QR code via form with label, slug, platform, contact target, message
+- [x] **CREATE-01**: User can create QR code via form with label, slug, platform, contact target, message
 - [x] **CREATE-02**: Slug validates format (lowercase letters, numbers, hyphens only) on blur
 - [x] **CREATE-03**: Slug availability checked via debounced API call with inline feedback
-- [ ] **CREATE-04**: Duplicate slug (unique constraint violation) handled gracefully
-- [ ] **CREATE-05**: Successful creation redirects to `/dashboard`
+- [x] **CREATE-04**: Duplicate slug (unique constraint violation) handled gracefully
+- [x] **CREATE-05**: Successful creation redirects to `/dashboard`
 
 ### QR List
 
@@ -154,11 +154,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCAN-05 | Phase 2 | Complete |
 | SCAN-06 | Phase 2 | Complete |
 | SCAN-07 | Phase 2 | Complete |
-| CREATE-01 | Phase 3 | Pending |
+| CREATE-01 | Phase 3 | Complete |
 | CREATE-02 | Phase 3 | Complete |
 | CREATE-03 | Phase 3 | Complete |
-| CREATE-04 | Phase 3 | Pending |
-| CREATE-05 | Phase 3 | Pending |
+| CREATE-04 | Phase 3 | Complete |
+| CREATE-05 | Phase 3 | Complete |
 | LIST-01 | Phase 3 | Complete |
 | LIST-02 | Phase 3 | Complete |
 | LIST-03 | Phase 3 | Complete |

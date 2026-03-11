@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-qr-management-03-PLAN.md
-last_updated: "2026-03-11T14:06:40.557Z"
+stopped_at: Completed 03-qr-management-02-PLAN.md
+last_updated: "2026-03-11T14:07:39.317Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 10
-  completed_plans: 8
+  completed_plans: 9
   percent: 6
 ---
 
@@ -57,6 +57,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 02-scanner P02 | 1 | 1 tasks | 2 files |
 | Phase 03-qr-management P01 | 3 | 2 tasks | 18 files |
 | Phase 03-qr-management P03 | 2 | 2 tasks | 6 files |
+| Phase 03-qr-management P02 | 2 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -89,6 +90,9 @@ Recent decisions affecting current work:
 - [Phase 03-qr-management]: No directive on qr-generator.ts — tree-shaking separates server generateQrDataUrl from client downloadQrPng
 - [Phase 03-qr-management]: QrCodeWithImage type defined in qr-list-row.tsx and re-exported — avoids extra types file for a single plan-local type
 - [Phase 03-qr-management]: deleteQrCode imported directly in QrList client component — server actions callable from client components in App Router without API routes
+- [Phase 03-qr-management]: FormState type exported from actions.ts so QrForm can import it without circular deps
+- [Phase 03-qr-management]: @base-ui TooltipTrigger does not support asChild — used plain div wrapper instead
+- [Phase 03-qr-management]: redirect() called outside try/catch in Server Action — Next.js redirect throws internally
 
 ### Pending Todos
 
@@ -100,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T14:06:40.555Z
-Stopped at: Completed 03-qr-management-03-PLAN.md
+Last session: 2026-03-11T14:07:39.315Z
+Stopped at: Completed 03-qr-management-02-PLAN.md
 Resume file: None
