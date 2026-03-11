@@ -17,6 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: QR Management** - Dashboard CRUD for creating, editing, deleting, and tracking QR codes (completed 2026-03-11)
 - [ ] **Phase 3.1: QR Fullscreen Preview & Share** - Fullscreen QR preview dialog with grow-from-thumbnail animation, Web Share API, and copy link (INSERTED)
 - [ ] **Phase 4: Production** - Deploy to Vercel, configure production env vars, branded error pages
+- [ ] **Phase 5: Public QR Generation** - Public QR creation with phone verification, 5-use freemium gate, scan tracking, and admin dashboard
 
 ## Phase Details
 
@@ -101,10 +102,31 @@ Plans:
   4. Missing slug and inactive slug each render a branded, sidebar-free error page
 **Plans**: TBD
 
+### Phase 5: Public QR Generation
+
+**Goal:** Transform FluxQR from an owner-only tool into a public-facing system where anyone can generate QR codes with a custom message, verified phone number, and usage tracking — with a freemium gate (5 uses before forced sign-up), scan analytics per QR code, a lightweight admin panel, and a default/custom QR toggle grid
+**Requirements**: PUB-01, PUB-02, PUB-03, PUB-04, PUB-05, PUB-06
+**Depends on:** Phase 4
+**Success Criteria** (what must be TRUE):
+  1. Any visitor can customize a message and generate a QR code tied to their verified phone number
+  2. Phone number verification ensures users can only create QR codes for their own number
+  3. Unauthenticated users can use the system up to 5 times before being forced to create an account (tracked reliably across sessions)
+  4. Every QR code has a persistent scan counter visible to its owner
+  5. Admin UI shows per-user QR code counts and per-code scan counts
+  6. Users can choose between "display my default QR code" and "set my custom QR code" via a 2-option grid
+**Plans:** 5 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Install deps (twilio, shadcn InputOTP), DB schema (profiles, phone_usage, qr_codes changes), Twilio + admin client utilities, types
+- [ ] 05-02-PLAN.md — Phone verification flow: Server Actions (send OTP, check OTP), phone input form, OTP entry component
+- [ ] 05-03-PLAN.md — Public home page: two-card QR type grid, public QR form, freemium gate, result dialog
+- [ ] 05-04-PLAN.md — Middleware (dashboard + admin route protection), OAuth callback account linking, sidebar admin link
+- [ ] 05-05-PLAN.md — Admin dashboard: layout, user table, user detail, deactivation actions
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -113,3 +135,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4
 | 3. QR Management | 4/4 | Complete   | 2026-03-11 |
 | 3.1 Preview & Share | 1/2 | In Progress|  |
 | 4. Production | 0/TBD | Not started | - |
+| 5. Public QR Generation | 0/5 | Not started | - |
