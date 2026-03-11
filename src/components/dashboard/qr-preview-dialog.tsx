@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useMemo } from 'react'
 import { Dialog as DialogPrimitive } from '@base-ui/react/dialog'
 import { X, Share2, Check, Link2 } from 'lucide-react'
 import { PlatformBadge } from '@/components/shared/platform-badge'
@@ -22,7 +22,6 @@ export function QrPreviewDialog({
   qr,
   thumbnailRect,
 }: QrPreviewDialogProps) {
-  const [transformOrigin, setTransformOrigin] = useState<string | undefined>(undefined)
   const { copied, copy } = useCopyToClipboard()
 
   const siteUrl =
@@ -32,19 +31,16 @@ export function QrPreviewDialog({
   const canShare =
     typeof navigator !== 'undefined' && 'share' in navigator
 
-  // Compute transform-origin from thumbnail rect when dialog opens
-  useEffect(() => {
-    if (open && thumbnailRect) {
-      const vw = window.innerWidth
-      const vh = window.innerHeight
-      const thumbCenterX = thumbnailRect.left + thumbnailRect.width / 2
-      const thumbCenterY = thumbnailRect.top + thumbnailRect.height / 2
-      // The QR image (280x280) is centered in the viewport
-      // Element-relative origin = thumb center - (viewport center - half image size)
-      const originX = thumbCenterX - (vw / 2 - 140)
-      const originY = thumbCenterY - (vh / 2 - 140)
-      setTransformOrigin(`${originX}px ${originY}px`)
-    }
+  // Derive transform-origin from thumbnail rect (no side-effect needed)
+  const transformOrigin = useMemo(() => {
+    if (!open || !thumbnailRect || typeof window === 'undefined') return undefined
+    const vw = window.innerWidth
+    const vh = window.innerHeight
+    const thumbCenterX = thumbnailRect.left + thumbnailRect.width / 2
+    const thumbCenterY = thumbnailRect.top + thumbnailRect.height / 2
+    const originX = thumbCenterX - (vw / 2 - 140)
+    const originY = thumbCenterY - (vh / 2 - 140)
+    return `${originX}px ${originY}px`
   }, [open, thumbnailRect])
 
   async function handleShare() {
