@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-qr-management-02-PLAN.md
-last_updated: "2026-03-11T14:07:39.317Z"
+stopped_at: Completed 03-qr-management-04-PLAN.md
+last_updated: "2026-03-11T14:15:16.113Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
   percent: 6
 ---
 
@@ -58,6 +58,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 03-qr-management P01 | 3 | 2 tasks | 18 files |
 | Phase 03-qr-management P03 | 2 | 2 tasks | 6 files |
 | Phase 03-qr-management P02 | 2 | 2 tasks | 5 files |
+| Phase 03-qr-management P04 | 10 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -93,6 +94,9 @@ Recent decisions affecting current work:
 - [Phase 03-qr-management]: FormState type exported from actions.ts so QrForm can import it without circular deps
 - [Phase 03-qr-management]: @base-ui TooltipTrigger does not support asChild — used plain div wrapper instead
 - [Phase 03-qr-management]: redirect() called outside try/catch in Server Action — Next.js redirect throws internally
+- [Phase 03-qr-management]: updateQrCode.bind(null, id) used in edit page to partially apply record id — Server Actions with extra params require bind pattern
+- [Phase 03-qr-management]: redirect encodes both success=edit and id={id} so dashboard can fire toast AND identify which row to pulse in a single navigation
+- [Phase 03-qr-management]: platform excluded from UpdateQrSchema entirely — enforces read-only-after-creation rule at server boundary not just UI
 
 ### Pending Todos
 
@@ -104,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T14:07:39.315Z
-Stopped at: Completed 03-qr-management-02-PLAN.md
+Last session: 2026-03-11T14:15:16.111Z
+Stopped at: Completed 03-qr-management-04-PLAN.md
 Resume file: None

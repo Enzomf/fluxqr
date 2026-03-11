@@ -61,10 +61,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### QR Edit
 
-- [ ] **EDIT-01**: Edit page pre-fills all fields from existing QR data
-- [ ] **EDIT-02**: Platform selector is read-only on edit with tooltip explaining why
-- [ ] **EDIT-03**: Successful save triggers green pulse on list row + success toast
-- [ ] **EDIT-04**: Duplicate slug on edit handled with inline error
+- [x] **EDIT-01**: Edit page pre-fills all fields from existing QR data
+- [x] **EDIT-02**: Platform selector is read-only on edit with tooltip explaining why
+- [x] **EDIT-03**: Successful save triggers green pulse on list row + success toast
+- [x] **EDIT-04**: Duplicate slug on edit handled with inline error
 
 ### QR Delete
 
@@ -162,10 +162,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LIST-01 | Phase 3 | Complete |
 | LIST-02 | Phase 3 | Complete |
 | LIST-03 | Phase 3 | Complete |
-| EDIT-01 | Phase 3 | Pending |
-| EDIT-02 | Phase 3 | Pending |
-| EDIT-03 | Phase 3 | Pending |
-| EDIT-04 | Phase 3 | Pending |
+| EDIT-01 | Phase 3 | Complete |
+| EDIT-02 | Phase 3 | Complete |
+| EDIT-03 | Phase 3 | Complete |
+| EDIT-04 | Phase 3 | Complete |
 | DEL-01 | Phase 3 | Complete |
 | DEL-02 | Phase 3 | Complete |
 | DEL-03 | Phase 3 | Complete |
