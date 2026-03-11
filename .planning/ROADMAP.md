@@ -29,7 +29,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Visiting `/dashboard` without a session redirects to `/login`
   4. User can sign out from the sidebar and session is cleared
   5. Authenticated users see the sidebar with logo, nav, avatar, and a working Sheet drawer on mobile
-**Plans**: TBD
+**Plans:** 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold src/ directory, install deps, design system, Supabase clients, shared types
+- [ ] 01-02-PLAN.md — Database migration (qr_codes table, RLS, RPC, index, trigger)
+- [ ] 01-03-PLAN.md — Google OAuth login, callback route, proxy.ts route protection
+- [ ] 01-04-PLAN.md — Dashboard app shell with responsive sidebar and sign-out
 
 ### Phase 2: Scanner
 **Goal**: Scanning a QR code opens the correct messaging app with the pre-filled message — zero auth, minimal JS
@@ -73,7 +79,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/4 | Planning complete | - |
 | 2. Scanner | 0/TBD | Not started | - |
 | 3. QR Management | 0/TBD | Not started | - |
 | 4. Production | 0/TBD | Not started | - |
