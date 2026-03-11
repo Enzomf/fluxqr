@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-foundation 01-03-PLAN.md
-last_updated: "2026-03-11T02:07:34.911Z"
+stopped_at: Completed 01-foundation 01-04-PLAN.md
+last_updated: "2026-03-11T02:11:41.040Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
   percent: 6
 ---
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 6%
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 15 | 2 tasks | 1 files |
 | Phase 01-foundation P03 | 2 | 2 tasks | 5 files |
+| Phase 01-foundation P04 | 2 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -72,6 +73,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: Partial index on slug WHERE is_active=true — scanner proxy only touches active rows, keeps index small and fast
 - [Phase 01-foundation]: Used getUser() instead of getClaims() in proxy.ts — getClaims() not available in @supabase/ssr ^0.9.0
 - [Phase 01-foundation]: OAuth callback creates inline Supabase client (not importing server.ts) for direct cookie write access in route handler
+- [Phase 01-foundation]: Nested SidebarNav function closes over user vars — avoids prop drilling while keeping DRY between desktop and mobile
+- [Phase 01-foundation]: SheetTrigger asChild not supported in @base-ui/react/dialog — className applied directly to SheetTrigger
+- [Phase 01-foundation]: Double auth guard (middleware + layout getUser) provides defense in depth for dashboard routes
 
 ### Pending Todos
 
@@ -83,6 +87,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T02:07:34.910Z
-Stopped at: Completed 01-foundation 01-03-PLAN.md
+Last session: 2026-03-11T02:11:41.038Z
+Stopped at: Completed 01-foundation 01-04-PLAN.md
 Resume file: None

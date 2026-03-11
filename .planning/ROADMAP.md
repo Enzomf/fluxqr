@@ -12,7 +12,7 @@ FluxQR ships in four phases. Phase 1 establishes the technical foundation — de
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Design system, database schema, auth, and app shell — everything the app stands on
+- [x] **Phase 1: Foundation** - Design system, database schema, auth, and app shell — everything the app stands on (completed 2026-03-11)
 - [ ] **Phase 2: Scanner** - The core product: proxy route that opens messaging apps with pre-filled messages
 - [ ] **Phase 3: QR Management** - Dashboard CRUD for creating, editing, deleting, and tracking QR codes
 - [ ] **Phase 4: Production** - Deploy to Vercel, configure production env vars, branded error pages
@@ -29,7 +29,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Visiting `/dashboard` without a session redirects to `/login`
   4. User can sign out from the sidebar and session is cleared
   5. Authenticated users see the sidebar with logo, nav, avatar, and a working Sheet drawer on mobile
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [x] 01-01-PLAN.md — Scaffold src/ directory, install deps, design system, Supabase clients, shared types
@@ -79,7 +79,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 3/4 | In Progress|  |
+| 1. Foundation | 4/4 | Complete   | 2026-03-11 |
 | 2. Scanner | 0/TBD | Not started | - |
 | 3. QR Management | 0/TBD | Not started | - |
 | 4. Production | 0/TBD | Not started | - |

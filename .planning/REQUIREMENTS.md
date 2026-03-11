@@ -27,13 +27,13 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **AUTH-01**: User can sign in with Google OAuth
 - [x] **AUTH-02**: Unauthenticated visits to `/dashboard/*` redirect to `/login`
 - [x] **AUTH-03**: OAuth callback exchanges code for session and redirects to `/dashboard`
-- [ ] **AUTH-04**: User can sign out from sidebar, session cleared, redirected to `/login`
+- [x] **AUTH-04**: User can sign out from sidebar, session cleared, redirected to `/login`
 
 ### App Shell
 
-- [ ] **SHELL-01**: Authenticated users see sidebar with logo, nav links, avatar, and sign out
-- [ ] **SHELL-02**: On mobile, sidebar opens as Sheet drawer via menu icon
-- [ ] **SHELL-03**: Active nav link shows brand highlight with left border accent
+- [x] **SHELL-01**: Authenticated users see sidebar with logo, nav links, avatar, and sign out
+- [x] **SHELL-02**: On mobile, sidebar opens as Sheet drawer via menu icon
+- [x] **SHELL-03**: Active nav link shows brand highlight with left border accent
 
 ### Scanner Proxy
 
@@ -143,10 +143,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-01 | Phase 1 | Complete |
 | AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Complete |
-| AUTH-04 | Phase 1 | Pending |
-| SHELL-01 | Phase 1 | Pending |
-| SHELL-02 | Phase 1 | Pending |
-| SHELL-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Complete |
+| SHELL-01 | Phase 1 | Complete |
+| SHELL-02 | Phase 1 | Complete |
+| SHELL-03 | Phase 1 | Complete |
 | SCAN-01 | Phase 2 | Pending |
 | SCAN-02 | Phase 2 | Pending |
 | SCAN-03 | Phase 2 | Pending |
