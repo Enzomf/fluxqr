@@ -5,7 +5,7 @@ milestone_name: milestone
 status: executing
 stopped_at: "Completed 05-05-PLAN.md (Admin dashboard: user table, per-user QR detail, deactivation actions)"
 last_updated: "2026-03-11T20:55:31.563Z"
-last_activity: "2026-03-11 - Completed quick task 1: Fix phone verification card center alignment on home page"
+last_activity: "2026-03-11 - Completed quick task 2: Display verified phone number as read-only chip in public QR form"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -142,9 +142,11 @@ None yet.
 
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
+| 1 | Fix phone verification card center alignment on home page | 2026-03-11 | 8f51996 | [1-fix-phone-verification-card-center-align](./quick/1-fix-phone-verification-card-center-align/) |
+| 2 | Display verified phone number as read-only chip in public QR form | 2026-03-11 | cdb837c | [2-use-verified-phone-number-as-contact-tar](./quick/2-use-verified-phone-number-as-contact-tar/) |
 
 ## Session Continuity
 
-Last session: 2026-03-11T20:50:48.270Z
-Stopped at: Completed 05-05-PLAN.md (Admin dashboard: user table, per-user QR detail, deactivation actions)
+Last session: 2026-03-11T21:05:00.000Z
+Stopped at: Completed quick task 2 (Display verified phone number in public QR form)
 Resume file: None
