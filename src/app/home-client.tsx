@@ -46,7 +46,7 @@ export function HomeClient({
       </p>
 
       {/* Content area */}
-      <div className="w-full max-w-lg mx-auto">
+      <div className="w-full max-w-lg mx-auto flex flex-col items-center">
         {step === 'phone' && (
           <PhoneVerifyForm
             onVerificationSent={(sentPhone) => {
