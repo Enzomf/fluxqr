@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed 05-01-PLAN.md (Phase 5 foundation: Twilio client, admin client, DB migration, updated types)"
-last_updated: "2026-03-11T20:33:58.926Z"
+stopped_at: Completed 05-02-PLAN.md (Phone verification Server Actions + PhoneVerifyForm + OtpVerifyForm)
+last_updated: "2026-03-11T20:37:54.333Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 17
-  completed_plans: 13
+  completed_plans: 14
   percent: 6
 ---
 
@@ -62,6 +62,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 03.1-qr-fullscreen-preview-and-share P01 | 1 | 2 tasks | 3 files |
 | Phase 03.1-qr-fullscreen-preview-and-share P02 | 8 | 3 tasks | 2 files |
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P01 | 2 | 2 tasks | 7 files |
+| Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P02 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -109,6 +110,8 @@ Recent decisions affecting current work:
 - [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: No 'use server' on twilio.ts or admin.ts — utility modules not Server Actions; tree-shaking handles server-only boundary (same pattern as qr-generator.ts)
 - [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: createAdminClient() uses @supabase/supabase-js not @supabase/ssr — no cookie handling needed for service-role bypass operations
 - [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: phone_usage table has no RLS — accessed exclusively via service-role admin client to safely enforce freemium limits
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: resendOtp exported as plain function (not form action) — OtpVerifyForm calls it directly with phone param, simpler than useActionState for resend
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: checkOtp uses plain async function signature — called programmatically on 6-digit auto-submit, not tied to form submit event
 
 ### Roadmap Evolution
 
@@ -125,6 +128,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T20:33:58.924Z
-Stopped at: Completed 05-01-PLAN.md (Phase 5 foundation: Twilio client, admin client, DB migration, updated types)
+Last session: 2026-03-11T20:37:54.331Z
+Stopped at: Completed 05-02-PLAN.md (Phone verification Server Actions + PhoneVerifyForm + OtpVerifyForm)
 Resume file: None
