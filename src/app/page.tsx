@@ -3,6 +3,8 @@ import { cookies } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { HomeClient } from './home-client'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'FluxQR — Smart QR Links for Messaging',
 }

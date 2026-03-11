@@ -1,5 +1,6 @@
 'use server'
 
+import { cookies } from 'next/headers'
 import { sendVerification } from '@/lib/twilio'
 import { z } from 'zod'
 
@@ -21,6 +22,12 @@ export async function sendOtp(
   prevState: SendOtpState,
   formData: FormData
 ): Promise<SendOtpState> {
+  const cookieStore = await cookies()
+  const existingPhone = cookieStore.get('verified_phone')?.value
+  if (existingPhone) {
+    return { success: true, phone: existingPhone }
+  }
+
   const phone = formData.get('phone') as string
 
   const result = phoneSchema.safeParse(phone)
@@ -31,7 +38,8 @@ export async function sendOtp(
   try {
     await sendVerification(result.data)
     return { success: true, phone: result.data }
-  } catch {
+  } catch (err) {
+    console.error('[sendOtp] Twilio error:', err)
     return { error: 'Failed to send verification code. Please try again.' }
   }
 }
