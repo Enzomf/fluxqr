@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 5 context gathered
-last_updated: "2026-03-11T18:57:59.372Z"
+stopped_at: "Completed 05-01-PLAN.md (Phase 5 foundation: Twilio client, admin client, DB migration, updated types)"
+last_updated: "2026-03-11T20:33:58.926Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 6
   completed_phases: 4
-  total_plans: 12
-  completed_plans: 12
+  total_plans: 17
+  completed_plans: 13
   percent: 6
 ---
 
@@ -61,6 +61,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 03-qr-management P04 | 10 | 2 tasks | 4 files |
 | Phase 03.1-qr-fullscreen-preview-and-share P01 | 1 | 2 tasks | 3 files |
 | Phase 03.1-qr-fullscreen-preview-and-share P02 | 8 | 3 tasks | 2 files |
+| Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P01 | 2 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -105,6 +106,9 @@ Recent decisions affecting current work:
 - [Phase 03.1-qr-fullscreen-preview-and-share]: Used @base-ui primitives directly in QrPreviewDialog — DialogContent wrapper bundles its own Portal+Overlay, preventing custom dark-blur backdrop
 - [Phase 03.1-qr-fullscreen-preview-and-share]: thumbnailRect captured in onClick handler (not useEffect) — ensures fresh viewport position before dialog layout shift
 - [Phase 03.1-qr-fullscreen-preview-and-share]: QrPreviewDialog rendered per-row inside QrPulseWrapper — portals to body, no need to hoist state to QrList
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: No 'use server' on twilio.ts or admin.ts — utility modules not Server Actions; tree-shaking handles server-only boundary (same pattern as qr-generator.ts)
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: createAdminClient() uses @supabase/supabase-js not @supabase/ssr — no cookie handling needed for service-role bypass operations
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: phone_usage table has no RLS — accessed exclusively via service-role admin client to safely enforce freemium limits
 
 ### Roadmap Evolution
 
@@ -121,6 +125,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T18:57:59.364Z
-Stopped at: Phase 5 context gathered
-Resume file: .planning/phases/05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard/05-CONTEXT.md
+Last session: 2026-03-11T20:33:58.924Z
+Stopped at: Completed 05-01-PLAN.md (Phase 5 foundation: Twilio client, admin client, DB migration, updated types)
+Resume file: None
