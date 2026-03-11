@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed 05-04-PLAN.md (Auth layer: middleware, OAuth account linking, admin sidebar)"
-last_updated: "2026-03-11T20:45:53.234Z"
+stopped_at: "Completed 05-05-PLAN.md (Admin dashboard: user table, per-user QR detail, deactivation actions)"
+last_updated: "2026-03-11T20:50:48.272Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 17
-  completed_plans: 16
+  completed_plans: 17
   percent: 6
 ---
 
@@ -65,6 +65,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P02 | 2 | 2 tasks | 4 files |
 | Phase 05 P03 | 2 | 2 tasks | 7 files |
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P04 | 2 | 2 tasks | 4 files |
+| Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P05 | 2 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -120,6 +121,9 @@ Recent decisions affecting current work:
 - [Phase 05]: Middleware creates own Supabase client (not server.ts) — needs direct request/response cookie access for @supabase/ssr middleware pattern
 - [Phase 05]: OAuth callback account linking is fire-and-forget (try/catch) — phone QR linking failure does not block redirect to dashboard
 - [Phase 05]: isAdmin boolean prop on Sidebar (not role string) — role derivation stays in Server Component layout, Sidebar stays minimal client component
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: verifyAdmin() in Server Actions provides defense-in-depth — middleware is first layer, Server Action check is second
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: JS aggregation for QR stats (count + scans per user) from single flat query — simpler than RPC for MVP
+- [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: Remove src/proxy.ts (obsolete) — coexistence with src/middleware.ts broke Next.js 16 Turbopack build
 
 ### Roadmap Evolution
 
@@ -136,6 +140,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T20:45:53.232Z
-Stopped at: Completed 05-04-PLAN.md (Auth layer: middleware, OAuth account linking, admin sidebar)
+Last session: 2026-03-11T20:50:48.270Z
+Stopped at: Completed 05-05-PLAN.md (Admin dashboard: user table, per-user QR detail, deactivation actions)
 Resume file: None
