@@ -75,6 +75,7 @@ export function HomeClient({
         {step === 'form' && (
           <PublicQrForm
             qrType={qrType}
+            phone={phone}
             onResult={(data) => {
               setQrData(data)
               setStep('result')

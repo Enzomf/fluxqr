@@ -1,12 +1,14 @@
 'use client'
 
 import { useState, useTransition } from 'react'
+import { Phone } from 'lucide-react'
 import { createPublicQr } from '@/app/actions/create-public-qr'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface PublicQrFormProps {
   qrType: 'default' | 'custom'
+  phone: string
   onResult: (qrData: { slug: string; dataUrl: string; label: string }) => void
   onGateHit: () => void
   onBack: () => void
@@ -14,6 +16,7 @@ interface PublicQrFormProps {
 
 export function PublicQrForm({
   qrType,
+  phone,
   onResult,
   onGateHit,
   onBack,
@@ -73,6 +76,14 @@ export function PublicQrForm({
           </div>
         )}
 
+        <div className="flex flex-col gap-1.5">
+          <label className="text-sm font-medium text-white">Your number</label>
+          <div className="flex items-center gap-2 rounded-md bg-[#0F172A] border border-[#334155] px-3 py-2">
+            <Phone size={14} className="text-[#6366F1]" />
+            <span className="text-sm text-white font-mono">{phone}</span>
+          </div>
+        </div>
+
         {error && <p className="text-xs text-red-400">{error}</p>}
 
         <Button
@@ -84,7 +95,7 @@ export function PublicQrForm({
             'disabled:opacity-60'
           )}
         >
-          {isPending ? 'Generating...' : 'Generate QR Code'}
+          {isPending ? 'Generating...' : `Generate QR for ${phone}`}
         </Button>
 
         <button
