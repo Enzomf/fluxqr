@@ -5,7 +5,7 @@ milestone_name: milestone
 status: executing
 stopped_at: "Completed 05-05-PLAN.md (Admin dashboard: user table, per-user QR detail, deactivation actions)"
 last_updated: "2026-03-11T21:15:00.000Z"
-last_activity: "2026-03-11 - Completed quick task 3: Skip verification SMS if phone already verified via cookie"
+last_activity: "2026-03-11 - Completed quick task 4: Dashboard QR creation uses verified phone as read-only contact target"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -145,9 +145,10 @@ None yet.
 | 1 | Fix phone verification card center alignment on home page | 2026-03-11 | 8f51996 | [1-fix-phone-verification-card-center-align](./quick/1-fix-phone-verification-card-center-align/) |
 | 2 | Display verified phone number as read-only chip in public QR form | 2026-03-11 | cdb837c | [2-use-verified-phone-number-as-contact-tar](./quick/2-use-verified-phone-number-as-contact-tar/) |
 | 3 | Skip verification SMS if phone already verified via cookie | 2026-03-11 | 97ebd12 | [3-skip-verification-sms-if-phone-already-v](./quick/3-skip-verification-sms-if-phone-already-v/) |
+| 4 | Dashboard QR creation uses verified phone as read-only contact target for WhatsApp/SMS | 2026-03-11 | a441059 | [4-dashboard-qr-creation-uses-verified-phon](./quick/4-dashboard-qr-creation-uses-verified-phon/) |
 
 ## Session Continuity
 
-Last session: 2026-03-11T21:15:00.000Z
-Stopped at: Completed quick task 3 (Skip verification SMS if phone already verified)
+Last session: 2026-03-11T22:46:58Z
+Stopped at: Completed quick task 4 (Dashboard QR creation uses verified phone)
 Resume file: None
