@@ -55,9 +55,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### QR List
 
-- [ ] **LIST-01**: Dashboard shows all user's active QR codes ordered by created_at desc
-- [ ] **LIST-02**: Each row displays QR image thumbnail, label, slug, platform badge, scan count, edit and delete actions
-- [ ] **LIST-03**: Empty state shows illustration + "Create your first QR" CTA when no codes exist
+- [x] **LIST-01**: Dashboard shows all user's active QR codes ordered by created_at desc
+- [x] **LIST-02**: Each row displays QR image thumbnail, label, slug, platform badge, scan count, edit and delete actions
+- [x] **LIST-03**: Empty state shows illustration + "Create your first QR" CTA when no codes exist
 
 ### QR Edit
 
@@ -68,19 +68,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### QR Delete
 
-- [ ] **DEL-01**: Delete opens confirmation dialog naming the specific QR code
-- [ ] **DEL-02**: Confirming sets is_active = false (soft delete, never hard DELETE)
-- [ ] **DEL-03**: Deleted code disappears from list, scanner shows inactive page
+- [x] **DEL-01**: Delete opens confirmation dialog naming the specific QR code
+- [x] **DEL-02**: Confirming sets is_active = false (soft delete, never hard DELETE)
+- [x] **DEL-03**: Deleted code disappears from list, scanner shows inactive page
 
 ### QR Generation
 
 - [x] **GEN-01**: QR image points to `{SITE_URL}/q/{slug}` and is scannable
 - [x] **GEN-02**: QR uses brand colors (dark #0F172A on white) with high error correction
-- [ ] **GEN-03**: User can download QR as PNG named `{slug}-fluxqr.png`
+- [x] **GEN-03**: User can download QR as PNG named `{slug}-fluxqr.png`
 
 ### Analytics
 
-- [ ] **ANLYT-01**: Dashboard list rows display current scan_count
+- [x] **ANLYT-01**: Dashboard list rows display current scan_count
 - [x] **ANLYT-02**: Scan counts ≥ 1000 formatted as compact notation (e.g., 1.2k)
 - [x] **ANLYT-03**: Concurrent scans produce accurate count (no race conditions)
 
@@ -159,20 +159,20 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CREATE-03 | Phase 3 | Complete |
 | CREATE-04 | Phase 3 | Pending |
 | CREATE-05 | Phase 3 | Pending |
-| LIST-01 | Phase 3 | Pending |
-| LIST-02 | Phase 3 | Pending |
-| LIST-03 | Phase 3 | Pending |
+| LIST-01 | Phase 3 | Complete |
+| LIST-02 | Phase 3 | Complete |
+| LIST-03 | Phase 3 | Complete |
 | EDIT-01 | Phase 3 | Pending |
 | EDIT-02 | Phase 3 | Pending |
 | EDIT-03 | Phase 3 | Pending |
 | EDIT-04 | Phase 3 | Pending |
-| DEL-01 | Phase 3 | Pending |
-| DEL-02 | Phase 3 | Pending |
-| DEL-03 | Phase 3 | Pending |
+| DEL-01 | Phase 3 | Complete |
+| DEL-02 | Phase 3 | Complete |
+| DEL-03 | Phase 3 | Complete |
 | GEN-01 | Phase 3 | Complete |
 | GEN-02 | Phase 3 | Complete |
-| GEN-03 | Phase 3 | Pending |
-| ANLYT-01 | Phase 3 | Pending |
+| GEN-03 | Phase 3 | Complete |
+| ANLYT-01 | Phase 3 | Complete |
 | ANLYT-02 | Phase 3 | Complete |
 | ANLYT-03 | Phase 3 | Complete |
 | PROD-01 | Phase 4 | Pending |
