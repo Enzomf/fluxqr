@@ -131,61 +131,61 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUN-01 | — | Pending |
-| FOUN-02 | — | Pending |
-| FOUN-03 | — | Pending |
-| FOUN-04 | — | Pending |
-| DB-01 | — | Pending |
-| DB-02 | — | Pending |
-| DB-03 | — | Pending |
-| DB-04 | — | Pending |
-| DB-05 | — | Pending |
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| AUTH-04 | — | Pending |
-| SHELL-01 | — | Pending |
-| SHELL-02 | — | Pending |
-| SHELL-03 | — | Pending |
-| SCAN-01 | — | Pending |
-| SCAN-02 | — | Pending |
-| SCAN-03 | — | Pending |
-| SCAN-04 | — | Pending |
-| SCAN-05 | — | Pending |
-| SCAN-06 | — | Pending |
-| SCAN-07 | — | Pending |
-| CREATE-01 | — | Pending |
-| CREATE-02 | — | Pending |
-| CREATE-03 | — | Pending |
-| CREATE-04 | — | Pending |
-| CREATE-05 | — | Pending |
-| LIST-01 | — | Pending |
-| LIST-02 | — | Pending |
-| LIST-03 | — | Pending |
-| EDIT-01 | — | Pending |
-| EDIT-02 | — | Pending |
-| EDIT-03 | — | Pending |
-| EDIT-04 | — | Pending |
-| DEL-01 | — | Pending |
-| DEL-02 | — | Pending |
-| DEL-03 | — | Pending |
-| GEN-01 | — | Pending |
-| GEN-02 | — | Pending |
-| GEN-03 | — | Pending |
-| ANLYT-01 | — | Pending |
-| ANLYT-02 | — | Pending |
-| ANLYT-03 | — | Pending |
-| PROD-01 | — | Pending |
-| PROD-02 | — | Pending |
-| PROD-03 | — | Pending |
-| PROD-04 | — | Pending |
-| PROD-05 | — | Pending |
+| FOUN-01 | Phase 1 | Pending |
+| FOUN-02 | Phase 1 | Pending |
+| FOUN-03 | Phase 1 | Pending |
+| FOUN-04 | Phase 1 | Pending |
+| DB-01 | Phase 1 | Pending |
+| DB-02 | Phase 1 | Pending |
+| DB-03 | Phase 1 | Pending |
+| DB-04 | Phase 1 | Pending |
+| DB-05 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| SHELL-01 | Phase 1 | Pending |
+| SHELL-02 | Phase 1 | Pending |
+| SHELL-03 | Phase 1 | Pending |
+| SCAN-01 | Phase 2 | Pending |
+| SCAN-02 | Phase 2 | Pending |
+| SCAN-03 | Phase 2 | Pending |
+| SCAN-04 | Phase 2 | Pending |
+| SCAN-05 | Phase 2 | Pending |
+| SCAN-06 | Phase 2 | Pending |
+| SCAN-07 | Phase 2 | Pending |
+| CREATE-01 | Phase 3 | Pending |
+| CREATE-02 | Phase 3 | Pending |
+| CREATE-03 | Phase 3 | Pending |
+| CREATE-04 | Phase 3 | Pending |
+| CREATE-05 | Phase 3 | Pending |
+| LIST-01 | Phase 3 | Pending |
+| LIST-02 | Phase 3 | Pending |
+| LIST-03 | Phase 3 | Pending |
+| EDIT-01 | Phase 3 | Pending |
+| EDIT-02 | Phase 3 | Pending |
+| EDIT-03 | Phase 3 | Pending |
+| EDIT-04 | Phase 3 | Pending |
+| DEL-01 | Phase 3 | Pending |
+| DEL-02 | Phase 3 | Pending |
+| DEL-03 | Phase 3 | Pending |
+| GEN-01 | Phase 3 | Pending |
+| GEN-02 | Phase 3 | Pending |
+| GEN-03 | Phase 3 | Pending |
+| ANLYT-01 | Phase 3 | Pending |
+| ANLYT-02 | Phase 3 | Pending |
+| ANLYT-03 | Phase 3 | Pending |
+| PROD-01 | Phase 4 | Pending |
+| PROD-02 | Phase 4 | Pending |
+| PROD-03 | Phase 4 | Pending |
+| PROD-04 | Phase 4 | Pending |
+| PROD-05 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 48 total
-- Mapped to phases: 0
-- Unmapped: 48 ⚠️
+- Mapped to phases: 48
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-10*
-*Last updated: 2026-03-10 after initial definition*
+*Last updated: 2026-03-10 after roadmap creation*
