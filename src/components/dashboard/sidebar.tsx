@@ -19,19 +19,21 @@ interface SidebarUser {
 
 interface SidebarProps {
   user: SidebarUser
+  isAdmin?: boolean
 }
 
-const navItems = [
-  { href: '/dashboard', label: 'My QR Codes' },
-]
-
-export function Sidebar({ user }: SidebarProps) {
+export function Sidebar({ user, isAdmin }: SidebarProps) {
   const [open, setOpen] = useState(false)
 
   const avatarUrl = user.user_metadata?.avatar_url ?? ''
   const email = user.email ?? ''
   const fullName = user.user_metadata?.full_name ?? ''
   const fallbackLetter = (fullName || email).charAt(0).toUpperCase()
+
+  const navItems = [
+    { href: '/dashboard', label: 'My QR Codes' },
+    ...(isAdmin ? [{ href: '/admin', label: 'Admin' }] : []),
+  ]
 
   function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
     return (

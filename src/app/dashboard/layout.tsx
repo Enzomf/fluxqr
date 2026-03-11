@@ -14,9 +14,17 @@ export default async function DashboardLayout({
     redirect('/login')
   }
 
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single()
+
+  const isAdmin = profile?.role === 'admin'
+
   return (
     <div className="flex min-h-screen">
-      <Sidebar user={user} />
+      <Sidebar user={user} isAdmin={isAdmin} />
       <main className="flex-1 p-6 md:ml-56">{children}</main>
     </div>
   )
