@@ -17,7 +17,7 @@ export default async function ScannerPage({
   const { data: qr } = await supabase
     .from('qr_codes')
     .select(
-      'id, user_id, slug, label, platform, contact_target, default_message, is_active, scan_count, created_at, updated_at'
+      'id, user_id, slug, label, platform, contact_target, default_message, is_active, scan_count, phone_number, created_at, updated_at'
     )
     .eq('slug', slug)
     .eq('is_active', true)
