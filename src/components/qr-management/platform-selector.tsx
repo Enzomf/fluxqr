@@ -20,9 +20,10 @@ interface PlatformSelectorProps {
   defaultValue?: Platform
   disabled?: boolean
   error?: string[]
+  onValueChange?: (value: Platform) => void
 }
 
-export function PlatformSelector({ defaultValue, disabled, error }: PlatformSelectorProps) {
+export function PlatformSelector({ defaultValue, disabled, error, onValueChange }: PlatformSelectorProps) {
   const trigger = (
     <SelectTrigger
       className={cn(
@@ -37,7 +38,16 @@ export function PlatformSelector({ defaultValue, disabled, error }: PlatformSele
 
   return (
     <div className="space-y-1.5">
-      <Select name="platform" defaultValue={defaultValue} disabled={disabled}>
+      <Select
+        name="platform"
+        defaultValue={defaultValue}
+        disabled={disabled}
+        onValueChange={(value) => {
+          if (value !== null && onValueChange) {
+            onValueChange(value)
+          }
+        }}
+      >
         {disabled ? (
           <TooltipProvider>
             <Tooltip>

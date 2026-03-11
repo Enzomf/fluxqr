@@ -1,6 +1,7 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
+import { Phone } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -8,20 +9,27 @@ import { Button } from '@/components/ui/button'
 import { SlugInput } from './slug-input'
 import { PlatformSelector } from './platform-selector'
 import { cn } from '@/lib/utils'
-import type { QrCode } from '@/types'
+import type { Platform, QrCode } from '@/types'
 import type { FormState } from '@/app/dashboard/new/actions'
 
 interface QrFormProps {
   action: (prevState: FormState, formData: FormData) => Promise<FormState>
   defaultValues?: Partial<QrCode>
   mode: 'create' | 'edit'
+  verifiedPhone?: string | null
 }
 
-export function QrForm({ action, defaultValues, mode }: QrFormProps) {
+export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormProps) {
   const [state, formAction, pending] = useActionState(action, {
     errors: {},
     message: null,
   })
+
+  const [platform, setPlatform] = useState<Platform | undefined>(defaultValues?.platform)
+
+  const isPhonePlatform = platform === 'whatsapp' || platform === 'sms'
+  const showReadOnlyPhone = isPhonePlatform && (!!verifiedPhone || mode === 'edit')
+  const displayPhone = mode === 'edit' ? defaultValues?.contact_target : verifiedPhone
 
   return (
     <form action={formAction} className="max-w-lg space-y-6">
@@ -68,32 +76,41 @@ export function QrForm({ action, defaultValues, mode }: QrFormProps) {
           defaultValue={defaultValues?.platform}
           disabled={mode === 'edit'}
           error={state.errors?.platform}
+          onValueChange={setPlatform}
         />
       </div>
 
       {/* Contact target field */}
-      <div className="space-y-1.5">
-        <Label htmlFor="contact_target" className="text-slate-200">
-          Contact Target
-        </Label>
-        <Input
-          id="contact_target"
-          name="contact_target"
-          defaultValue={defaultValues?.contact_target}
-          placeholder={
-            defaultValues?.platform === 'whatsapp' || defaultValues?.platform === 'sms'
-              ? '+1 555 000 0000'
-              : '@username'
-          }
-          className={cn(
-            'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500',
-            state.errors?.contact_target && 'border-red-500'
+      {showReadOnlyPhone ? (
+        <div className="space-y-1.5">
+          <Label className="text-slate-200">Contact Target</Label>
+          <div className="flex items-center gap-2 rounded-md bg-[#0F172A] border border-[#334155] px-3 py-2">
+            <Phone size={14} className="text-[#6366F1]" />
+            <span className="text-sm text-white font-mono">{displayPhone}</span>
+          </div>
+          <input type="hidden" name="contact_target" value={displayPhone ?? ''} />
+          <p className="text-xs text-slate-500">Your verified phone number</p>
+        </div>
+      ) : (
+        <div className="space-y-1.5">
+          <Label htmlFor="contact_target" className="text-slate-200">
+            Contact Target
+          </Label>
+          <Input
+            id="contact_target"
+            name="contact_target"
+            defaultValue={defaultValues?.contact_target}
+            placeholder={platform === 'telegram' ? '@username' : '+1 555 000 0000'}
+            className={cn(
+              'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500',
+              state.errors?.contact_target && 'border-red-500'
+            )}
+          />
+          {state.errors?.contact_target && (
+            <p className="text-xs text-red-400">{state.errors.contact_target[0]}</p>
           )}
-        />
-        {state.errors?.contact_target && (
-          <p className="text-xs text-red-400">{state.errors.contact_target[0]}</p>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Default message field */}
       <div className="space-y-1.5">
