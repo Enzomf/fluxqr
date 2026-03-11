@@ -44,6 +44,24 @@ export async function checkOtp(
       path: '/',
     })
 
+    // If user is authenticated, persist phone to profiles table (db is source of truth for dashboard)
+    try {
+      const { createClient } = await import('@/lib/supabase/server')
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { createAdminClient } = await import('@/lib/supabase/admin')
+        const admin = createAdminClient()
+        await admin
+          .from('profiles')
+          .update({ phone_number: phone })
+          .eq('id', user.id)
+      }
+    } catch {
+      // Non-blocking: cookie is the fallback, profile update is best-effort
+      console.error('[checkOtp] Failed to update profile phone_number')
+    }
+
     return { success: true }
   } catch {
     return { error: 'Verification failed. Please try again.' }

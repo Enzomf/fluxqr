@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { cookies } from 'next/headers'
 import { ArrowLeft } from 'lucide-react'
+import { createClient } from '@/lib/supabase/server'
 import { PageHeader } from '@/components/shared/page-header'
 import { QrForm } from '@/components/qr-management/qr-form'
 import { createQrCode } from './actions'
@@ -11,8 +11,17 @@ export const metadata: Metadata = {
 }
 
 export default async function NewQrPage() {
-  const cookieStore = await cookies()
-  const verifiedPhone = cookieStore.get('verified_phone')?.value ?? null
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  let verifiedPhone: string | null = null
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('phone_number')
+      .eq('id', user.id)
+      .single()
+    verifiedPhone = profile?.phone_number ?? null
+  }
 
   return (
     <div className="space-y-6">

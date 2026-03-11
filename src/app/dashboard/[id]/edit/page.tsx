@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { cookies } from 'next/headers'
 import { ArrowLeft } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import { QrForm } from '@/components/qr-management/qr-form'
@@ -19,8 +18,17 @@ interface EditPageProps {
 export default async function EditQrPage({ params }: EditPageProps) {
   const { id } = await params
 
-  const [supabase, cookieStore] = await Promise.all([createClient(), cookies()])
-  const verifiedPhone = cookieStore.get('verified_phone')?.value ?? null
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  let verifiedPhone: string | null = null
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('phone_number')
+      .eq('id', user.id)
+      .single()
+    verifiedPhone = profile?.phone_number ?? null
+  }
 
   const { data: qrCode } = await supabase
     .from('qr_codes')
