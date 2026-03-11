@@ -15,6 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Design system, database schema, auth, and app shell — everything the app stands on (completed 2026-03-11)
 - [x] **Phase 2: Scanner** - The core product: proxy route that opens messaging apps with pre-filled messages (completed 2026-03-11)
 - [x] **Phase 3: QR Management** - Dashboard CRUD for creating, editing, deleting, and tracking QR codes (completed 2026-03-11)
+- [ ] **Phase 3.1: QR Fullscreen Preview & Share** - Fullscreen QR preview dialog with grow-from-thumbnail animation, Web Share API, and copy link (INSERTED)
 - [ ] **Phase 4: Production** - Deploy to Vercel, configure production env vars, branded error pages
 
 ## Phase Details
@@ -71,6 +72,24 @@ Plans:
 - [ ] 03-03-PLAN.md — Dashboard list with QR thumbnails, actions, empty state, and soft-delete flow
 - [ ] 03-04-PLAN.md — Edit QR flow: update Server Action, edit page, success toast, CRUD verification
 
+### Phase 03.1: QR Fullscreen Preview & Share (INSERTED)
+
+**Goal:** Clicking a QR code thumbnail in the dashboard opens a fullscreen preview dialog with grow-from-thumbnail animation, large QR display, and share actions (Web Share API + copy link)
+**Requirements**: PREVIEW-01, PREVIEW-02, PREVIEW-03, PREVIEW-04, PREVIEW-05, PREVIEW-06
+**Depends on:** Phase 3
+**Success Criteria** (what must be TRUE):
+  1. Clicking the QR thumbnail opens a dialog with the QR at ~280px, label, platform badge, and scan count
+  2. The QR image grows from the thumbnail's position with a CSS animation (~300ms ease-out)
+  3. Share button (Web Share API) appears when browser supports it, shares URL + title
+  4. Copy link button copies QR URL to clipboard with "Copied!" feedback for 2 seconds
+  5. Dialog dismisses via X button, backdrop click, or Escape — all trigger reverse shrink animation
+  6. Existing row actions (edit, download, delete) remain unaffected
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03.1-01-PLAN.md — Install shadcn Dialog, create use-copy-to-clipboard hook, add QR pop animation keyframes
+- [ ] 03.1-02-PLAN.md — Build QrPreviewDialog component, wire into QrListRow with thumbnail click and animation
+
 ### Phase 4: Production
 **Goal**: The app is live on Vercel with correct OAuth, production URLs, and branded error pages
 **Depends on**: Phase 2, Phase 3
@@ -85,11 +104,12 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete   | 2026-03-11 |
 | 2. Scanner | 2/2 | Complete   | 2026-03-11 |
 | 3. QR Management | 4/4 | Complete   | 2026-03-11 |
+| 3.1 Preview & Share | 0/2 | Not started | - |
 | 4. Production | 0/TBD | Not started | - |
