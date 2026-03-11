@@ -84,7 +84,7 @@ Plans:
   4. Copy link button copies QR URL to clipboard with "Copied!" feedback for 2 seconds
   5. Dialog dismisses via X button, backdrop click, or Escape — all trigger reverse shrink animation
   6. Existing row actions (edit, download, delete) remain unaffected
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 
 Plans:
 - [ ] 03.1-01-PLAN.md — Install shadcn Dialog, create use-copy-to-clipboard hook, add QR pop animation keyframes
