@@ -22,7 +22,7 @@ Transform FluxQR from an owner-only tool into a public-facing system. The home p
 - /login remains available for returning authenticated users
 
 ### Phone verification
-- SMS OTP (6-digit code) sent to the visitor's phone number
+- Twilio for SMS OTP delivery (6-digit code) sent to the visitor's phone number
 - Verification happens first — before the form/card selection is shown
 - Verified phone remembered via cookie/session for future visits (skip re-verification on return)
 - Phone is locked: visitor can only create QR codes for the number they verified — no way to enter a different contact_target
@@ -51,7 +51,6 @@ Transform FluxQR from an owner-only tool into a public-facing system. The home p
 - Compact scan count formatting via formatScanCount() (Phase 3)
 
 ### Claude's Discretion
-- SMS OTP provider choice (Supabase Phone Auth, Twilio, etc.)
 - Session/cookie implementation for remembered verification
 - Database schema for profiles table and phone-to-user linking
 - Auto-generated slug format for public QR codes
