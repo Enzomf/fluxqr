@@ -41,7 +41,7 @@ export function QrListRow({ qr, onDelete, pulseId }: QrListRowProps) {
           alt={qr.label}
           width={40}
           height={40}
-          className="rounded shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+          className="rounded shrink-0 cursor-pointer hover:opacity-80 transition-opacity self-center md:self-auto"
           role="button"
           tabIndex={0}
           onClick={handleThumbnailClick}
