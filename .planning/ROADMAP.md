@@ -63,7 +63,13 @@ Plans:
   3. User can edit label, contact target, and message — platform field is read-only with tooltip; save triggers pulse confirmation
   4. Deleting opens a confirmation dialog naming the QR code; confirming sets is_active = false and removes the row from the list
   5. User can download the QR image as a PNG; scan counts ≥ 1000 display as compact notation (e.g., 1.2k)
-**Plans**: TBD
+**Plans:** 4 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Install deps (qrcode, shadcn), create QR generator, hooks, slug-check API, shared components
+- [ ] 03-02-PLAN.md — Create QR flow: Server Action + form components + /dashboard/new page
+- [ ] 03-03-PLAN.md — Dashboard list with QR thumbnails, actions, empty state, and soft-delete flow
+- [ ] 03-04-PLAN.md — Edit QR flow: update Server Action, edit page, success toast, CRUD verification
 
 ### Phase 4: Production
 **Goal**: The app is live on Vercel with correct OAuth, production URLs, and branded error pages
@@ -85,5 +91,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete   | 2026-03-11 |
 | 2. Scanner | 2/2 | Complete   | 2026-03-11 |
-| 3. QR Management | 0/TBD | Not started | - |
+| 3. QR Management | 0/4 | Planning complete | - |
 | 4. Production | 0/TBD | Not started | - |
