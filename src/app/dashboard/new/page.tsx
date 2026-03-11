@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { cookies } from 'next/headers'
 import { ArrowLeft } from 'lucide-react'
 import { PageHeader } from '@/components/shared/page-header'
 import { QrForm } from '@/components/qr-management/qr-form'
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
   title: 'New QR Code — FluxQR',
 }
 
-export default function NewQrPage() {
+export default async function NewQrPage() {
+  const cookieStore = await cookies()
+  const verifiedPhone = cookieStore.get('verified_phone')?.value ?? null
+
   return (
     <div className="space-y-6">
       <Link
@@ -20,7 +24,7 @@ export default function NewQrPage() {
         Back to dashboard
       </Link>
       <PageHeader title="Create QR Code" />
-      <QrForm action={createQrCode} mode="create" />
+      <QrForm action={createQrCode} mode="create" verifiedPhone={verifiedPhone} />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 import type { FormState } from '@/app/dashboard/new/actions'
 
 const UpdateQrSchema = z.object({
@@ -37,11 +38,33 @@ export async function updateQrCode(
     redirect('/login')
   }
 
+  // Fetch the existing QR platform to determine if phone override applies
+  const { data: existing } = await supabase
+    .from('qr_codes')
+    .select('platform')
+    .eq('id', id)
+    .eq('user_id', user.id)
+    .single()
+
+  if (!existing) {
+    return { message: 'QR code not found' }
+  }
+
   const { label, slug, contact_target, default_message } = validated.data
+
+  // Server-side enforcement: use verified phone for whatsapp/sms to prevent tampering
+  let finalContactTarget = contact_target
+  if (existing.platform === 'whatsapp' || existing.platform === 'sms') {
+    const cookieStore = await cookies()
+    const verifiedPhone = cookieStore.get('verified_phone')?.value
+    if (verifiedPhone) {
+      finalContactTarget = verifiedPhone
+    }
+  }
 
   const { error } = await supabase
     .from('qr_codes')
-    .update({ label, slug, contact_target, default_message })
+    .update({ label, slug, contact_target: finalContactTarget, default_message })
     .eq('id', id)
     .eq('user_id', user.id)
 

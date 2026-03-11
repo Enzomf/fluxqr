@@ -3,6 +3,7 @@
 import { z } from 'zod'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
 
 export type FormState = {
@@ -43,9 +44,21 @@ export async function createQrCode(
     redirect('/login')
   }
 
+  const { platform, contact_target, ...rest } = validated.data
+
+  // Server-side enforcement: use verified phone for whatsapp/sms to prevent tampering
+  let finalContactTarget = contact_target
+  if (platform === 'whatsapp' || platform === 'sms') {
+    const cookieStore = await cookies()
+    const verifiedPhone = cookieStore.get('verified_phone')?.value
+    if (verifiedPhone) {
+      finalContactTarget = verifiedPhone
+    }
+  }
+
   const { error } = await supabase
     .from('qr_codes')
-    .insert({ ...validated.data, user_id: user.id })
+    .insert({ ...rest, platform, contact_target: finalContactTarget, user_id: user.id })
 
   if (error) {
     if (error.code === '23505') {
