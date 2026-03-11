@@ -9,10 +9,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUN-01**: App renders with Geist font, dark surface background, and brand indigo tokens
-- [ ] **FOUN-02**: shadcn/ui components inherit dark color scheme without manual overrides
-- [ ] **FOUN-03**: `cn()` utility available for conditional class merging
-- [ ] **FOUN-04**: `Platform` and `QrCode` TypeScript types defined and shared across app
+- [x] **FOUN-01**: App renders with Geist font, dark surface background, and brand indigo tokens
+- [x] **FOUN-02**: shadcn/ui components inherit dark color scheme without manual overrides
+- [x] **FOUN-03**: `cn()` utility available for conditional class merging
+- [x] **FOUN-04**: `Platform` and `QrCode` TypeScript types defined and shared across app
 
 ### Database
 
@@ -131,10 +131,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUN-01 | Phase 1 | Pending |
-| FOUN-02 | Phase 1 | Pending |
-| FOUN-03 | Phase 1 | Pending |
-| FOUN-04 | Phase 1 | Pending |
+| FOUN-01 | Phase 1 | Complete |
+| FOUN-02 | Phase 1 | Complete |
+| FOUN-03 | Phase 1 | Complete |
+| FOUN-04 | Phase 1 | Complete |
 | DB-01 | Phase 1 | Pending |
 | DB-02 | Phase 1 | Pending |
 | DB-03 | Phase 1 | Pending |
@@ -188,4 +188,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-10*
-*Last updated: 2026-03-10 after roadmap creation*
+*Last updated: 2026-03-11 after 01-01-PLAN execution (FOUN-01 through FOUN-04 complete)*

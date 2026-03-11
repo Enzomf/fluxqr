@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 4 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold src/ directory, install deps, design system, Supabase clients, shared types
+- [x] 01-01-PLAN.md — Scaffold src/ directory, install deps, design system, Supabase clients, shared types
 - [ ] 01-02-PLAN.md — Database migration (qr_codes table, RLS, RPC, index, trigger)
 - [ ] 01-03-PLAN.md — Google OAuth login, callback route, proxy.ts route protection
 - [ ] 01-04-PLAN.md — Dashboard app shell with responsive sidebar and sign-out
@@ -79,7 +79,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/4 | Planning complete | - |
+| 1. Foundation | 1/4 | Executing | - |
 | 2. Scanner | 0/TBD | Not started | - |
 | 3. QR Management | 0/TBD | Not started | - |
 | 4. Production | 0/TBD | Not started | - |
