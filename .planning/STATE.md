@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed 05-03-PLAN.md (Public QR generation flow: createPublicQr, QrTypeGrid, PublicQrForm, FreemiumGate, ResultDialog, HomeClient)"
-last_updated: "2026-03-11T20:42:29.244Z"
+stopped_at: "Completed 05-04-PLAN.md (Auth layer: middleware, OAuth account linking, admin sidebar)"
+last_updated: "2026-03-11T20:45:53.234Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 17
-  completed_plans: 15
+  completed_plans: 16
   percent: 6
 ---
 
@@ -64,6 +64,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P01 | 2 | 2 tasks | 7 files |
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P02 | 2 | 2 tasks | 4 files |
 | Phase 05 P03 | 2 | 2 tasks | 7 files |
+| Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P04 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -116,6 +117,9 @@ Recent decisions affecting current work:
 - [Phase 05]: HomeClient extracted to src/app/home-client.tsx — cleaner Server Component + client separation in Next.js App Router
 - [Phase 05]: createPublicQr uses admin client for all DB ops — phone-created QRs have user_id=null, bypassing user-scoped RLS policies
 - [Phase 05]: Server Component computes isGated+verifiedPhone server-side and passes as props to HomeClient — prevents flash of wrong step on initial render
+- [Phase 05]: Middleware creates own Supabase client (not server.ts) — needs direct request/response cookie access for @supabase/ssr middleware pattern
+- [Phase 05]: OAuth callback account linking is fire-and-forget (try/catch) — phone QR linking failure does not block redirect to dashboard
+- [Phase 05]: isAdmin boolean prop on Sidebar (not role string) — role derivation stays in Server Component layout, Sidebar stays minimal client component
 
 ### Roadmap Evolution
 
@@ -132,6 +136,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T20:42:29.242Z
-Stopped at: Completed 05-03-PLAN.md (Public QR generation flow: createPublicQr, QrTypeGrid, PublicQrForm, FreemiumGate, ResultDialog, HomeClient)
+Last session: 2026-03-11T20:45:53.232Z
+Stopped at: Completed 05-04-PLAN.md (Auth layer: middleware, OAuth account linking, admin sidebar)
 Resume file: None
