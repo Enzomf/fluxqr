@@ -39,9 +39,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **SCAN-01**: `/q/[slug]` fetches QR record by slug where is_active = true
 - [ ] **SCAN-02**: Scan count increments atomically on page load (fire-and-forget, non-blocking)
-- [ ] **SCAN-03**: Scanner landing shows label, editable message textarea, and platform CTA
-- [ ] **SCAN-04**: Platform CTA opens WhatsApp (`wa.me`), SMS (`sms:`), or Telegram (`t.me`) deep link
-- [ ] **SCAN-05**: Telegram renders copy-message + open-Telegram fallback (no pre-fill support)
+- [x] **SCAN-03**: Scanner landing shows label, editable message textarea, and platform CTA
+- [x] **SCAN-04**: Platform CTA opens WhatsApp (`wa.me`), SMS (`sms:`), or Telegram (`t.me`) deep link
+- [x] **SCAN-05**: Telegram renders copy-message + open-Telegram fallback (no pre-fill support)
 - [ ] **SCAN-06**: Scanner page has zero auth, zero sidebar, under 10KB JS
 - [ ] **SCAN-07**: Missing or inactive slug renders branded not-found page
 
@@ -149,9 +149,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SHELL-03 | Phase 1 | Complete |
 | SCAN-01 | Phase 2 | Pending |
 | SCAN-02 | Phase 2 | Pending |
-| SCAN-03 | Phase 2 | Pending |
-| SCAN-04 | Phase 2 | Pending |
-| SCAN-05 | Phase 2 | Pending |
+| SCAN-03 | Phase 2 | Complete |
+| SCAN-04 | Phase 2 | Complete |
+| SCAN-05 | Phase 2 | Complete |
 | SCAN-06 | Phase 2 | Pending |
 | SCAN-07 | Phase 2 | Pending |
 | CREATE-01 | Phase 3 | Pending |
