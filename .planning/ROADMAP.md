@@ -47,7 +47,11 @@ Plans:
   3. Telegram shows copy-message + open-Telegram fallback (no pre-fill)
   4. Each page load atomically increments the scan count without blocking the render
   5. A missing or inactive slug shows a branded not-found page — no sidebar, no auth
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Deep link URL builder, Telegram fallback component, scanner landing client component
+- [ ] 02-02-PLAN.md — Server component page with data fetch, after() scan increment, not-found/inactive states
 
 ### Phase 3: QR Management
 **Goal**: Owners can create, view, edit, delete, and download QR codes from the dashboard
@@ -80,6 +84,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete   | 2026-03-11 |
-| 2. Scanner | 0/TBD | Not started | - |
+| 2. Scanner | 0/2 | Not started | - |
 | 3. QR Management | 0/TBD | Not started | - |
 | 4. Production | 0/TBD | Not started | - |
