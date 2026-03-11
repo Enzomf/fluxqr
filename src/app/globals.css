@@ -85,6 +85,8 @@
   /* Keyframes */
   --animate-qr-pulse: qr-pulse 0.6s ease-out;
   --animate-slide-up: slide-up 0.2s ease-out;
+  --animate-qr-pop-open: qr-pop-open 300ms ease-out forwards;
+  --animate-qr-pop-close: qr-pop-close 200ms ease-in forwards;
 
   /* Fonts */
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
@@ -105,6 +107,28 @@
 @keyframes slide-up {
   0%   { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes qr-pop-open {
+  from {
+    opacity: 0;
+    transform: scale(0.14);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes qr-pop-close {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.14);
+  }
 }
 
 body {
