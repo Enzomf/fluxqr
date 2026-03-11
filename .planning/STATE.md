@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-scanner-02-01-PLAN.md
-last_updated: "2026-03-11T03:03:55.152Z"
+stopped_at: "Checkpoint: human-verify 02-02 scanner flow (Task 2)"
+last_updated: "2026-03-11T03:06:29.916Z"
 last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
   percent: 6
 ---
 
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 01-foundation P03 | 2 | 2 tasks | 5 files |
 | Phase 01-foundation P04 | 2 | 2 tasks | 5 files |
 | Phase 02-scanner P01 | 3 | 3 tasks | 4 files |
+| Phase 02-scanner P02 | 1 | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,8 @@ Recent decisions affecting current work:
 - [Phase 02-scanner]: Plain Node.js assert tests with tsx runner — no test framework configured, pure function tests don't need one
 - [Phase 02-scanner]: Inline style for dynamic platform colors — avoids Tailwind JIT issues with runtime-determined values
 - [Phase 02-scanner]: ScannerLanding owns all state, TelegramFallback is controlled — single source of truth for message
+- [Phase 02-scanner]: Service-role client server-side to detect inactive vs missing slugs — anon RLS only sees active rows so slug existence check requires elevated access
+- [Phase 02-scanner]: after() with empty-cookie Supabase client for scan increment — createClient() from server.ts calls cookies() which throws inside after() callbacks
 
 ### Pending Todos
 
@@ -91,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-11T03:03:55.150Z
-Stopped at: Completed 02-scanner-02-01-PLAN.md
+Last session: 2026-03-11T03:06:29.915Z
+Stopped at: Checkpoint: human-verify 02-02 scanner flow (Task 2)
 Resume file: None

@@ -13,7 +13,7 @@ FluxQR ships in four phases. Phase 1 establishes the technical foundation — de
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Design system, database schema, auth, and app shell — everything the app stands on (completed 2026-03-11)
-- [ ] **Phase 2: Scanner** - The core product: proxy route that opens messaging apps with pre-filled messages
+- [x] **Phase 2: Scanner** - The core product: proxy route that opens messaging apps with pre-filled messages (completed 2026-03-11)
 - [ ] **Phase 3: QR Management** - Dashboard CRUD for creating, editing, deleting, and tracking QR codes
 - [ ] **Phase 4: Production** - Deploy to Vercel, configure production env vars, branded error pages
 
@@ -47,7 +47,7 @@ Plans:
   3. Telegram shows copy-message + open-Telegram fallback (no pre-fill)
   4. Each page load atomically increments the scan count without blocking the render
   5. A missing or inactive slug shows a branded not-found page — no sidebar, no auth
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 
 Plans:
 - [ ] 02-01-PLAN.md — Deep link URL builder, Telegram fallback component, scanner landing client component
@@ -84,6 +84,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete   | 2026-03-11 |
-| 2. Scanner | 1/2 | In Progress|  |
+| 2. Scanner | 2/2 | Complete   | 2026-03-11 |
 | 3. QR Management | 0/TBD | Not started | - |
 | 4. Production | 0/TBD | Not started | - |
