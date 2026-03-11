@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useState } from 'react'
+import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -91,6 +92,23 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
           <input type="hidden" name="contact_target" value={displayPhone ?? ''} />
           <p className="text-xs text-slate-500">Your verified phone number</p>
         </div>
+      ) : isPhonePlatform && !verifiedPhone && mode === 'create' ? (
+        <div className="space-y-1.5">
+          <Label className="text-slate-200">Contact Target</Label>
+          <div className="flex flex-col gap-2 rounded-lg bg-[#0F172A] border border-[#334155] p-4">
+            <div className="flex items-center gap-2">
+              <Phone size={16} className="text-slate-500" />
+              <span className="text-sm text-slate-300 font-medium">Phone verification required</span>
+            </div>
+            <p className="text-xs text-slate-500">WhatsApp and SMS QR codes require a verified phone number.</p>
+            <Link
+              href="/"
+              className="text-xs text-[#6366F1] hover:text-[#4F46E5] underline underline-offset-2 transition-colors"
+            >
+              Verify your phone number
+            </Link>
+          </div>
+        </div>
       ) : (
         <div className="space-y-1.5">
           <Label htmlFor="contact_target" className="text-slate-200">
@@ -136,7 +154,7 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
 
       <Button
         type="submit"
-        disabled={pending}
+        disabled={pending || (isPhonePlatform && !verifiedPhone && mode === 'create')}
         className="bg-[#6366F1] hover:bg-[#4F46E5] text-white font-medium transition-colors"
       >
         {mode === 'create'

@@ -4,7 +4,6 @@ import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
-import { cookies } from 'next/headers'
 import type { FormState } from '@/app/dashboard/new/actions'
 
 const UpdateQrSchema = z.object({
@@ -52,14 +51,19 @@ export async function updateQrCode(
 
   const { label, slug, contact_target, default_message } = validated.data
 
-  // Server-side enforcement: use verified phone for whatsapp/sms to prevent tampering
+  // Server-side enforcement: WhatsApp/SMS require verified phone from profile
   let finalContactTarget = contact_target
   if (existing.platform === 'whatsapp' || existing.platform === 'sms') {
-    const cookieStore = await cookies()
-    const verifiedPhone = cookieStore.get('verified_phone')?.value
-    if (verifiedPhone) {
-      finalContactTarget = verifiedPhone
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('phone_number')
+      .eq('id', user.id)
+      .single()
+
+    if (!profile?.phone_number) {
+      return { message: 'Phone verification required for WhatsApp/SMS QR codes. Please verify your phone number first.' }
     }
+    finalContactTarget = profile.phone_number
   }
 
   const { error } = await supabase
