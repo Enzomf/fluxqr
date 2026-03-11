@@ -16,17 +16,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Database
 
-- [ ] **DB-01**: `qr_codes` table with id, user_id, slug (unique), label, platform, contact_target, default_message, is_active, scan_count, created_at, updated_at
-- [ ] **DB-02**: RLS policies: owners have full CRUD, unauthenticated can SELECT where is_active = true
-- [ ] **DB-03**: `increment_scan_count(qr_slug)` RPC — atomic, SECURITY DEFINER
-- [ ] **DB-04**: Partial index on `(slug) WHERE is_active = true` for proxy lookup performance
-- [ ] **DB-05**: `update_updated_at()` trigger on every UPDATE
+- [x] **DB-01**: `qr_codes` table with id, user_id, slug (unique), label, platform, contact_target, default_message, is_active, scan_count, created_at, updated_at
+- [x] **DB-02**: RLS policies: owners have full CRUD, unauthenticated can SELECT where is_active = true
+- [x] **DB-03**: `increment_scan_count(qr_slug)` RPC — atomic, SECURITY DEFINER
+- [x] **DB-04**: Partial index on `(slug) WHERE is_active = true` for proxy lookup performance
+- [x] **DB-05**: `update_updated_at()` trigger on every UPDATE
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can sign in with Google OAuth
-- [ ] **AUTH-02**: Unauthenticated visits to `/dashboard/*` redirect to `/login`
-- [ ] **AUTH-03**: OAuth callback exchanges code for session and redirects to `/dashboard`
+- [x] **AUTH-01**: User can sign in with Google OAuth
+- [x] **AUTH-02**: Unauthenticated visits to `/dashboard/*` redirect to `/login`
+- [x] **AUTH-03**: OAuth callback exchanges code for session and redirects to `/dashboard`
 - [ ] **AUTH-04**: User can sign out from sidebar, session cleared, redirected to `/login`
 
 ### App Shell
@@ -135,14 +135,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUN-02 | Phase 1 | Complete |
 | FOUN-03 | Phase 1 | Complete |
 | FOUN-04 | Phase 1 | Complete |
-| DB-01 | Phase 1 | Pending |
-| DB-02 | Phase 1 | Pending |
-| DB-03 | Phase 1 | Pending |
-| DB-04 | Phase 1 | Pending |
-| DB-05 | Phase 1 | Pending |
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
+| DB-01 | Phase 1 | Complete |
+| DB-02 | Phase 1 | Complete |
+| DB-03 | Phase 1 | Complete |
+| DB-04 | Phase 1 | Complete |
+| DB-05 | Phase 1 | Complete |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
+| AUTH-03 | Phase 1 | Complete |
 | AUTH-04 | Phase 1 | Pending |
 | SHELL-01 | Phase 1 | Pending |
 | SHELL-02 | Phase 1 | Pending |
