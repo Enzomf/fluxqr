@@ -16,6 +16,8 @@
 | 🖼️ QR Generation | 09 | Image output + download |
 | 📊 Analytics | 10 | Scan count tracking |
 | 🚀 Production | 11 → 12 | Error states + Vercel deploy |
+| 📱 Public Access | 13 → 15 | Phone verification, public generation, freemium gate |
+| 🛡️ Admin | 16 → 17 | Profiles, admin dashboard, deactivation |
 
 ---
 
@@ -512,6 +514,155 @@ Add `og:title` and `og:description` meta to the scanner landing page — when th
 
 ---
 
+## EPIC 7 — Public Access (Phase 5)
+
+---
+
+### TASK 13 — Phone verification via Twilio SMS OTP
+**Effort:** ~120 min · **Depends on:** Task 12 (production deploy)
+
+**User Story:**
+> As a visitor, I want to verify my phone number so I can create QR codes tied to my identity without needing a Google account.
+
+**Acceptance Criteria:**
+- **Given** I visit the home page, **When** it loads, **Then** I see a phone number input and a "Send Code" button.
+- **Given** I enter my phone number and tap "Send Code", **When** Twilio sends the OTP, **Then** I see a 6-digit code input field.
+- **Given** I enter the correct code, **When** it validates, **Then** I'm shown the QR generation form and my phone is remembered for future visits.
+- **Given** I return later with a valid session cookie, **When** the page loads, **Then** I skip verification and go straight to the QR generation form.
+
+**Technical Implementation:**
+- Uses raw fetch against Twilio Verify REST API (no SDK).
+- `lib/twilio.ts` — Raw fetch wrapper for Twilio Verify REST API using `TWILIO_API_KEY_SID`, `TWILIO_API_KEY_SECRET`, `TWILIO_VERIFY_SERVICE_SID` env vars (server only).
+- `app/actions/verify-phone.ts` — Two Server Actions: `sendOtp(phone)` calls Twilio Verify API to send code, `checkOtp(phone, code)` verifies code. On success, set a signed HTTP-only cookie with the verified phone number.
+- `components/public/phone-verification.tsx` — Client Component: phone input with country code prefix, "Send Code" button, OTP input (6 digits), resend timer (60s cooldown).
+- Session: HTTP-only signed cookie stores verified phone number. Expires after 30 days (configurable).
+- Database: No new table needed for verification — Twilio handles OTP state.
+
+**Env vars (server only):**
+```
+TWILIO_API_KEY_SID
+TWILIO_API_KEY_SECRET
+TWILIO_VERIFY_SERVICE_SID
+```
+
+**UX/Design Insight:**
+- Phone input uses `tel` input type for mobile keyboard optimization.
+- OTP input auto-focuses first digit, auto-advances on each keystroke.
+- Resend button disabled for 60s with countdown timer.
+- Same centered card layout as login page for consistency.
+
+---
+
+### TASK 14 — Public QR generation flow
+**Effort:** ~120 min · **Depends on:** Task 13
+
+**User Story:**
+> As a verified visitor, I want to generate QR codes from the home page so I can get a scannable link for my phone number without signing up.
+
+**Acceptance Criteria:**
+- **Given** my phone is verified, **When** the form loads, **Then** I see two cards: "My QR Code" (default) and "Custom QR".
+- **Given** I pick "My QR Code", **When** I tap generate, **Then** a QR code is created for my verified phone with WhatsApp as default platform and no custom message.
+- **Given** I pick "Custom QR", **When** I fill the message textarea and tap generate, **Then** a QR code is created with my custom message.
+- **Given** the QR is generated, **When** it appears, **Then** I see it in a modal/dialog with a download PNG button.
+- **Given** I dismiss the dialog, **When** I return to the form, **Then** I can create another QR code.
+
+**Technical Implementation:**
+- `app/page.tsx` — Server Component: check for verified phone cookie. If not verified → render phone verification form (Task 13). If verified → render QR generation form with phone pre-filled and locked.
+- `app/actions/create-public-qr.ts` — Server Action: validates phone from cookie (not user input), generates auto-slug (`nanoid(8)` or similar), inserts into `qr_codes` with `phone_number` column set and `user_id = null`. Platform defaults to WhatsApp.
+- `components/public/qr-type-grid.tsx` — Client Component: two-card selection grid. "My QR Code" card (icon + description) and "Custom QR" card (icon + description). Selected card has `border-brand-500 bg-brand-500/10`.
+- `components/public/public-qr-form.tsx` — Client Component: message textarea (shown only for "Custom QR"), generate button. Phone displayed as read-only chip.
+- `components/public/qr-result-dialog.tsx` — Reuses dialog pattern from Phase 3.1 preview. Shows generated QR at ~280px with download PNG button.
+- Database: Add `phone_number TEXT` column to `qr_codes` table. Public QR codes have `user_id = null` and `phone_number` set. Slug auto-generated using `nanoid`.
+
+**UX/Design Insight:**
+- Two-card grid is horizontally side-by-side on desktop, stacked on mobile.
+- "My QR Code" card is the left/top option — default, lower friction.
+- Generate button shows phone number as confirmation: "Generate QR for +55 11 99999-9999".
+- After generation, dialog opens with QR code + "Download PNG" + "Create Another" buttons.
+
+---
+
+### TASK 15 — Freemium gate (5-use limit)
+**Effort:** ~90 min · **Depends on:** Task 14
+
+**User Story:**
+> As a product owner, I want to limit free QR generation to 5 codes per phone number so that heavy users are funneled into signing up with Google.
+
+**Acceptance Criteria:**
+- **Given** a visitor has created fewer than 5 QR codes, **When** they access the form, **Then** they can generate normally with a counter showing "X of 5 free QR codes used".
+- **Given** a visitor has created 5 QR codes, **When** they access the form, **Then** the form is disabled with "You've used your 5 free QR codes. Sign up with Google to continue." and a Google sign-in button.
+- **Given** a visitor signs up with Google, **When** their account is created, **Then** all QR codes previously created with their verified phone are auto-linked to the new account.
+- **Given** a signed-up user, **When** they visit the dashboard, **Then** they see all their QR codes (both pre- and post-signup).
+
+**Technical Implementation:**
+- `app/actions/create-public-qr.ts` — Before insert, count existing `qr_codes WHERE phone_number = ? AND is_active = true`. If >= 5, reject with error.
+- `app/page.tsx` — Server Component: query usage count for verified phone. Pass `usageCount` and `limit` (5) to form component.
+- `components/public/usage-counter.tsx` — Shows "X of 5 free QR codes used" as a subtle progress indicator above the form.
+- `components/public/freemium-block.tsx` — Replaces the form when limit is hit. Message + `GoogleSignInButton` component (reused from `components/auth/`).
+- `app/auth/callback/route.ts` — After OAuth callback, check if the new user's Google email matches any phone verification session. Run `UPDATE qr_codes SET user_id = ? WHERE phone_number = ? AND user_id IS NULL` to link orphaned QR codes.
+- Linking strategy: On sign-up, read the verified phone from cookie and associate QR codes. The phone cookie is then cleared since the user now has a full account.
+
+**UX/Design Insight:**
+- Usage counter is subtle — `text-xs text-slate-400` below the form header.
+- At limit, the form area is replaced entirely — no disabled fields, just a clean block message with the sign-up CTA.
+- Google sign-in button uses the same style as the login page for consistency.
+
+---
+
+## EPIC 8 — Admin (Phase 5)
+
+---
+
+### TASK 16 — User profiles table + admin role
+**Effort:** ~60 min · **Depends on:** Task 12
+
+**User Story:**
+> As a developer, I want a profiles table with a role column so that admin access can be determined from the database.
+
+**Acceptance Criteria:**
+- **Given** a user signs up via Google OAuth, **When** the callback completes, **Then** a profile row is created with `role = 'user'` by default.
+- **Given** a profile exists with `role = 'admin'`, **When** the user accesses `/admin`, **Then** they see the admin dashboard.
+- **Given** a non-admin user visits `/admin`, **When** middleware checks, **Then** they are redirected to `/dashboard`.
+
+**Technical Implementation:**
+- Database: Create `profiles` table: `id (FK → auth.users)`, `email`, `phone_number`, `role DEFAULT 'user' CHECK('user','admin')`, `created_at`, `updated_at`.
+- Trigger: `on_auth_user_created` — auto-insert profile row when a new auth user is created (Supabase trigger on `auth.users`).
+- RLS: Users can SELECT their own profile. Admins can SELECT all profiles.
+- `src/middleware.ts` — Create middleware: protect `/dashboard/*` (auth required) and `/admin/*` (admin role required). Query profile role for admin routes.
+- Initial admin: Set first admin via direct SQL `UPDATE profiles SET role = 'admin' WHERE email = '...'`.
+
+---
+
+### TASK 17 — Admin dashboard
+**Effort:** ~120 min · **Depends on:** Task 16
+
+**User Story:**
+> As an admin, I want to see all users and their QR codes so I can monitor usage and deactivate abusive accounts.
+
+**Acceptance Criteria:**
+- **Given** I am an admin, **When** I visit `/admin`, **Then** I see a table of all users with email, phone, QR code count, total scans, and sign-up date.
+- **Given** I click a user row, **When** the detail loads, **Then** I see their individual QR codes with per-code scan counts.
+- **Given** I click "Deactivate" on a user, **When** the action completes, **Then** all their QR codes are set to `is_active = false`.
+- **Given** I click "Deactivate" on a specific QR code, **When** the action completes, **Then** that code is set to `is_active = false`.
+
+**Technical Implementation:**
+- `app/admin/layout.tsx` — Server Component: check user profile role. If not admin, redirect to `/dashboard`. Render admin sidebar with "Users" nav link.
+- `app/admin/page.tsx` — Server Component: fetch all profiles with aggregated QR counts and scan totals via Supabase query with joins.
+- `app/admin/users/[id]/page.tsx` — Server Component: fetch user profile + all their QR codes with scan counts.
+- `app/admin/actions.ts` — Server Actions: `deactivateUser(userId)` sets all user's QR codes to `is_active = false`. `deactivateQrCode(qrId)` sets single code to `is_active = false`. Both require admin role verification.
+- `components/admin/user-table.tsx` — Table with sortable columns: email, phone, QR count, total scans, joined date. Each row links to user detail.
+- `components/admin/user-detail.tsx` — User info card + QR codes table with deactivate buttons per code.
+- `components/admin/deactivate-button.tsx` — Confirmation dialog before deactivation (reuses pattern from `delete-dialog.tsx`).
+- Admin sidebar: "Users" link visible. Link to regular `/dashboard` also available so admins can manage their own QR codes.
+
+**UX/Design Insight:**
+- Admin layout shares the same sidebar shell pattern as the dashboard but with different nav links.
+- Deactivate buttons use `text-danger` styling with confirmation dialog — same pattern as delete flow.
+- User table uses `text-xs` column headers matching the dashboard list style.
+- No edit capabilities — deactivation only. Keep it simple for abuse prevention.
+
+---
+
 ## Full MVP summary
 
 | # | Task | Epic | Est. | Priority |
@@ -529,9 +680,16 @@ Add `og:title` and `og:description` meta to the scanner landing page — when th
 | 10 | Scan count display + increment | Analytics | 60 min | 🟠 High |
 | 11 | Error + empty states | Production | 60 min | 🟠 High |
 | 12 | Vercel deploy + checklist | Production | 60 min | 🔴 Critical |
+| 13 | Phone verification via Twilio SMS OTP | Public Access | 120 min | 🔴 Critical |
+| 14 | Public QR generation flow | Public Access | 120 min | 🔴 Critical |
+| 15 | Freemium gate (5-use limit) | Public Access | 90 min | 🔴 Critical |
+| 16 | User profiles table + admin role | Admin | 60 min | 🟠 High |
+| 17 | Admin dashboard | Admin | 120 min | 🟠 High |
 
-**Total estimated effort:** ~17 hours (~7–9 sprints at 2h/week)
+**Total estimated effort:** ~25.5 hours
 
-**Recommended execution order:** 00 → 01 → 04 → 02 → 03 → 05 → 09 → 06 → 07 → 10 → 08 → 11 → 12
+**Recommended execution order:**
+- **MVP (Phase 1–4):** 00 → 01 → 04 → 02 → 03 → 05 → 09 → 06 → 07 → 10 → 08 → 11 → 12
+- **Phase 5:** 16 → 13 → 14 → 15 → 17
 
-> Start 00 + 01 + 04 in your first two sessions. After those three tasks you'll have: a fully configured design system, a live database, and a working end-to-end QR scan → WhatsApp flow — before a singl
+> Start 00 + 01 + 04 in your first two sessions. After those three tasks you'll have: a fully configured design system, a live database, and a working end-to-end QR scan → WhatsApp flow. Phase 5 builds on top of the production deployment with public access, phone verification, freemium limits, and admin tooling.
