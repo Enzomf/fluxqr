@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { createServerClient } from '@supabase/ssr'
 import { createClient } from '@/lib/supabase/server'
 import { ScannerLanding } from './scanner-landing'
+import { ScannerError } from '@/components/scanner/scanner-error'
 
 export const metadata = { title: 'FluxQR' }
 
@@ -45,11 +46,11 @@ export default async function ScannerPage({
 
     if (existing) {
       return (
-        <main className="min-h-screen flex items-center justify-center bg-surface">
-          <div className="bg-surface-raised rounded-lg p-8 w-full max-w-sm text-center">
-            <p className="text-foreground">This link has been deactivated.</p>
-          </div>
-        </main>
+        <ScannerError
+          statusCode="410"
+          title="Link deactivated"
+          description="This QR code link has been deactivated by its owner."
+        />
       )
     }
 
