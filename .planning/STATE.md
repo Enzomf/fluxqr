@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed quick-15: Commit all staged working-tree changes"
-last_updated: "2026-03-12T15:43:33.785Z"
-last_activity: "2026-03-12 - Completed quick task 13: add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard"
+stopped_at: "Completed 04-production-01: Branded Scanner Error Pages"
+last_updated: "2026-03-12T15:48:12.076Z"
+last_activity: "2026-03-12 - Completed quick task 15: commit the staged changes"
 progress:
   total_phases: 7
   completed_phases: 6
   total_plans: 21
-  completed_plans: 19
+  completed_plans: 20
   percent: 6
 ---
 
@@ -68,6 +68,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P05 | 2 | 2 tasks | 7 files |
 | Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux P01 | 2 | 2 tasks | 3 files |
 | Phase quick-13 P01 | 4 | 2 tasks | 4 files |
+| Phase 04-production P01 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -141,6 +142,8 @@ Recent decisions affecting current work:
 - [Phase quick-13]: Used next/image for all logo placements — built-in optimization, no layout shift
 - [Phase quick-14]: ownerName derived from user_metadata.full_name with email fallback — Google OAuth puts display name there
 - [Phase quick-14]: formatPhoneDisplay helper co-located in qr-preview-dialog.tsx — utility specific to this component, not lib/utils
+- [Phase 04-production]: ScannerError is a pure Server Component with no 'use client' — honors SCAN-06 under-10KB-JS constraint
+- [Phase 04-production]: 410 status code used for deactivated links to differentiate semantically from 404 missing links
 
 ### Roadmap Evolution
 
@@ -178,6 +181,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T15:43:33.783Z
-Stopped at: Completed quick-15: Commit all staged working-tree changes
+Last session: 2026-03-12T15:48:12.074Z
+Stopped at: Completed 04-production-01: Branded Scanner Error Pages
 Resume file: None

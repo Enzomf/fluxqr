@@ -86,8 +86,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Production
 
-- [ ] **PROD-01**: Branded not-found page for missing slugs (no sidebar, minimal JS)
-- [ ] **PROD-02**: Branded inactive page for deactivated slugs
+- [x] **PROD-01**: Branded not-found page for missing slugs (no sidebar, minimal JS)
+- [x] **PROD-02**: Branded inactive page for deactivated slugs
 - [ ] **PROD-03**: App deployed on Vercel with all env vars configured
 - [ ] **PROD-04**: Google OAuth callback URL updated for production domain
 - [ ] **PROD-05**: QR images generate URLs using production domain, not localhost
@@ -175,8 +175,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ANLYT-01 | Phase 3 | Complete |
 | ANLYT-02 | Phase 3 | Complete |
 | ANLYT-03 | Phase 3 | Complete |
-| PROD-01 | Phase 4 | Pending |
-| PROD-02 | Phase 4 | Pending |
+| PROD-01 | Phase 4 | Complete |
+| PROD-02 | Phase 4 | Complete |
 | PROD-03 | Phase 4 | Pending |
 | PROD-04 | Phase 4 | Pending |
 | PROD-05 | Phase 4 | Pending |
