@@ -32,10 +32,12 @@ vi.mock('next/link', () => ({
     React.createElement('a', { href, className, ...rest }, children),
 }))
 
-// Mock navigator.clipboard
+// Mock navigator — @base-ui/utils detectBrowser reads navigator.userAgent at import time.
+// jsdom provides userAgent but our defineProperty below must explicitly carry it forward.
 Object.defineProperty(globalThis, 'navigator', {
   value: {
     ...globalThis.navigator,
+    userAgent: globalThis.navigator?.userAgent ?? 'Mozilla/5.0 (jsdom)',
     clipboard: {
       writeText: vi.fn().mockResolvedValue(undefined),
       readText: vi.fn().mockResolvedValue(''),
