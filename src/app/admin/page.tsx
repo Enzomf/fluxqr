@@ -1,8 +1,9 @@
+import type { Metadata } from 'next'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { UserTable } from '@/components/admin/user-table'
 import { PageHeader } from '@/components/shared/page-header'
 
-export const metadata = { title: 'Admin — FluxQR' }
+export const metadata: Metadata = { title: 'Admin' }
 
 export default async function AdminPage() {
   const admin = createAdminClient()

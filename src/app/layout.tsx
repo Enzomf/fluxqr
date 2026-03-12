@@ -5,8 +5,19 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FluxQR",
-  description: "Smart links for instant messaging",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fluxqr.app'),
+  title: {
+    default: 'FluxQR — Smart QR Links for Messaging',
+    template: '%s — FluxQR',
+  },
+  description: 'Create QR codes that open WhatsApp and SMS with pre-filled messages.',
+  openGraph: {
+    siteName: 'FluxQR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+  },
 };
 
 export default function RootLayout({
