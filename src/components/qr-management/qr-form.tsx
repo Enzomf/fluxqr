@@ -11,7 +11,7 @@ import { SlugInput } from './slug-input'
 import { PlatformSelector } from './platform-selector'
 import { PhoneVerifyDialog } from '@/components/dashboard/phone-verify-dialog'
 import { cn } from '@/lib/utils'
-import type { Platform, QrCode } from '@/types'
+import type { QrCode } from '@/types'
 import type { FormState } from '@/app/dashboard/new/actions'
 
 interface QrFormProps {
@@ -28,7 +28,6 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
     message: null,
   })
 
-  const [platform, setPlatform] = useState<Platform | undefined>(defaultValues?.platform)
   const [verifyDialogOpen, setVerifyDialogOpen] = useState(false)
   const [justVerified, setJustVerified] = useState(false)
 
@@ -107,7 +106,6 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
           defaultValue={defaultValues?.platform}
           disabled={mode === 'edit'}
           error={state.errors?.platform}
-          onValueChange={setPlatform}
         />
       </div>
 
