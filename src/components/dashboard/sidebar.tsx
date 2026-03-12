@@ -36,7 +36,7 @@ function SidebarNav({ navItems, avatarUrl, email, fallbackLetter, onNavigate }: 
     <div className="flex flex-col h-full p-4">
       {/* Wordmark */}
       <div className="mb-8 flex items-center gap-2">
-        <Image src="/logo.png" alt="FluxQR" width={28} height={28} />
+        <Image src="/logo.png" alt="FluxQR" width={56} height={56} />
         <span className="text-brand-500 font-bold text-xl tracking-tight">FluxQR</span>
       </div>
 

@@ -1,36 +1,52 @@
-import twilio from 'twilio'
+const VERIFY_BASE = 'https://verify.twilio.com/v2/Services'
 
-let client: ReturnType<typeof twilio> | null = null
-
-export function getTwilioClient() {
-  if (!client) {
-    client = twilio(
-      process.env.TWILIO_ACCOUNT_SID!,
-      process.env.TWILIO_AUTH_TOKEN!
-    )
-  }
-  return client
+function getAuthHeader() {
+  const sid = process.env.TWILIO_API_KEY_SID!
+  const secret = process.env.TWILIO_API_KEY_SECRET!
+  return 'Basic ' + Buffer.from(`${sid}:${secret}`).toString('base64')
 }
 
 /**
- * Send an SMS OTP via Twilio Verify.
- * Phone must be in E.164 format (e.g. +14155552671).
+ * Send an SMS OTP via Twilio Verify Service.
  */
 export async function sendVerification(phone: string) {
-  const client = getTwilioClient()
-  return client.verify.v2
-    .services(process.env.TWILIO_VERIFY_SERVICE_SID!)
-    .verifications.create({ to: phone, channel: 'sms' })
+  const serviceSid = process.env.TWILIO_VERIFY_SERVICE_SID!
+  const res = await fetch(`${VERIFY_BASE}/${serviceSid}/Verifications`, {
+    method: 'POST',
+    headers: {
+      Authorization: getAuthHeader(),
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ To: phone, Channel: 'sms' }),
+  })
+
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.message || 'Failed to send verification')
+  }
+
+  return res.json()
 }
 
 /**
- * Check an OTP code entered by the user via Twilio Verify.
- * Phone must be in E.164 format (e.g. +14155552671).
- * Returns the verification object — check `.status === 'approved'` for success.
+ * Check an OTP code via Twilio Verify Service.
+ * Returns an object with `.status === 'approved'` on success.
  */
 export async function checkVerification(phone: string, code: string) {
-  const client = getTwilioClient()
-  return client.verify.v2
-    .services(process.env.TWILIO_VERIFY_SERVICE_SID!)
-    .verificationChecks.create({ to: phone, code })
+  const serviceSid = process.env.TWILIO_VERIFY_SERVICE_SID!
+  const res = await fetch(`${VERIFY_BASE}/${serviceSid}/VerificationCheck`, {
+    method: 'POST',
+    headers: {
+      Authorization: getAuthHeader(),
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ To: phone, Code: code }),
+  })
+
+  if (!res.ok) {
+    const error = await res.json()
+    throw new Error(error.message || 'Failed to check verification')
+  }
+
+  return res.json() as Promise<{ status: 'approved' | 'pending' | 'canceled' }>
 }

@@ -61,7 +61,7 @@ src/
 │   ├── dashboard/                  # sidebar, sidebar-link, qr-list, qr-list-row, delete-button
 │   ├── qr-management/              # qr-form, platform-selector, slug-input, delete-dialog
 │   ├── qr-generation/              # qr-image
-│   └── scanner/                    # telegram-fallback
+│   └── scanner/                    # (reserved)
 ├── hooks/
 │   ├── use-slug-check.ts
 │   ├── use-qr-image.ts

@@ -40,7 +40,7 @@ export function HomeClient({
     <div className="min-h-screen bg-[#0F172A] flex flex-col items-center justify-center p-4">
       {/* Wordmark */}
       <div className="flex flex-col items-center mb-8">
-        <Image src="/logo.png" alt="FluxQR" width={48} height={48} className="mb-2" />
+        <Image src="/logo.png" alt="FluxQR" width={160} height={160} className="mb-4" />
         <h1 className="text-[#6366F1] font-bold text-3xl mb-2">FluxQR</h1>
         <p className="text-[#94A3B8] text-sm">
           Smart links for instant messaging

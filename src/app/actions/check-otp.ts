@@ -54,8 +54,7 @@ export async function checkOtp(
         const admin = createAdminClient()
         await admin
           .from('profiles')
-          .update({ phone_number: phone })
-          .eq('id', user.id)
+          .upsert({ id: user.id, phone_number: phone }, { onConflict: 'id' })
       }
     } catch {
       // Non-blocking: cookie is the fallback, profile update is best-effort

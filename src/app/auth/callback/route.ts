@@ -50,11 +50,10 @@ export async function GET(request: Request) {
           .eq('phone_number', verifiedPhone)
           .is('user_id', null)
 
-        // Update profile with the verified phone number
+        // Upsert profile with the verified phone number (row may not exist for pre-migration users)
         await admin
           .from('profiles')
-          .update({ phone_number: verifiedPhone })
-          .eq('id', user.id)
+          .upsert({ id: user.id, phone_number: verifiedPhone }, { onConflict: 'id' })
 
         // Clean up the verified_phone cookie
         cookieStore.delete('verified_phone')

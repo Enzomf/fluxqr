@@ -17,7 +17,7 @@ export function FreemiumGate({ className }: FreemiumGateProps) {
         className
       )}
     >
-      <Image src="/logo.png" alt="FluxQR" width={48} height={48} />
+      <Image src="/logo.png" alt="FluxQR" width={128} height={128} />
 
       <div className="space-y-2">
         <h2 className="text-xl font-semibold text-white">
