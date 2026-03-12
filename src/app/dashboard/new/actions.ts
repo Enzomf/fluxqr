@@ -43,8 +43,6 @@ export async function createQrCode(
     redirect('/login')
   }
 
-  const { platform, contact_target, ...rest } = validated.data
-
   // Server-side enforcement: all platforms require verified phone
   const { data: profile } = await supabase
     .from('profiles')
@@ -56,12 +54,12 @@ export async function createQrCode(
     return { message: 'Phone verification required. Please verify your phone number first.' }
   }
 
-  // Override contact_target with verified phone for all platforms
-  const finalContactTarget = profile.phone_number
+  // contact_target from form is intentionally ignored — verified phone always overrides
+  const { label, slug, platform, default_message } = validated.data
 
   const { error } = await supabase
     .from('qr_codes')
-    .insert({ ...rest, platform, contact_target: finalContactTarget, user_id: user.id })
+    .insert({ label, slug, platform, default_message, contact_target: profile.phone_number, user_id: user.id })
 
   if (error) {
     if (error.code === '23505') {

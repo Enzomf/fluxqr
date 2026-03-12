@@ -35,6 +35,7 @@ export function QrListRow({ qr, onDelete, pulseId }: QrListRowProps) {
     <QrPulseWrapper trigger={pulseId === qr.id}>
       <div className="flex flex-col md:flex-row md:items-center gap-3 bg-[#1E293B] rounded-lg p-4 border border-[#334155]">
         {/* Thumbnail — click to open preview */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={thumbnailRef}
           src={qr.dataUrl}

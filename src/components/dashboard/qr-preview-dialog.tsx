@@ -103,6 +103,7 @@ export function QrPreviewDialog({
           {/* Content */}
           <div className="flex flex-col items-center gap-4">
             {/* QR image with pop animation */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={qr.dataUrl}
               alt={qr.label}

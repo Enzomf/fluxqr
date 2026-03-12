@@ -82,6 +82,7 @@ export function PublicQrResultDialog({
           {/* Content */}
           <div className="flex flex-col items-center gap-4">
             {/* QR image */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={qrData.dataUrl}
               alt={qrData.label}

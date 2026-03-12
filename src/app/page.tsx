@@ -31,7 +31,6 @@ export default async function Home() {
   return (
     <HomeClient
       verifiedPhone={verifiedPhone}
-      usageCount={usageCount}
       isGated={isGated}
     />
   )

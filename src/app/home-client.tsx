@@ -13,13 +13,11 @@ type Step = 'phone' | 'otp' | 'grid' | 'form' | 'result' | 'gated'
 
 interface HomeClientProps {
   verifiedPhone: string | null
-  usageCount: number
   isGated: boolean
 }
 
 export function HomeClient({
   verifiedPhone,
-  usageCount: _usageCount,
   isGated,
 }: HomeClientProps) {
   function getInitialStep(): Step {
