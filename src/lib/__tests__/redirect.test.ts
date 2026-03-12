@@ -52,28 +52,12 @@ assert.equal(
   'SMS encodes special chars'
 )
 
-// Telegram: no message parameter
-assert.equal(
-  buildPlatformUrl('telegram', 'myusername', 'Hello'),
-  'https://t.me/myusername',
-  'Telegram URL has no message param'
-)
-
-// Telegram: empty message still no message parameter
-assert.equal(
-  buildPlatformUrl('telegram', 'myusername', ''),
-  'https://t.me/myusername',
-  'Telegram empty message still no param'
-)
-
 // --- platformColor ---
 assert.equal(platformColor('whatsapp'), '#25D366', 'WhatsApp color')
-assert.equal(platformColor('telegram'), '#0088CC', 'Telegram color')
 assert.equal(platformColor('sms'), '#6366F1', 'SMS color')
 
 // --- platformLabel ---
 assert.equal(platformLabel('whatsapp'), 'Abrir WhatsApp', 'WhatsApp label')
-assert.equal(platformLabel('telegram'), 'Abrir Telegram', 'Telegram label')
 assert.equal(platformLabel('sms'), 'Enviar SMS', 'SMS label')
 
 console.log('All redirect tests passed!')

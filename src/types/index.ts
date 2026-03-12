@@ -1,4 +1,4 @@
-export type Platform = 'whatsapp' | 'sms' | 'telegram'
+export type Platform = 'whatsapp' | 'sms'
 
 export type QrCode = {
   id: string

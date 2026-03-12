@@ -17,7 +17,7 @@ const CreateQrSchema = z.object({
     .min(2, 'At least 2 characters')
     .max(50, 'Max 50 characters')
     .regex(/^[a-z0-9-]+$/, 'Only lowercase letters, numbers, and hyphens'),
-  platform: z.enum(['whatsapp', 'sms', 'telegram'], {
+  platform: z.enum(['whatsapp', 'sms'], {
     message: 'Select a platform',
   }),
   contact_target: z.string().min(1, 'Contact target is required'),

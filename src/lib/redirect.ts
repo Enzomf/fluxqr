@@ -5,7 +5,6 @@ import type { Platform } from '@/types'
  *
  * - WhatsApp: strips non-digits from contactTarget, URI-encodes message
  * - SMS: URI-encodes message body
- * - Telegram: no message parameter (Telegram deep links don't support pre-fill)
  */
 export function buildPlatformUrl(
   platform: Platform,
@@ -20,8 +19,8 @@ export function buildPlatformUrl(
     case 'sms': {
       return `sms:${contactTarget}?body=${encodeURIComponent(message)}`
     }
-    case 'telegram': {
-      return `https://t.me/${contactTarget}`
+    default: {
+      throw new Error(`Unknown platform: ${platform satisfies never}`)
     }
   }
 }
@@ -33,10 +32,11 @@ export function platformColor(platform: Platform): string {
   switch (platform) {
     case 'whatsapp':
       return '#25D366'
-    case 'telegram':
-      return '#0088CC'
     case 'sms':
       return '#6366F1'
+    default: {
+      throw new Error(`Unknown platform: ${platform satisfies never}`)
+    }
   }
 }
 
@@ -47,9 +47,10 @@ export function platformLabel(platform: Platform): string {
   switch (platform) {
     case 'whatsapp':
       return 'Abrir WhatsApp'
-    case 'telegram':
-      return 'Abrir Telegram'
     case 'sms':
       return 'Enviar SMS'
+    default: {
+      throw new Error(`Unknown platform: ${platform satisfies never}`)
+    }
   }
 }
