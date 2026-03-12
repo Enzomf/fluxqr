@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useState, useEffect } from 'react'
+import { useActionState, useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { Phone, ShieldCheck } from 'lucide-react'
 import { toast } from 'sonner'
@@ -44,11 +44,14 @@ export function QrForm({
   const showReadOnlyPhone = !!verifiedPhone || mode === 'edit'
   const displayPhone = mode === 'edit' ? defaultValues?.contact_target : verifiedPhone
 
+  const successHandled = useRef(false)
+
   useEffect(() => {
-    if (state.success) {
-      router.refresh()
+    if (state.success && !successHandled.current) {
+      successHandled.current = true
       onSuccess?.(state.id)
       toast.success(mode === 'create' ? 'QR criado com sucesso' : 'QR atualizado')
+      router.refresh()
     }
   }, [state.success, state.id, mode, onSuccess, router])
 

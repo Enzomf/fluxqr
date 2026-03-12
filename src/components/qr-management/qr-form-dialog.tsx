@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useFormStatus } from 'react-dom'
 import { ArrowLeft, X } from 'lucide-react'
 import {
@@ -62,12 +62,12 @@ export function QrFormDialog({
     onOpenChange(next)
   }
 
-  function handleSuccess(id?: string) {
+  const handleSuccess = useCallback((id?: string) => {
     onOpenChange(false)
     if (isEdit && onEditSuccess && id) {
       onEditSuccess(id)
     }
-  }
+  }, [onOpenChange, isEdit, onEditSuccess])
 
   const action = isEdit ? updateQrCode.bind(null, qr!.id) : createQrCode
 
