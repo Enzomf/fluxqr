@@ -1,0 +1,137 @@
+'use client'
+
+import { useState } from 'react'
+import { useFormStatus } from 'react-dom'
+import { ArrowLeft, X } from 'lucide-react'
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogClose,
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import { QrTypeSelect } from './qr-type-select'
+import { QrForm } from './qr-form'
+import { createQrCode, updateQrCode } from '@/app/dashboard/qr-actions'
+import type { QrCodeWithImage } from '@/components/dashboard/qr-list-row'
+
+interface QrFormDialogProps {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  qr?: QrCodeWithImage | null
+  verifiedPhone: string | null
+  onEditSuccess?: (id: string) => void
+}
+
+function SubmitButton({ label }: { label: string }) {
+  const { pending } = useFormStatus()
+  return (
+    <Button
+      type="submit"
+      form="qr-form"
+      disabled={pending}
+      className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white font-medium"
+    >
+      {pending ? (label === 'Save Changes' ? 'Saving...' : 'Creating...') : label}
+    </Button>
+  )
+}
+
+export function QrFormDialog({
+  open,
+  onOpenChange,
+  qr,
+  verifiedPhone,
+  onEditSuccess,
+}: QrFormDialogProps) {
+  const isEdit = !!qr
+
+  const getInitialStep = () => (isEdit ? 'form' : 'grid') as 'grid' | 'form'
+  const getInitialQrType = () =>
+    isEdit ? (qr!.default_message ? 'custom' : 'default') : ('default' as 'default' | 'custom')
+
+  const [step, setStep] = useState<'grid' | 'form'>(getInitialStep())
+  const [qrType, setQrType] = useState<'default' | 'custom'>(getInitialQrType())
+
+  function handleOpenChange(next: boolean) {
+    if (!next) {
+      // Reset state on close
+      setStep(isEdit ? 'form' : 'grid')
+      setQrType(isEdit ? (qr!.default_message ? 'custom' : 'default') : 'default')
+    }
+    onOpenChange(next)
+  }
+
+  function handleSuccess(id?: string) {
+    onOpenChange(false)
+    if (isEdit && onEditSuccess && id) {
+      onEditSuccess(id)
+    }
+  }
+
+  const action = isEdit ? updateQrCode.bind(null, qr!.id) : createQrCode
+
+  return (
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      <DialogContent
+        showCloseButton={false}
+        className="sm:max-w-lg flex flex-col max-h-[85vh] p-0 gap-0"
+      >
+        {/* Sticky header */}
+        <div className="sticky top-0 z-10 bg-background border-b border-border px-6 py-4 rounded-t-xl flex items-center gap-3">
+          {/* Back arrow: only on Step 2 of create flow (not edit) */}
+          {step === 'form' && !isEdit && (
+            <button
+              type="button"
+              onClick={() => setStep('grid')}
+              className="inline-flex items-center justify-center size-7 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              aria-label="Back to QR type selection"
+            >
+              <ArrowLeft size={16} />
+            </button>
+          )}
+          <DialogTitle className="flex-1">
+            {isEdit ? `Edit: ${qr!.label}` : 'New QR Code'}
+          </DialogTitle>
+          {/* Close button on the right */}
+          <DialogClose
+            className="inline-flex items-center justify-center size-7 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+            aria-label="Close dialog"
+          >
+            <X size={16} />
+          </DialogClose>
+        </div>
+
+        {/* Scrollable body */}
+        <div className="flex-1 overflow-y-auto px-6 py-4">
+          {step === 'grid' && (
+            <QrTypeSelect
+              onSelect={(type) => {
+                setQrType(type)
+                setStep('form')
+              }}
+            />
+          )}
+          {step === 'form' && (
+            <QrForm
+              key={open ? (qr?.id ?? 'create') : 'closed'}
+              action={action}
+              mode={isEdit ? 'edit' : 'create'}
+              defaultValues={qr ?? undefined}
+              qrType={qrType}
+              verifiedPhone={verifiedPhone}
+              onSuccess={handleSuccess}
+            />
+          )}
+        </div>
+
+        {/* Sticky footer — only on form step */}
+        {step === 'form' && (
+          <div className="sticky bottom-0 z-10 bg-background border-t border-border px-6 py-4 rounded-b-xl">
+            <SubmitButton label={isEdit ? 'Save Changes' : 'Create QR Code'} />
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  )
+}
