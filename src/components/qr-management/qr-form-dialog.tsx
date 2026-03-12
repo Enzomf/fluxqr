@@ -77,8 +77,8 @@ export function QrFormDialog({
         showCloseButton={false}
         className="sm:max-w-lg flex flex-col max-h-[85vh] p-0 gap-0"
       >
-        {/* Sticky header */}
-        <div className="sticky top-0 z-10 bg-background border-b border-border px-6 py-4 rounded-t-xl flex items-center gap-3">
+        {/* Fixed header */}
+        <div className="flex-shrink-0 bg-background border-b border-border px-6 py-4 rounded-t-xl flex items-center gap-3">
           {/* Back arrow: only on Step 2 of create flow (not edit) */}
           {step === 'form' && !isEdit && (
             <button
@@ -125,9 +125,9 @@ export function QrFormDialog({
           )}
         </div>
 
-        {/* Sticky footer — only on form step */}
+        {/* Fixed footer — only on form step */}
         {step === 'form' && (
-          <div className="sticky bottom-0 z-10 bg-background border-t border-border px-6 py-4 rounded-b-xl">
+          <div className="flex-shrink-0 bg-background border-t border-border px-6 py-4 rounded-b-xl">
             <SubmitButton label={isEdit ? 'Save Changes' : 'Create QR Code'} />
           </div>
         )}
