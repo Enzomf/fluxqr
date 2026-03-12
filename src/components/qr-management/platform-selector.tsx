@@ -65,7 +65,6 @@ export function PlatformSelector({ defaultValue, disabled, error, onValueChange 
         <SelectContent>
           <SelectItem value="whatsapp">WhatsApp</SelectItem>
           <SelectItem value="sms">SMS</SelectItem>
-          <SelectItem value="telegram">Telegram</SelectItem>
         </SelectContent>
       </Select>
       {error && error.length > 0 && (

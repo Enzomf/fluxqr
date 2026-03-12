@@ -131,7 +131,7 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
             id="contact_target"
             name="contact_target"
             defaultValue={defaultValues?.contact_target}
-            placeholder={platform === 'telegram' ? '@username' : '+1 555 000 0000'}
+            placeholder="+1 555 000 0000"
             className={cn(
               'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500',
               state.errors?.contact_target && 'border-red-500'

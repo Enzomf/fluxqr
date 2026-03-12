@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { MessageCircle, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { buildPlatformUrl, platformColor, platformLabel } from '@/lib/redirect'
-import { TelegramFallback } from '@/components/scanner/telegram-fallback'
 import type { QrCode } from '@/types'
 
 interface ScannerLandingProps {
@@ -14,15 +13,9 @@ interface ScannerLandingProps {
 export function ScannerLanding({ qr }: ScannerLandingProps) {
   const [message, setMessage] = useState(qr.default_message ?? '')
 
-  if (qr.platform === 'telegram') {
-    return (
-      <TelegramFallback
-        message={message}
-        contactTarget={qr.contact_target}
-        onMessageChange={setMessage}
-        label={qr.label}
-      />
-    )
+  // Guard against legacy platforms (e.g. telegram) that are no longer supported
+  if (qr.platform !== 'whatsapp' && qr.platform !== 'sms') {
+    return null
   }
 
   function handleCta() {
