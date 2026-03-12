@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Checkpoint: Task 4 human verify — 06-02 dialog flow"
-last_updated: "2026-03-12T14:44:47.496Z"
-last_activity: "2026-03-12 - Completed quick task 9: Audit implementation against gist specs — all 8 requirements met"
+stopped_at: "Completed quick-13: Add logo to brand-facing surfaces"
+last_updated: "2026-03-12T15:11:07.839Z"
+last_activity: "2026-03-12 - Completed quick task 12: Fix modal not closing when adding a new QR code"
 progress:
   total_phases: 7
   completed_phases: 6
@@ -67,6 +67,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P04 | 2 | 2 tasks | 4 files |
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P05 | 2 | 2 tasks | 7 files |
 | Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux P01 | 2 | 2 tasks | 3 files |
+| Phase quick-13 P01 | 4 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -137,6 +138,7 @@ Recent decisions affecting current work:
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrForm submit button removed — dialog footer provides it externally via form= attribute reference
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrList owns all dialog state (dialogOpen, editingQr, pulseId) — single source of truth for dashboard modal orchestration
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: key prop on QrForm (keyed to qr.id or 'create') ensures useActionState resets cleanly between dialog opens without manual reset logic
+- [Phase quick-13]: Used next/image for all logo placements — built-in optimization, no layout shift
 
 ### Roadmap Evolution
 
@@ -171,6 +173,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T14:44:41.273Z
-Stopped at: Checkpoint: Task 4 human verify — 06-02 dialog flow
+Last session: 2026-03-12T15:11:04.229Z
+Stopped at: Completed quick-13: Add logo to brand-facing surfaces
 Resume file: None
