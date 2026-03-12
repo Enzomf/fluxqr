@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import Link from 'next/link'
 import { Pencil, Download } from 'lucide-react'
 import { PlatformBadge } from '@/components/shared/platform-badge'
 import { DeleteButton } from '@/components/dashboard/delete-button'
@@ -16,10 +15,11 @@ export type QrCodeWithImage = QrCode & { dataUrl: string }
 interface QrListRowProps {
   qr: QrCodeWithImage
   onDelete: (id: string) => Promise<{ error?: string }>
+  onEdit: (qr: QrCodeWithImage) => void
   pulseId?: string | null
 }
 
-export function QrListRow({ qr, onDelete, pulseId }: QrListRowProps) {
+export function QrListRow({ qr, onDelete, onEdit, pulseId }: QrListRowProps) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [thumbnailRect, setThumbnailRect] = useState<DOMRect | null>(null)
   const thumbnailRef = useRef<HTMLImageElement>(null)
@@ -66,13 +66,14 @@ export function QrListRow({ qr, onDelete, pulseId }: QrListRowProps) {
           </span>
 
           {/* Edit */}
-          <Link
-            href={`/dashboard/${qr.id}/edit`}
+          <button
+            type="button"
+            onClick={() => onEdit(qr)}
             className="inline-flex items-center justify-center size-9 rounded-md text-muted-foreground hover:text-foreground transition-colors hover:bg-accent"
             aria-label="Edit QR code"
           >
             <Pencil size={16} />
-          </Link>
+          </button>
 
           {/* Download */}
           <button
