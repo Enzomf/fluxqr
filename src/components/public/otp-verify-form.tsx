@@ -84,7 +84,7 @@ export function OtpVerifyForm({ phone, onVerified }: OtpVerifyFormProps) {
   const maskedPhone = maskPhone(phone)
 
   return (
-    <div className="w-full max-w-sm rounded-lg bg-[#1E293B] p-6 shadow-lg">
+    <div className="w-full max-w-sm rounded-lg bg-surface-raised p-6 shadow-lg">
       <h2 className="mb-1 text-xl font-semibold text-white">
         Enter verification code
       </h2>
@@ -129,7 +129,7 @@ export function OtpVerifyForm({ phone, onVerified }: OtpVerifyFormProps) {
           size="sm"
           disabled={resendCooldown > 0 || isPending}
           onClick={handleResend}
-          className="text-sm text-[#6366F1] hover:text-[#4F46E5] disabled:opacity-40"
+          className="text-sm text-brand-500 hover:text-brand-600 disabled:opacity-40"
         >
           {resendCooldown > 0
             ? `Resend code (${resendCooldown}s)`

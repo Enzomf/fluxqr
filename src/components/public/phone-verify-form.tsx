@@ -91,7 +91,7 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
           type="submit"
           disabled={isPending}
           className={cn(
-            'w-full bg-[#6366F1] text-white hover:bg-[#4F46E5]',
+            'w-full bg-brand-500 text-white hover:bg-brand-600',
             'disabled:opacity-60'
           )}
         >
