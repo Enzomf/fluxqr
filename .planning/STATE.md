@@ -5,7 +5,7 @@ milestone_name: milestone
 status: executing
 stopped_at: "Completed quick-14: Add owner name, email, and phone to QR preview dialog"
 last_updated: "2026-03-12T15:21:54.079Z"
-last_activity: "2026-03-12 - Completed quick task 13: add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard"
+last_activity: "2026-03-12 - Completed quick task 14: Add owner name, email, and phone number to QR code preview dialog"
 progress:
   total_phases: 7
   completed_phases: 6
@@ -173,6 +173,7 @@ None yet.
 | 11 | Increase QR code thumbnail size on mobile devices (80px mobile, 40px desktop) | 2026-03-12 | 071dda5 | [11-increase-qr-code-size-on-mobile-devices](./quick/11-increase-qr-code-size-on-mobile-devices/) |
 | 12 | Fix modal not closing when adding a new QR code | 2026-03-12 | — | [12-the-modal-is-not-closing-when-adding-a-n](./quick/12-the-modal-is-not-closing-when-adding-a-n/) |
 | 13 | add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard | 2026-03-12 | ef141b8 | [13-add-public-logo-png-as-the-logo-from-thi](./quick/13-add-public-logo-png-as-the-logo-from-thi/) |
+| 14 | Add owner name, email, and phone number to QR code preview dialog | 2026-03-12 | 598a664 | [14-add-owner-name-email-and-phone-number-to](./quick/14-add-owner-name-email-and-phone-number-to/) |
 
 ## Session Continuity
 
