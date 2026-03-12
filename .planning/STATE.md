@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 06-01-PLAN.md
-last_updated: "2026-03-12T14:39:30.782Z"
+stopped_at: "Checkpoint: Task 4 human verify — 06-02 dialog flow"
+last_updated: "2026-03-12T14:44:47.496Z"
 last_activity: "2026-03-12 - Completed quick task 9: Audit implementation against gist specs — all 8 requirements met"
 progress:
   total_phases: 7
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 19
-  completed_plans: 18
+  completed_plans: 19
   percent: 6
 ---
 
@@ -135,6 +135,8 @@ Recent decisions affecting current work:
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: FormState extended with success and id fields so callers detect completion without redirect
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrTypeSelect separate from public QrTypeGrid — dashboard uses platform-agnostic descriptions, public keeps WhatsApp-specific copy
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrForm submit button removed — dialog footer provides it externally via form= attribute reference
+- [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrList owns all dialog state (dialogOpen, editingQr, pulseId) — single source of truth for dashboard modal orchestration
+- [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: key prop on QrForm (keyed to qr.id or 'create') ensures useActionState resets cleanly between dialog opens without manual reset logic
 
 ### Roadmap Evolution
 
@@ -168,6 +170,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T14:39:30.780Z
-Stopped at: Completed 06-01-PLAN.md
+Last session: 2026-03-12T14:44:41.273Z
+Stopped at: Checkpoint: Task 4 human verify — 06-02 dialog flow
 Resume file: None
