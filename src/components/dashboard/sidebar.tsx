@@ -22,6 +22,55 @@ interface SidebarProps {
   isAdmin?: boolean
 }
 
+interface SidebarNavProps {
+  navItems: { href: string; label: string }[]
+  avatarUrl: string
+  email: string
+  fallbackLetter: string
+  onNavigate?: () => void
+}
+
+function SidebarNav({ navItems, avatarUrl, email, fallbackLetter, onNavigate }: SidebarNavProps) {
+  return (
+    <div className="flex flex-col h-full p-4">
+      {/* Wordmark */}
+      <div className="mb-8">
+        <span className="text-brand-500 font-bold text-xl tracking-tight">FluxQR</span>
+      </div>
+
+      {/* Nav links */}
+      <nav className="flex-1 space-y-1">
+        {navItems.map((item) => (
+          <div key={item.href} onClick={onNavigate}>
+            <SidebarLink href={item.href} label={item.label} />
+          </div>
+        ))}
+      </nav>
+
+      {/* User area */}
+      <div>
+        <Separator className="mb-4" />
+        <div className="flex items-center gap-3 mb-3">
+          <Avatar className="h-8 w-8 shrink-0">
+            <AvatarImage src={avatarUrl} alt={email} />
+            <AvatarFallback className="bg-brand-500/20 text-brand-400 text-xs">
+              {fallbackLetter}
+            </AvatarFallback>
+          </Avatar>
+          <span className="text-sm text-muted-foreground truncate min-w-0 flex-1">
+            {email}
+          </span>
+        </div>
+        <form action={signOut}>
+          <Button variant="ghost" size="sm" type="submit" className="w-full justify-start text-slate-400 hover:text-slate-200">
+            Sign out
+          </Button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
 export function Sidebar({ user, isAdmin }: SidebarProps) {
   const [open, setOpen] = useState(false)
 
@@ -35,52 +84,11 @@ export function Sidebar({ user, isAdmin }: SidebarProps) {
     ...(isAdmin ? [{ href: '/admin', label: 'Admin' }] : []),
   ]
 
-  function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
-    return (
-      <div className="flex flex-col h-full p-4">
-        {/* Wordmark */}
-        <div className="mb-8">
-          <span className="text-brand-500 font-bold text-xl tracking-tight">FluxQR</span>
-        </div>
-
-        {/* Nav links */}
-        <nav className="flex-1 space-y-1">
-          {navItems.map((item) => (
-            <div key={item.href} onClick={onNavigate}>
-              <SidebarLink href={item.href} label={item.label} />
-            </div>
-          ))}
-        </nav>
-
-        {/* User area */}
-        <div>
-          <Separator className="mb-4" />
-          <div className="flex items-center gap-3 mb-3">
-            <Avatar className="h-8 w-8 shrink-0">
-              <AvatarImage src={avatarUrl} alt={email} />
-              <AvatarFallback className="bg-brand-500/20 text-brand-400 text-xs">
-                {fallbackLetter}
-              </AvatarFallback>
-            </Avatar>
-            <span className="text-sm text-muted-foreground truncate min-w-0 flex-1">
-              {email}
-            </span>
-          </div>
-          <form action={signOut}>
-            <Button variant="ghost" size="sm" type="submit" className="w-full justify-start text-slate-400 hover:text-slate-200">
-              Sign out
-            </Button>
-          </form>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <>
       {/* Desktop sidebar */}
       <aside className="hidden md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 bg-surface-raised border-r border-border">
-        <SidebarNav />
+        <SidebarNav navItems={navItems} avatarUrl={avatarUrl} email={email} fallbackLetter={fallbackLetter} />
       </aside>
 
       {/* Mobile sidebar */}
@@ -92,7 +100,7 @@ export function Sidebar({ user, isAdmin }: SidebarProps) {
           <Menu className="h-5 w-5" />
         </SheetTrigger>
         <SheetContent side="left" className="w-56 bg-surface-raised p-0 border-r border-border">
-          <SidebarNav onNavigate={() => setOpen(false)} />
+          <SidebarNav navItems={navItems} avatarUrl={avatarUrl} email={email} fallbackLetter={fallbackLetter} onNavigate={() => setOpen(false)} />
         </SheetContent>
       </Sheet>
     </>
