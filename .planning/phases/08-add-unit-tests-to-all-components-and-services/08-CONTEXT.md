@@ -6,7 +6,7 @@
 <domain>
 ## Phase Boundary
 
-Establish a testing framework (Vitest + React Testing Library) and write unit tests for all custom lib utilities, hooks, and components. Route files (page.tsx, layout.tsx, route.ts) and shadcn ui/ primitives are excluded. Server Actions are excluded — testing focuses on the building blocks, not the Next.js server layer.
+Establish a testing framework (Vitest + React Testing Library) and write unit tests for all custom lib utilities, hooks, and components. Tests must validate business rules — if any test reveals a bug or incorrect business logic in the implementation, fix it inline as part of this phase. Route files (page.tsx, layout.tsx, route.ts) and shadcn ui/ primitives are excluded. Server Actions are excluded — testing focuses on the building blocks, not the Next.js server layer.
 
 </domain>
 
@@ -36,6 +36,11 @@ Establish a testing framework (Vitest + React Testing Library) and write unit te
 - **Next.js APIs:** vi.mock('next/navigation') for useRouter, useSearchParams, usePathname. Return controlled values per test
 - **Browser APIs:** Mock navigator.clipboard, navigator.share on globalThis in jsdom environment
 - **Shared test setup:** Create `src/test/setup.ts` for global mocks (next/navigation, next/image) and `src/test/utils.tsx` for custom render helpers if needed. Avoids repeating mocks across 30+ test files
+
+### Business rule validation & bug fixes
+- Tests must assert business rules from REQUIREMENTS.md and CLAUDE.md (e.g., soft delete only, platform read-only after creation, slug uniqueness, scan count formatting, scanner under 10KB JS)
+- If a test reveals a business rule violation or logic bug in the implementation, **fix the source code inline** — don't just skip the test
+- Commit bug fixes separately from test additions for clean git history (e.g., "fix: correct slug validation logic" then "test: add slug-input tests")
 
 ### Claude's Discretion
 - Vitest configuration details (plugins, coverage provider choice)
