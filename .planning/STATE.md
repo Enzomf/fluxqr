@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed quick task 6: Fix contact target to verified phone for all platforms"
-last_updated: "2026-03-12T12:37:35.000Z"
-last_activity: "2026-03-12 - Completed quick task 6: verified phone overrides contact_target for all platforms (WhatsApp, SMS, Telegram)"
+stopped_at: "Completed quick task 7: Fix all lint issues — zero errors, zero warnings"
+last_updated: "2026-03-12T12:56:14.000Z"
+last_activity: "2026-03-12 - Completed quick task 7: resolved all 10 lint issues (4 errors, 6 warnings), pnpm run lint exits cleanly"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -124,6 +124,9 @@ Recent decisions affecting current work:
 - [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: verifyAdmin() in Server Actions provides defense-in-depth — middleware is first layer, Server Action check is second
 - [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: JS aggregation for QR stats (count + scans per user) from single flat query — simpler than RPC for MVP
 - [Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard]: Remove src/proxy.ts (obsolete) — coexistence with src/middleware.ts broke Next.js 16 Turbopack build
+- [quick-7]: SidebarNav extracted to module scope with SidebarNavProps — React 19 eslint rule forbids component definitions inside render body
+- [quick-7]: QrPulseWrapper simplified to zero-state CSS class application — trigger prop applied directly, no useState or useEffect needed
+- [quick-7]: useSlugCheck derives sync status (idle/available/invalid) in render body — useEffect only handles async fetch to avoid set-state-in-effect rule
 
 ### Roadmap Evolution
 
@@ -148,9 +151,10 @@ None yet.
 | 4 | Dashboard QR creation uses verified phone as read-only contact target for WhatsApp/SMS | 2026-03-11 | a441059 | [4-dashboard-qr-creation-uses-verified-phon](./quick/4-dashboard-qr-creation-uses-verified-phon/) |
 | 5 | Persist phone to profiles.phone_number on OTP verify; dashboard reads from profiles (not cookie) | 2026-03-11 | b74fe51 | [5-require-phone-verification-for-whatsapp-](./quick/5-require-phone-verification-for-whatsapp-/) |
 | 6 | Fix contact target to verified phone for all platforms (incl. Telegram) | 2026-03-12 | e818628 | [6-when-creating-a-new-qr-code-the-contact-](./quick/6-when-creating-a-new-qr-code-the-contact-/) |
+| 7 | Fix all lint issues — zero errors, zero warnings | 2026-03-12 | 3c49576 | [7-fix-all-lint-issues](./quick/7-fix-all-lint-issues/) |
 
 ## Session Continuity
 
-Last session: 2026-03-12T12:37:35Z
-Stopped at: Completed quick task 6 (verified phone overrides contact_target for all platforms)
+Last session: 2026-03-12T12:56:14Z
+Stopped at: Completed quick task 7 (all lint issues resolved — zero errors, zero warnings)
 Resume file: None
