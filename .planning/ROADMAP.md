@@ -148,7 +148,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -160,6 +160,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7
 | 5. Public QR Generation | 3/5 | In Progress|  |
 | 6. Modal QR CRUD | 0/2 | Not started | - |
 | 7. Code Review | 3/3 | Complete   | 2026-03-12 |
+| 8. Unit Tests | 0/5 | Not started | - |
 
 ### Phase 7: Complete Code Review — Next.js Best Practices 2026 & Code Smells/Duplication
 
@@ -179,3 +180,24 @@ Plans:
 - [ ] 07-01-PLAN.md — Dead code removal, redundant wrappers, bug fixes, toast language, dynamic imports, defense-in-depth comments
 - [ ] 07-02-PLAN.md — Replace all hardcoded hex color values with Tailwind design tokens across ~10 files
 - [ ] 07-03-PLAN.md — SEO metadata, error boundaries, codebase map rewrite, summary report
+
+### Phase 8: Add Unit Tests to All Components and Services
+
+**Goal:** Establish Vitest + React Testing Library test infrastructure and write unit tests for all custom lib utilities, hooks, and React components, validating business rules and fixing any bugs discovered during testing
+**Requirements**: TEST-INFRA, TEST-LIB, TEST-HOOKS, TEST-SHARED, TEST-AUTH, TEST-SCANNER, TEST-DASHBOARD, TEST-QR-MGMT, TEST-PUBLIC, TEST-ADMIN
+**Depends on:** Phase 7
+**Success Criteria** (what must be TRUE):
+  1. Vitest is configured with jsdom, React plugin, tsconfigPaths, and global test setup with shared mocks
+  2. All lib utilities (redirect, utils, qr-generator, twilio) have unit tests with edge cases
+  3. Both custom hooks (use-slug-check, use-copy-to-clipboard) have tests via renderHook
+  4. All custom React components across shared, auth, scanner, dashboard, qr-management, public, and admin have render tests
+  5. Business rules tested: soft delete (DEL-02), platform read-only (EDIT-02), scan count formatting (ANLYT-02), slug validation (CREATE-02), empty state CTA (LIST-03)
+  6. `pnpm test:run` passes all tests with zero failures
+**Plans:** 5 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — Install Vitest + RTL, configure vitest.config.mts, global mocks, lib utility tests, hook tests
+- [ ] 08-02-PLAN.md — Shared component tests (platform-badge, empty-state, page-header, qr-pulse-wrapper), auth + scanner tests
+- [ ] 08-03-PLAN.md — Dashboard component tests (sidebar-link, sidebar, qr-list-row, qr-list, qr-preview-dialog, phone-verify-dialog)
+- [ ] 08-04-PLAN.md — QR management component tests (delete-dialog, platform-selector, slug-input, qr-type-select, qr-form, qr-form-dialog)
+- [ ] 08-05-PLAN.md — Public component tests (freemium-gate, otp, phone, form, result dialog, grid) + admin tests (user-table, user-qr-table)
