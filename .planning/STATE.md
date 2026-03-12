@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 07-codereview-03-PLAN.md
-last_updated: "2026-03-12T21:34:48.335Z"
-last_activity: "2026-03-12 - Completed quick task 15: commit the staged changes"
+stopped_at: Phase 8 context gathered
+last_updated: "2026-03-12T23:05:37.395Z"
+last_activity: "2026-03-12 - Completed quick task 18: default route after login is / not /dashboard"
 progress:
-  total_phases: 8
+  total_phases: 9
   completed_phases: 7
   total_plans: 24
   completed_plans: 23
@@ -162,6 +162,7 @@ Recent decisions affecting current work:
 - Phase 5 added: Public QR generation with phone verification, usage limits, and admin dashboard
 - Phase 6 added: Refactor add/edit QR pages into modals with platform choice UX
 - Phase 7 added: Complete code review — Next.js best practices 2026, code smells, duplication
+- Phase 8 added: Add unit tests to all components and services
 
 ### Pending Todos
 
@@ -195,6 +196,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T21:30:02.009Z
-Stopped at: Completed 07-codereview-03-PLAN.md
-Resume file: None
+Last session: 2026-03-12T23:05:37.388Z
+Stopped at: Phase 8 context gathered
+Resume file: .planning/phases/08-add-unit-tests-to-all-components-and-services/08-CONTEXT.md
