@@ -8,6 +8,7 @@ export default async function DashboardLayout({
   children: React.ReactNode
 }) {
   const supabase = await createClient()
+  // Defense-in-depth: middleware is first layer, layout is second
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {

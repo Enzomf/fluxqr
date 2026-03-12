@@ -2,6 +2,7 @@ import { after } from 'next/server'
 import { notFound, redirect } from 'next/navigation'
 import { createServerClient } from '@supabase/ssr'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { buildPlatformUrl } from '@/lib/redirect'
 import { ScannerError } from '@/components/scanner/scanner-error'
 
@@ -25,18 +26,7 @@ export default async function ScannerPage({
     .single()
 
   if (!qr) {
-    const adminClient = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        cookies: {
-          getAll() {
-            return []
-          },
-          setAll() {},
-        },
-      }
-    )
+    const adminClient = createAdminClient()
 
     const { data: existing } = await adminClient
       .from('qr_codes')

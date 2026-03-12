@@ -27,7 +27,7 @@ export function PlatformSelector({ defaultValue, disabled, error, onValueChange 
   const trigger = (
     <SelectTrigger
       className={cn(
-        'w-full bg-[#1E293B] border-[#334155] text-white',
+        'w-full bg-surface-raised border-surface-overlay text-white',
         disabled && 'opacity-50 cursor-not-allowed',
         error && error.length > 0 && 'border-red-500'
       )}

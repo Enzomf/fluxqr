@@ -13,7 +13,6 @@ export async function GET(request: Request): Promise<Response> {
     .from('qr_codes')
     .select('id')
     .eq('slug', slug)
-    .eq('is_active', true)
     .single()
 
   return Response.json({ available: data === null })

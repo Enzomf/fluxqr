@@ -34,10 +34,10 @@ function QrRowItem({ qr }: { qr: AdminQrRow }) {
   }
 
   return (
-    <tr className="border-b border-border hover:bg-[#334155]/30 transition-colors">
+    <tr className="border-b border-border hover:bg-surface-overlay/30 transition-colors">
       <td className="px-4 py-3 text-sm font-medium text-foreground">{qr.label}</td>
       <td className="px-4 py-3">
-        <code className="text-xs text-muted-foreground font-mono bg-[#1E293B] px-1.5 py-0.5 rounded">
+        <code className="text-xs text-muted-foreground font-mono bg-surface-raised px-1.5 py-0.5 rounded">
           {qr.slug}
         </code>
       </td>
@@ -52,7 +52,7 @@ function QrRowItem({ qr }: { qr: AdminQrRow }) {
             'inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium',
             qr.is_active
               ? 'bg-emerald-500/10 text-emerald-400'
-              : 'bg-[#F43F5E]/10 text-[#F43F5E]'
+              : 'bg-danger/10 text-danger'
           )}
         >
           {qr.is_active ? 'Active' : 'Inactive'}
@@ -67,7 +67,7 @@ function QrRowItem({ qr }: { qr: AdminQrRow }) {
               'text-xs px-3 py-1 rounded-md border transition-colors',
               isPending
                 ? 'border-border text-muted-foreground cursor-not-allowed opacity-50'
-                : 'border-[#F43F5E]/40 text-[#F43F5E] hover:bg-[#F43F5E]/10'
+                : 'border-danger/40 text-danger hover:bg-danger/10'
             )}
           >
             {isPending ? 'Deactivating…' : 'Deactivate'}
@@ -97,7 +97,7 @@ export function UserQrTable({ qrCodes, userName }: UserQrTableProps) {
       ) : (
         <div className="rounded-lg border border-border overflow-hidden">
           <table className="w-full text-left">
-            <thead className="bg-[#1E293B] border-b border-border">
+            <thead className="bg-surface-raised border-b border-border">
               <tr>
                 <th className="px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">Label</th>
                 <th className="px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">Slug</th>
@@ -108,7 +108,7 @@ export function UserQrTable({ qrCodes, userName }: UserQrTableProps) {
                 <th className="px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
-            <tbody className="bg-[#0F172A] divide-y divide-border">
+            <tbody className="bg-surface divide-y divide-border">
               {qrCodes.map((qr) => (
                 <QrRowItem key={qr.id} qr={qr} />
               ))}

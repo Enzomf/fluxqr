@@ -31,7 +31,7 @@ export function SlugInput({ defaultValue, currentSlug, error }: SlugInputProps) 
           onChange={handleChange}
           placeholder="my-qr-code"
           className={cn(
-            'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500 pr-28',
+            'bg-surface-raised border-surface-overlay text-white placeholder:text-slate-500 pr-28',
             error && error.length > 0 && 'border-red-500'
           )}
         />

@@ -95,7 +95,7 @@ export function UserTable({ users }: UserTableProps) {
   return (
     <div className="rounded-lg border border-border overflow-hidden">
       <table className="w-full text-left">
-        <thead className="bg-[#1E293B] border-b border-border">
+        <thead className="bg-surface-raised border-b border-border">
           <tr>
             <th className="px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</th>
             <th className="px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">Phone</th>
@@ -106,7 +106,7 @@ export function UserTable({ users }: UserTableProps) {
             <th className="px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
-        <tbody className="bg-[#0F172A] divide-y divide-border">
+        <tbody className="bg-surface divide-y divide-border">
           {users.map((user) => (
             <UserRowItem key={user.id} user={user} />
           ))}

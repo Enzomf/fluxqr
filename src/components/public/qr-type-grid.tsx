@@ -15,15 +15,15 @@ export function QrTypeGrid({ onSelect }: QrTypeGridProps) {
         onClick={() => onSelect('default')}
         className={cn(
           'flex flex-col items-start gap-3 rounded-lg p-6',
-          'bg-[#1E293B] border border-[#334155]',
-          'hover:border-[#6366F1]/50 cursor-pointer transition-colors',
+          'bg-surface-raised border border-surface-overlay',
+          'hover:border-brand-500/50 cursor-pointer transition-colors',
           'text-left'
         )}
       >
-        <QrCode size={28} className="text-[#6366F1]" />
+        <QrCode size={28} className="text-brand-500" />
         <div>
           <p className="font-semibold text-white">My QR Code</p>
-          <p className="mt-1 text-sm text-[#94A3B8]">
+          <p className="mt-1 text-sm text-slate-400">
             Default WhatsApp QR for your verified number. No custom message.
           </p>
         </div>
@@ -34,15 +34,15 @@ export function QrTypeGrid({ onSelect }: QrTypeGridProps) {
         onClick={() => onSelect('custom')}
         className={cn(
           'flex flex-col items-start gap-3 rounded-lg p-6',
-          'bg-[#1E293B] border border-[#334155]',
-          'hover:border-[#6366F1]/50 cursor-pointer transition-colors',
+          'bg-surface-raised border border-surface-overlay',
+          'hover:border-brand-500/50 cursor-pointer transition-colors',
           'text-left'
         )}
       >
-        <MessageSquare size={28} className="text-[#6366F1]" />
+        <MessageSquare size={28} className="text-brand-500" />
         <div>
           <p className="font-semibold text-white">Custom QR</p>
-          <p className="mt-1 text-sm text-[#94A3B8]">
+          <p className="mt-1 text-sm text-slate-400">
             Add a custom pre-filled message to your WhatsApp QR code.
           </p>
         </div>

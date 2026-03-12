@@ -107,7 +107,7 @@ export function PublicQrResultDialog({
                 className={cn(
                   'inline-flex items-center gap-2 px-4 py-2 rounded-md',
                   'text-sm font-medium',
-                  'bg-[#6366F1] text-white hover:bg-[#4F46E5]',
+                  'bg-brand-500 text-white hover:bg-brand-600',
                   'transition-colors'
                 )}
               >

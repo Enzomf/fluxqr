@@ -50,7 +50,7 @@ export function QrForm({
     if (state.success && !successHandled.current) {
       successHandled.current = true
       onSuccess?.(state.id)
-      toast.success(mode === 'create' ? 'QR criado com sucesso' : 'QR atualizado')
+      toast.success(mode === 'create' ? 'QR code created' : 'QR code updated')
       router.refresh()
     }
   }, [state.success, state.id, mode, onSuccess, router])

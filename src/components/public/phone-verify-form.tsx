@@ -42,7 +42,7 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
   )
 
   return (
-    <div className="w-full max-w-sm rounded-lg bg-[#1E293B] p-6 shadow-lg">
+    <div className="w-full max-w-sm rounded-lg bg-surface-raised p-6 shadow-lg">
       <h2 className="mb-1 text-xl font-semibold text-white">
         Verify your phone number
       </h2>
@@ -58,8 +58,8 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
               className={cn(
-                'rounded-md border border-[#334155] bg-[#0F172A] px-2 py-2',
-                'text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#6366F1]',
+                'rounded-md border border-surface-overlay bg-surface px-2 py-2',
+                'text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-500',
                 'cursor-pointer'
               )}
               aria-label="Country code"
@@ -76,9 +76,9 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
               placeholder="555 123 4567"
               required
               className={cn(
-                'flex-1 rounded-md border border-[#334155] bg-[#0F172A] px-3 py-2',
-                'text-sm text-white placeholder:text-[#64748B]',
-                'focus:outline-none focus:ring-2 focus:ring-[#6366F1]'
+                'flex-1 rounded-md border border-surface-overlay bg-surface px-3 py-2',
+                'text-sm text-white placeholder:text-slate-500',
+                'focus:outline-none focus:ring-2 focus:ring-brand-500'
               )}
             />
           </div>
