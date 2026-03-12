@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed quick task 8: Fix all code review issues — design tokens, twilio SDK removal, BACKLOG docs"
-last_updated: "2026-03-12T13:30:23.845Z"
-last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
+stopped_at: "Completed quick task 10: Remove Telegram option from QR code generation"
+last_updated: "2026-03-12T13:48:44.408Z"
+last_activity: "2026-03-12 - Completed quick task 9: Audit implementation against gist specs — all 8 requirements met"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -129,6 +129,8 @@ Recent decisions affecting current work:
 - [quick-7]: useSlugCheck derives sync status (idle/available/invalid) in render body — useEffect only handles async fetch to avoid set-state-in-effect rule
 - [Phase quick-8]: Keep phone-verify-dialog.tsx in components/dashboard/ — dialog is used in dashboard QR flow, moving would be churn without benefit
 - [Phase quick-8]: Removed twilio SDK (5.12.2) — lib/twilio.ts uses raw fetch with API Key credentials, SDK was dead code after the implementation pivot
+- [Phase quick-10]: Legacy telegram scanner guard returns null — prevents runtime crash for pre-existing telegram QRs in the DB without throwing in buildPlatformUrl
+- [Phase quick-10]: Exhaustive default: throw with satisfies never in redirect helper switches ensures compile-time safety when Platform type changes
 
 ### Roadmap Evolution
 
@@ -156,9 +158,10 @@ None yet.
 | 7 | Fix all lint issues — zero errors, zero warnings | 2026-03-12 | 3c49576 | [7-fix-all-lint-issues](./quick/7-fix-all-lint-issues/) |
 | 8 | Fix all issues found on this code review | 2026-03-12 | edf696d | [8-fix-all-issues-found-on-this-code-review](./quick/8-fix-all-issues-found-on-this-code-review/) |
 | 9 | Audit implementation against gist specs — all 8 requirements met | 2026-03-12 | — | [9-audit-implementation-against-gist-specs-](./quick/9-audit-implementation-against-gist-specs-/) |
+| 10 | Remove Telegram option from QR code generation across codebase | 2026-03-12 | 75b709d | [10-remove-telegram-option-from-qr-code-gene](./quick/10-remove-telegram-option-from-qr-code-gene/) |
 
 ## Session Continuity
 
-Last session: 2026-03-12T13:30:19.741Z
-Stopped at: Completed quick task 8: Fix all code review issues — design tokens, twilio SDK removal, BACKLOG docs
+Last session: 2026-03-12T13:48:37.070Z
+Stopped at: Completed quick task 10: Remove Telegram option from QR code generation
 Resume file: None
