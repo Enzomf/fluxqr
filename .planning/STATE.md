@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed quick task 7: Fix all lint issues — zero errors, zero warnings"
-last_updated: "2026-03-12T12:56:14.000Z"
-last_activity: "2026-03-12 - Completed quick task 7: resolved all 10 lint issues (4 errors, 6 warnings), pnpm run lint exits cleanly"
+stopped_at: "Completed quick task 8: Fix all code review issues — design tokens, twilio SDK removal, BACKLOG docs"
+last_updated: "2026-03-12T13:30:23.845Z"
+last_activity: "2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -127,6 +127,8 @@ Recent decisions affecting current work:
 - [quick-7]: SidebarNav extracted to module scope with SidebarNavProps — React 19 eslint rule forbids component definitions inside render body
 - [quick-7]: QrPulseWrapper simplified to zero-state CSS class application — trigger prop applied directly, no useState or useEffect needed
 - [quick-7]: useSlugCheck derives sync status (idle/available/invalid) in render body — useEffect only handles async fetch to avoid set-state-in-effect rule
+- [Phase quick-8]: Keep phone-verify-dialog.tsx in components/dashboard/ — dialog is used in dashboard QR flow, moving would be churn without benefit
+- [Phase quick-8]: Removed twilio SDK (5.12.2) — lib/twilio.ts uses raw fetch with API Key credentials, SDK was dead code after the implementation pivot
 
 ### Roadmap Evolution
 
@@ -155,6 +157,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T12:56:14Z
-Stopped at: Completed quick task 7 (all lint issues resolved — zero errors, zero warnings)
+Last session: 2026-03-12T13:30:19.741Z
+Stopped at: Completed quick task 8: Fix all code review issues — design tokens, twilio SDK removal, BACKLOG docs
 Resume file: None
