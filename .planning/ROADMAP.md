@@ -18,6 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 3.1: QR Fullscreen Preview & Share** - Fullscreen QR preview dialog with grow-from-thumbnail animation, Web Share API, and copy link (INSERTED)
 - [ ] **Phase 4: Production** - Deploy to Vercel, configure production env vars, branded error pages
 - [ ] **Phase 5: Public QR Generation** - Public QR creation with phone verification, 5-use freemium gate, scan tracking, and admin dashboard
+- [ ] **Phase 6: Modal QR CRUD** - Refactor add/edit QR pages into dialog-based flows with QR type selection grid
 
 ## Phase Details
 
@@ -123,10 +124,27 @@ Plans:
 - [ ] 05-04-PLAN.md — Middleware (dashboard + admin route protection), OAuth callback account linking, sidebar admin link
 - [ ] 05-05-PLAN.md — Admin dashboard: layout, user table, user detail, deactivation actions
 
+### Phase 6: Refactor add/edit QR pages into modals with platform choice UX
+
+**Goal:** Convert full-page /dashboard/new and /dashboard/[id]/edit routes into a centered dialog-based flow with a two-card QR type grid (Meu QR / Custom QR) as the first step of the create flow, and remove the old page routes entirely
+**Requirements**: MODAL-01, MODAL-02, MODAL-03, MODAL-04, MODAL-05, MODAL-06, MODAL-07, MODAL-08
+**Depends on:** Phase 5
+**Success Criteria** (what must be TRUE):
+  1. Clicking "New QR Code" opens a dialog with the QR type grid; selecting a type advances to the form
+  2. Edit click opens the dialog directly on the form step, pre-filled with existing QR data
+  3. Server Actions return { success: true } instead of redirect(), enabling dialog-based flow
+  4. After create/edit: dialog closes, list refreshes via router.refresh(), toast fires, edited row pulses
+  5. Old routes /dashboard/new and /dashboard/[id]/edit are removed (404)
+**Plans:** 2 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Server Actions refactor (qr-actions.ts), QrTypeSelect component, QrForm dialog adaptation
+- [ ] 06-02-PLAN.md — QrFormDialog component, QrList/QrListRow/DashboardPage wiring, old route deletion
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -136,3 +154,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5
 | 3.1 Preview & Share | 1/2 | In Progress|  |
 | 4. Production | 0/TBD | Not started | - |
 | 5. Public QR Generation | 3/5 | In Progress|  |
+| 6. Modal QR CRUD | 0/2 | Not started | - |
