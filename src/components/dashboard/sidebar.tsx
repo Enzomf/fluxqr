@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -34,7 +35,8 @@ function SidebarNav({ navItems, avatarUrl, email, fallbackLetter, onNavigate }: 
   return (
     <div className="flex flex-col h-full p-4">
       {/* Wordmark */}
-      <div className="mb-8">
+      <div className="mb-8 flex items-center gap-2">
+        <Image src="/logo.png" alt="FluxQR" width={28} height={28} />
         <span className="text-brand-500 font-bold text-xl tracking-tight">FluxQR</span>
       </div>
 

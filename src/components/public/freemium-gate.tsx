@@ -1,6 +1,6 @@
 'use client'
 
-import { ShieldAlert } from 'lucide-react'
+import Image from 'next/image'
 import { GoogleSignInButton } from '@/components/auth/google-sign-in-button'
 import { cn } from '@/lib/utils'
 
@@ -17,7 +17,7 @@ export function FreemiumGate({ className }: FreemiumGateProps) {
         className
       )}
     >
-      <ShieldAlert size={40} className="text-[#F59E0B]" />
+      <Image src="/logo.png" alt="FluxQR" width={48} height={48} />
 
       <div className="space-y-2">
         <h2 className="text-xl font-semibold text-white">
