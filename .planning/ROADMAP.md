@@ -148,7 +148,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -159,3 +159,23 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6
 | 4. Production | 1/2 | In Progress|  |
 | 5. Public QR Generation | 3/5 | In Progress|  |
 | 6. Modal QR CRUD | 0/2 | Not started | - |
+| 7. Code Review | 0/3 | Not started | - |
+
+### Phase 7: Complete Code Review — Next.js Best Practices 2026 & Code Smells/Duplication
+
+**Goal:** Audit the entire codebase for Next.js 16 / React 19 best practices, eliminate dead code, replace hardcoded hex values with design tokens, fix logic bugs, add SEO metadata and error boundaries, and update codebase documentation to reflect the actual implementation
+**Requirements**: CR-01, CR-02, CR-03, CR-04, CR-05, CR-06, CR-07
+**Depends on:** Phase 6
+**Success Criteria** (what must be TRUE):
+  1. Zero dead code files, zero unused dependencies, zero redundant wrapper components
+  2. All hardcoded hex color values replaced with Tailwind design tokens
+  3. Slug availability check queries all slugs (not just active), toast messages in English
+  4. Root layout has metadataBase, Open Graph, Twitter card; robots.ts and sitemap.ts exist
+  5. Dashboard and admin routes have error.tsx boundaries
+  6. Codebase maps (ARCHITECTURE.md, CONCERNS.md, CONVENTIONS.md) reflect actual implementation
+**Plans:** 3 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — Dead code removal, redundant wrappers, bug fixes, toast language, dynamic imports, defense-in-depth comments
+- [ ] 07-02-PLAN.md — Replace all hardcoded hex color values with Tailwind design tokens across ~10 files
+- [ ] 07-03-PLAN.md — SEO metadata, error boundaries, codebase map rewrite, summary report
