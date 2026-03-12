@@ -27,6 +27,8 @@ export default async function DashboardPage() {
   ])
 
   const verifiedPhone = profile?.phone_number ?? null
+  const ownerName = (user!.user_metadata?.full_name as string | undefined) ?? user!.email?.split('@')[0] ?? ''
+  const ownerEmail = user!.email ?? ''
 
   const qrsWithImages = await Promise.all(
     (qrCodes ?? []).map(async (qr) => ({
@@ -38,7 +40,12 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <PageHeader title="My QR Codes" />
-      <QrList qrCodes={qrsWithImages} verifiedPhone={verifiedPhone} />
+      <QrList
+        qrCodes={qrsWithImages}
+        verifiedPhone={verifiedPhone}
+        ownerName={ownerName}
+        ownerEmail={ownerEmail}
+      />
     </div>
   )
 }

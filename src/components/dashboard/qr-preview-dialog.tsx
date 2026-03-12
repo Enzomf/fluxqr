@@ -14,6 +14,24 @@ interface QrPreviewDialogProps {
   onOpenChange: (open: boolean) => void
   qr: QrCodeWithImage
   thumbnailRect: DOMRect | null
+  ownerName: string
+  ownerEmail: string
+  ownerPhone: string | null
+}
+
+function formatPhoneDisplay(phone: string): string {
+  // Strip to digits only
+  const digits = phone.replace(/\D/g, '')
+  // US numbers: format as XXX - XXX - XXXX
+  if (digits.length === 10) {
+    return `${digits.slice(0, 3)} - ${digits.slice(3, 6)} - ${digits.slice(6)}`
+  }
+  // US with country code: +1 XXX - XXX - XXXX
+  if (digits.length === 11 && digits.startsWith('1')) {
+    return `+1 ${digits.slice(1, 4)} - ${digits.slice(4, 7)} - ${digits.slice(7)}`
+  }
+  // International: return as-is
+  return phone
 }
 
 export function QrPreviewDialog({
@@ -21,6 +39,9 @@ export function QrPreviewDialog({
   onOpenChange,
   qr,
   thumbnailRect,
+  ownerName,
+  ownerEmail,
+  ownerPhone,
 }: QrPreviewDialogProps) {
   const { copied, copy } = useCopyToClipboard()
 
@@ -102,6 +123,16 @@ export function QrPreviewDialog({
 
           {/* Content */}
           <div className="flex flex-col items-center gap-4">
+            {/* Owner info — above QR */}
+            <div className="text-center space-y-0.5">
+              {ownerName && (
+                <p className="text-lg font-semibold">{ownerName}</p>
+              )}
+              {ownerEmail && (
+                <p className="text-sm text-muted-foreground">{ownerEmail}</p>
+              )}
+            </div>
+
             {/* QR image with pop animation */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -117,6 +148,13 @@ export function QrPreviewDialog({
                   : 'qr-pop-close 200ms ease-in forwards',
               }}
             />
+
+            {/* Phone — below QR */}
+            {ownerPhone && (
+              <p className="text-base font-mono text-muted-foreground tracking-wide">
+                {formatPhoneDisplay(ownerPhone)}
+              </p>
+            )}
 
             {/* Metadata */}
             <div className="text-center space-y-2">

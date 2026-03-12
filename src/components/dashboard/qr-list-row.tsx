@@ -17,9 +17,12 @@ interface QrListRowProps {
   onDelete: (id: string) => Promise<{ error?: string }>
   onEdit: (qr: QrCodeWithImage) => void
   pulseId?: string | null
+  ownerName: string
+  ownerEmail: string
+  ownerPhone: string | null
 }
 
-export function QrListRow({ qr, onDelete, onEdit, pulseId }: QrListRowProps) {
+export function QrListRow({ qr, onDelete, onEdit, pulseId, ownerName, ownerEmail, ownerPhone }: QrListRowProps) {
   const [previewOpen, setPreviewOpen] = useState(false)
   const [thumbnailRect, setThumbnailRect] = useState<DOMRect | null>(null)
   const thumbnailRef = useRef<HTMLImageElement>(null)
@@ -95,6 +98,9 @@ export function QrListRow({ qr, onDelete, onEdit, pulseId }: QrListRowProps) {
         onOpenChange={setPreviewOpen}
         qr={qr}
         thumbnailRect={thumbnailRect}
+        ownerName={ownerName}
+        ownerEmail={ownerEmail}
+        ownerPhone={ownerPhone}
       />
     </QrPulseWrapper>
   )

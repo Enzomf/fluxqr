@@ -10,9 +10,11 @@ import { EmptyState } from '@/components/shared/empty-state'
 interface QrListProps {
   qrCodes: QrCodeWithImage[]
   verifiedPhone: string | null
+  ownerName: string
+  ownerEmail: string
 }
 
-export function QrList({ qrCodes, verifiedPhone }: QrListProps) {
+export function QrList({ qrCodes, verifiedPhone, ownerName, ownerEmail }: QrListProps) {
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingQr, setEditingQr] = useState<QrCodeWithImage | null>(null)
   const [pulseId, setPulseId] = useState<string | null>(null)
@@ -63,6 +65,9 @@ export function QrList({ qrCodes, verifiedPhone }: QrListProps) {
               onDelete={deleteQrCode}
               onEdit={openEdit}
               pulseId={pulseId}
+              ownerName={ownerName}
+              ownerEmail={ownerEmail}
+              ownerPhone={verifiedPhone}
             />
           ))}
         </div>
