@@ -101,7 +101,11 @@ Plans:
   2. Google OAuth callback works on the production domain
   3. QR images encode the production domain URL, not localhost
   4. Missing slug and inactive slug each render a branded, sidebar-free error page
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Branded error pages: ScannerError component, upgrade not-found and deactivated pages
+- [ ] 04-02-PLAN.md — Deploy to Vercel with env vars, configure OAuth for production, verify deployment
 
 ### Phase 5: Public QR Generation
 
@@ -152,6 +156,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6
 | 2. Scanner | 2/2 | Complete   | 2026-03-11 |
 | 3. QR Management | 4/4 | Complete   | 2026-03-11 |
 | 3.1 Preview & Share | 1/2 | In Progress|  |
-| 4. Production | 0/TBD | Not started | - |
+| 4. Production | 0/2 | Not started | - |
 | 5. Public QR Generation | 3/5 | In Progress|  |
 | 6. Modal QR CRUD | 0/2 | Not started | - |
