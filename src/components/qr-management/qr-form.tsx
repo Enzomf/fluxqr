@@ -1,14 +1,15 @@
 'use client'
 
 import { useActionState, useState } from 'react'
-import Link from 'next/link'
-import { Phone } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Phone, ShieldCheck } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { SlugInput } from './slug-input'
 import { PlatformSelector } from './platform-selector'
+import { PhoneVerifyDialog } from '@/components/dashboard/phone-verify-dialog'
 import { cn } from '@/lib/utils'
 import type { Platform, QrCode } from '@/types'
 import type { FormState } from '@/app/dashboard/new/actions'
@@ -21,19 +22,48 @@ interface QrFormProps {
 }
 
 export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormProps) {
+  const router = useRouter()
   const [state, formAction, pending] = useActionState(action, {
     errors: {},
     message: null,
   })
 
   const [platform, setPlatform] = useState<Platform | undefined>(defaultValues?.platform)
+  const [verifyDialogOpen, setVerifyDialogOpen] = useState(false)
+  const [justVerified, setJustVerified] = useState(false)
 
-  const isPhonePlatform = platform === 'whatsapp' || platform === 'sms'
-  const showReadOnlyPhone = isPhonePlatform && (!!verifiedPhone || mode === 'edit')
+  const showReadOnlyPhone = !!verifiedPhone || mode === 'edit'
   const displayPhone = mode === 'edit' ? defaultValues?.contact_target : verifiedPhone
 
   return (
+    <>
     <form action={formAction} className="max-w-lg space-y-6">
+      {!verifiedPhone && !justVerified && (
+        <div className="rounded-lg border border-[#334155] bg-[#0F172A] p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <ShieldCheck size={16} className="text-[#F59E0B]" />
+            <span className="text-sm font-medium text-white">Phone verification required</span>
+          </div>
+          <p className="text-xs text-slate-400 mb-3">
+            All QR code creation requires a verified phone number.
+          </p>
+          <Button
+            type="button"
+            onClick={() => setVerifyDialogOpen(true)}
+            className="bg-[#6366F1] hover:bg-[#4F46E5] text-white text-xs h-8"
+          >
+            Verify Phone
+          </Button>
+        </div>
+      )}
+
+      {justVerified && (
+        <div className="rounded-md bg-emerald-500/10 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-400 flex items-center gap-2">
+          <ShieldCheck size={14} />
+          Phone verified successfully
+        </div>
+      )}
+
       {state.message && (
         <div className="rounded-md bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-400">
           {state.message}
@@ -92,23 +122,6 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
           <input type="hidden" name="contact_target" value={displayPhone ?? ''} />
           <p className="text-xs text-slate-500">Your verified phone number</p>
         </div>
-      ) : isPhonePlatform && !verifiedPhone && mode === 'create' ? (
-        <div className="space-y-1.5">
-          <Label className="text-slate-200">Contact Target</Label>
-          <div className="flex flex-col gap-2 rounded-lg bg-[#0F172A] border border-[#334155] p-4">
-            <div className="flex items-center gap-2">
-              <Phone size={16} className="text-slate-500" />
-              <span className="text-sm text-slate-300 font-medium">Phone verification required</span>
-            </div>
-            <p className="text-xs text-slate-500">WhatsApp and SMS QR codes require a verified phone number.</p>
-            <Link
-              href="/"
-              className="text-xs text-[#6366F1] hover:text-[#4F46E5] underline underline-offset-2 transition-colors"
-            >
-              Verify your phone number
-            </Link>
-          </div>
-        </div>
       ) : (
         <div className="space-y-1.5">
           <Label htmlFor="contact_target" className="text-slate-200">
@@ -154,7 +167,7 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
 
       <Button
         type="submit"
-        disabled={pending || (isPhonePlatform && !verifiedPhone && mode === 'create')}
+        disabled={pending || (!verifiedPhone && !justVerified)}
         className="bg-[#6366F1] hover:bg-[#4F46E5] text-white font-medium transition-colors"
       >
         {mode === 'create'
@@ -165,6 +178,17 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
             ? 'Saving...'
             : 'Save Changes'}
       </Button>
+
     </form>
+
+    <PhoneVerifyDialog
+      open={verifyDialogOpen}
+      onOpenChange={setVerifyDialogOpen}
+      onVerified={() => {
+        setJustVerified(true)
+        router.refresh()
+      }}
+    />
+    </>
   )
 }
