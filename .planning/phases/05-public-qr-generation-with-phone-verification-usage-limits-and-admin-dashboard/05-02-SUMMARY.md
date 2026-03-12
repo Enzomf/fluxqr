@@ -124,6 +124,16 @@ None — Twilio credentials were set up in Plan 01. No additional external servi
 - Cookie name `verified_phone` is set — Plan 03 can read it server-side to skip verification for returning visitors
 - `onVerificationSent` and `onVerified` props define the parent orchestration contract: parent manages which step (phone vs OTP) is shown
 
+## Self-Check: PASSED
+
+- FOUND: src/app/actions/verify-phone.ts
+- FOUND: src/app/actions/check-otp.ts
+- FOUND: src/components/public/phone-verify-form.tsx
+- FOUND: src/components/public/otp-verify-form.tsx
+- FOUND: 05-02-SUMMARY.md
+- FOUND commit 2ae7d94 (Task 1)
+- FOUND commit 4b4a492 (Task 2)
+
 ---
 *Phase: 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard*
 *Completed: 2026-03-11*
