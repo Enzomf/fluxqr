@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/vitest'
 import { cleanup } from '@testing-library/react'
+import React from 'react'
 
 afterEach(() => {
   cleanup()
@@ -19,21 +20,16 @@ vi.mock('next/navigation', () => ({
   useSearchParams: () => new URLSearchParams(),
 }))
 
-// Mock next/image — return a plain <img> to avoid Image Optimization API errors in jsdom
+// Mock next/image — render a plain <img> React element
 vi.mock('next/image', () => ({
-  default: (props: Record<string, unknown>) => {
-    const { src, alt, ...rest } = props
-    return Object.assign(document.createElement('img'), { src, alt, ...rest })
-  },
+  default: ({ src, alt, width, height, className }: { src: string; alt: string; width?: number; height?: number; className?: string }) =>
+    React.createElement('img', { src, alt, width, height, className }),
 }))
 
-// Mock next/link — return a plain <a> to avoid Next.js router context requirement
+// Mock next/link — render a plain <a> React element with children
 vi.mock('next/link', () => ({
-  default: ({ href, children, ...rest }: { href: string; children: unknown; [key: string]: unknown }) => {
-    const a = document.createElement('a')
-    a.href = href
-    return Object.assign(a, rest, { children })
-  },
+  default: ({ href, children, className, ...rest }: { href: string; children: React.ReactNode; className?: string; [key: string]: unknown }) =>
+    React.createElement('a', { href, className, ...rest }, children),
 }))
 
 // Mock navigator.clipboard
