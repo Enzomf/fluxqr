@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 6 context gathered
-last_updated: "2026-03-12T14:17:37.976Z"
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-03-12T14:39:30.782Z"
 last_activity: "2026-03-12 - Completed quick task 9: Audit implementation against gist specs — all 8 requirements met"
 progress:
   total_phases: 7
   completed_phases: 5
-  total_plans: 17
-  completed_plans: 17
+  total_plans: 19
+  completed_plans: 18
   percent: 6
 ---
 
@@ -66,6 +66,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 05 P03 | 2 | 2 tasks | 7 files |
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P04 | 2 | 2 tasks | 4 files |
 | Phase 05-public-qr-generation-with-phone-verification-usage-limits-and-admin-dashboard P05 | 2 | 2 tasks | 7 files |
+| Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux P01 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -131,6 +132,9 @@ Recent decisions affecting current work:
 - [Phase quick-8]: Removed twilio SDK (5.12.2) — lib/twilio.ts uses raw fetch with API Key credentials, SDK was dead code after the implementation pivot
 - [Phase quick-10]: Legacy telegram scanner guard returns null — prevents runtime crash for pre-existing telegram QRs in the DB without throwing in buildPlatformUrl
 - [Phase quick-10]: Exhaustive default: throw with satisfies never in redirect helper switches ensures compile-time safety when Platform type changes
+- [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: FormState extended with success and id fields so callers detect completion without redirect
+- [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrTypeSelect separate from public QrTypeGrid — dashboard uses platform-agnostic descriptions, public keeps WhatsApp-specific copy
+- [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrForm submit button removed — dialog footer provides it externally via form= attribute reference
 
 ### Roadmap Evolution
 
@@ -164,6 +168,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T14:17:37.971Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux/06-CONTEXT.md
+Last session: 2026-03-12T14:39:30.780Z
+Stopped at: Completed 06-01-PLAN.md
+Resume file: None
