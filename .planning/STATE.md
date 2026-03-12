@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 Phase: 1 of 4 (Foundation)
 Plan: 1 of 4 in current phase
 Status: Executing — Plan 01-01 complete, advancing to 01-02
-Last activity: 2026-03-11 — Plan 01-01 complete: src/ scaffold, design system, Supabase clients
+Last activity: 2026-03-12 - Completed quick task 8: Fix all issues found on this code review
 
 Progress: [░░░░░░░░░░] 6%
 
@@ -154,6 +154,7 @@ None yet.
 | 5 | Persist phone to profiles.phone_number on OTP verify; dashboard reads from profiles (not cookie) | 2026-03-11 | b74fe51 | [5-require-phone-verification-for-whatsapp-](./quick/5-require-phone-verification-for-whatsapp-/) |
 | 6 | Fix contact target to verified phone for all platforms (incl. Telegram) | 2026-03-12 | e818628 | [6-when-creating-a-new-qr-code-the-contact-](./quick/6-when-creating-a-new-qr-code-the-contact-/) |
 | 7 | Fix all lint issues — zero errors, zero warnings | 2026-03-12 | 3c49576 | [7-fix-all-lint-issues](./quick/7-fix-all-lint-issues/) |
+| 8 | Fix all issues found on this code review | 2026-03-12 | edf696d | [8-fix-all-issues-found-on-this-code-review](./quick/8-fix-all-issues-found-on-this-code-review/) |
 
 ## Session Continuity
 
