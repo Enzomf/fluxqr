@@ -112,3 +112,9 @@ None - all 8 test files passed on first run. Full suite intermittently showed 1 
 ---
 *Phase: 08-add-unit-tests-to-all-components-and-services*
 *Completed: 2026-03-12*
+
+## Self-Check: PASSED
+
+- All 8 test files found on disk
+- Task commits 89f65ff and a7e3c31 verified in git log
+- All 233 tests passing across 30 test files
