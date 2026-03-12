@@ -31,9 +31,9 @@ function UserRowItem({ user }: { user: UserRow }) {
   }
 
   return (
-    <tr className="border-b border-border hover:bg-[#334155]/30 transition-colors">
+    <tr className="border-b border-border hover:bg-surface-overlay/30 transition-colors">
       <td className="px-4 py-3">
-        <Link href={`/admin/${user.id}`} className="text-sm text-foreground hover:text-[#6366F1] transition-colors">
+        <Link href={`/admin/${user.id}`} className="text-sm text-foreground hover:text-brand-500 transition-colors">
           {user.email ?? <span className="text-muted-foreground italic">No email</span>}
         </Link>
       </td>
@@ -41,7 +41,7 @@ function UserRowItem({ user }: { user: UserRow }) {
         {user.phone_number ?? <span className="italic">—</span>}
       </td>
       <td className="px-4 py-3 text-sm text-center">
-        <Link href={`/admin/${user.id}`} className="hover:text-[#6366F1] transition-colors">
+        <Link href={`/admin/${user.id}`} className="hover:text-brand-500 transition-colors">
           {formatScanCount(user.qr_count)}
         </Link>
       </td>
@@ -57,7 +57,7 @@ function UserRowItem({ user }: { user: UserRow }) {
             'inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium',
             user.is_active
               ? 'bg-emerald-500/10 text-emerald-400'
-              : 'bg-[#F43F5E]/10 text-[#F43F5E]'
+              : 'bg-danger/10 text-danger'
           )}
         >
           {user.is_active ? 'Active' : 'Deactivated'}
@@ -72,7 +72,7 @@ function UserRowItem({ user }: { user: UserRow }) {
               'text-xs px-3 py-1 rounded-md border transition-colors',
               isPending
                 ? 'border-border text-muted-foreground cursor-not-allowed opacity-50'
-                : 'border-[#F43F5E]/40 text-[#F43F5E] hover:bg-[#F43F5E]/10'
+                : 'border-danger/40 text-danger hover:bg-danger/10'
             )}
           >
             {isPending ? 'Deactivating…' : 'Deactivate'}

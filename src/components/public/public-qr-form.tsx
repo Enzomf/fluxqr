@@ -52,7 +52,7 @@ export function PublicQrForm({
     <div
       className={cn(
         'w-full rounded-lg p-6',
-        'bg-[#1E293B] border border-[#334155]'
+        'bg-surface-raised border border-surface-overlay'
       )}
     >
       <div className="flex flex-col gap-4">
@@ -67,9 +67,9 @@ export function PublicQrForm({
               placeholder="Type the message that will appear when someone scans your QR code..."
               rows={4}
               className={cn(
-                'rounded-md border border-[#334155] bg-[#0F172A] px-3 py-2',
-                'text-sm text-white placeholder:text-[#64748B]',
-                'focus:outline-none focus:ring-2 focus:ring-[#6366F1]',
+                'rounded-md border border-surface-overlay bg-surface px-3 py-2',
+                'text-sm text-white placeholder:text-slate-500',
+                'focus:outline-none focus:ring-2 focus:ring-brand-500',
                 'resize-none'
               )}
             />
@@ -78,8 +78,8 @@ export function PublicQrForm({
 
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-white">Your number</label>
-          <div className="flex items-center gap-2 rounded-md bg-[#0F172A] border border-[#334155] px-3 py-2">
-            <Phone size={14} className="text-[#6366F1]" />
+          <div className="flex items-center gap-2 rounded-md bg-surface border border-surface-overlay px-3 py-2">
+            <Phone size={14} className="text-brand-500" />
             <span className="text-sm text-white font-mono">{phone}</span>
           </div>
         </div>
@@ -91,7 +91,7 @@ export function PublicQrForm({
           onClick={handleGenerate}
           disabled={isPending}
           className={cn(
-            'w-full bg-[#6366F1] text-white hover:bg-[#4F46E5]',
+            'w-full bg-brand-500 text-white hover:bg-brand-600',
             'disabled:opacity-60'
           )}
         >
@@ -102,7 +102,7 @@ export function PublicQrForm({
           type="button"
           onClick={onBack}
           disabled={isPending}
-          className="text-sm text-[#94A3B8] hover:text-white transition-colors disabled:opacity-40"
+          className="text-sm text-slate-400 hover:text-white transition-colors disabled:opacity-40"
         >
           Back
         </button>

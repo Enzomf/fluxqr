@@ -37,7 +37,7 @@ export function DeleteDialog({ id, label, onDelete }: DeleteDialogProps) {
       >
         <Trash2 size={16} />
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#1E293B] border border-[#334155]">
+      <AlertDialogContent className="bg-surface-raised border border-surface-overlay">
         <AlertDialogHeader>
           <AlertDialogTitle>Delete &ldquo;{label}&rdquo;?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -49,7 +49,7 @@ export function DeleteDialog({ id, label, onDelete }: DeleteDialogProps) {
           <AlertDialogAction
             onClick={handleDelete}
             disabled={deleting}
-            className="bg-[#F43F5E] hover:bg-[#F43F5E]/90 text-white"
+            className="bg-danger hover:bg-danger/90 text-white"
           >
             {deleting ? 'Deleting...' : 'Delete'}
           </AlertDialogAction>

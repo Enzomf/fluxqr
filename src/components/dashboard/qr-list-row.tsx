@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { Pencil, Download } from 'lucide-react'
 import { PlatformBadge } from '@/components/shared/platform-badge'
-import { DeleteButton } from '@/components/dashboard/delete-button'
+import { DeleteDialog } from '@/components/qr-management/delete-dialog'
 import { QrPulseWrapper } from '@/components/shared/qr-pulse-wrapper'
 import { QrPreviewDialog } from '@/components/dashboard/qr-preview-dialog'
 import { downloadQrPng } from '@/lib/qr-generator'
@@ -36,7 +36,7 @@ export function QrListRow({ qr, onDelete, onEdit, pulseId, ownerName, ownerEmail
 
   return (
     <QrPulseWrapper trigger={pulseId === qr.id}>
-      <div className="flex flex-col md:flex-row md:items-center gap-3 bg-[#1E293B] rounded-lg p-4 border border-[#334155]">
+      <div className="flex flex-col md:flex-row md:items-center gap-3 bg-surface-raised rounded-lg p-4 border border-surface-overlay">
         {/* Thumbnail — click to open preview */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -89,7 +89,7 @@ export function QrListRow({ qr, onDelete, onEdit, pulseId, ownerName, ownerEmail
           </button>
 
           {/* Delete */}
-          <DeleteButton id={qr.id} label={qr.label} onDelete={onDelete} />
+          <DeleteDialog id={qr.id} label={qr.label} onDelete={onDelete} />
         </div>
       </div>
 

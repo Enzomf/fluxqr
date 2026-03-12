@@ -3,6 +3,8 @@
 import { checkVerification } from '@/lib/twilio'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
+import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 export type CheckOtpResult = {
   error?: string
@@ -46,11 +48,9 @@ export async function checkOtp(
 
     // If user is authenticated, persist phone to profiles table (db is source of truth for dashboard)
     try {
-      const { createClient } = await import('@/lib/supabase/server')
       const supabase = await createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (user) {
-        const { createAdminClient } = await import('@/lib/supabase/admin')
         const admin = createAdminClient()
         await admin
           .from('profiles')

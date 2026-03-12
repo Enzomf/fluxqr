@@ -37,12 +37,12 @@ export function HomeClient({
   } | null>(null)
 
   return (
-    <div className="min-h-screen bg-[#0F172A] flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-surface flex flex-col items-center justify-center p-4">
       {/* Wordmark */}
       <div className="flex flex-col items-center mb-8">
         <Image src="/logo.png" alt="FluxQR" width={160} height={160} className="mb-4" />
-        <h1 className="text-[#6366F1] font-bold text-3xl mb-2">FluxQR</h1>
-        <p className="text-[#94A3B8] text-sm">
+        <h1 className="text-brand-500 font-bold text-3xl mb-2">FluxQR</h1>
+        <p className="text-slate-400 text-sm">
           Smart links for instant messaging
         </p>
       </div>
@@ -101,11 +101,11 @@ export function HomeClient({
       </div>
 
       {/* Sign-in link */}
-      <p className="mt-8 text-sm text-[#64748B]">
+      <p className="mt-8 text-sm text-slate-500">
         Already have an account?{' '}
         <Link
           href="/login"
-          className="text-[#6366F1] hover:text-[#4F46E5] transition-colors"
+          className="text-brand-500 hover:text-brand-600 transition-colors"
         >
           Sign in
         </Link>

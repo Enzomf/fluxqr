@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Plus } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 interface PageHeaderProps {
   title: string
@@ -13,7 +12,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, description, action }: PageHeaderProps) {
   return (
-    <div className={cn('flex items-center justify-between')}>
+    <div className="flex items-center justify-between">
       <div>
         <h1 className="text-2xl font-bold">{title}</h1>
         {description && (

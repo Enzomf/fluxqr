@@ -13,7 +13,7 @@ export function FreemiumGate({ className }: FreemiumGateProps) {
     <div
       className={cn(
         'flex flex-col items-center gap-6 rounded-lg p-8',
-        'bg-[#1E293B] border border-[#334155] text-center max-w-md mx-auto',
+        'bg-surface-raised border border-surface-overlay text-center max-w-md mx-auto',
         className
       )}
     >
@@ -23,7 +23,7 @@ export function FreemiumGate({ className }: FreemiumGateProps) {
         <h2 className="text-xl font-semibold text-white">
           You&apos;ve used your 5 free QR codes
         </h2>
-        <p className="text-sm text-[#94A3B8]">
+        <p className="text-sm text-slate-400">
           Sign up with Google to create unlimited QR codes and manage them from
           your dashboard.
         </p>

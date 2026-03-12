@@ -30,7 +30,7 @@ function SubmitButton({ label }: { label: string }) {
       type="submit"
       form="qr-form"
       disabled={pending}
-      className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white font-medium"
+      className="w-full bg-brand-500 hover:bg-brand-600 text-white font-medium"
     >
       {pending ? (label === 'Save Changes' ? 'Saving...' : 'Creating...') : label}
     </Button>

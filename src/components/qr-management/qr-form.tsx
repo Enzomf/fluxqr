@@ -59,9 +59,9 @@ export function QrForm({
     <>
     <form id="qr-form" action={formAction} className="space-y-6">
       {!verifiedPhone && !justVerified && (
-        <div className="rounded-lg border border-[#334155] bg-[#0F172A] p-4">
+        <div className="rounded-lg border border-surface-overlay bg-surface p-4">
           <div className="flex items-center gap-2 mb-2">
-            <ShieldCheck size={16} className="text-[#F59E0B]" />
+            <ShieldCheck size={16} className="text-warning" />
             <span className="text-sm font-medium text-white">Phone verification required</span>
           </div>
           <p className="text-xs text-slate-400 mb-3">
@@ -70,7 +70,7 @@ export function QrForm({
           <Button
             type="button"
             onClick={() => setVerifyDialogOpen(true)}
-            className="bg-[#6366F1] hover:bg-[#4F46E5] text-white text-xs h-8"
+            className="bg-brand-500 hover:bg-brand-600 text-white text-xs h-8"
           >
             Verify Phone
           </Button>
@@ -101,7 +101,7 @@ export function QrForm({
           defaultValue={defaultValues?.label}
           placeholder="My QR Code"
           className={cn(
-            'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500',
+            'bg-surface-raised border-surface-overlay text-white placeholder:text-slate-500',
             state.errors?.label && 'border-red-500'
           )}
         />
@@ -134,8 +134,8 @@ export function QrForm({
       {showReadOnlyPhone ? (
         <div className="space-y-1.5">
           <Label className="text-slate-200">Contact Target</Label>
-          <div className="flex items-center gap-2 rounded-md bg-[#0F172A] border border-[#334155] px-3 py-2">
-            <Phone size={14} className="text-[#6366F1]" />
+          <div className="flex items-center gap-2 rounded-md bg-surface border border-surface-overlay px-3 py-2">
+            <Phone size={14} className="text-brand-500" />
             <span className="text-sm text-white font-mono">{displayPhone}</span>
           </div>
           <input type="hidden" name="contact_target" value={displayPhone ?? ''} />
@@ -152,7 +152,7 @@ export function QrForm({
             defaultValue={defaultValues?.contact_target}
             placeholder="+1 555 000 0000"
             className={cn(
-              'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500',
+              'bg-surface-raised border-surface-overlay text-white placeholder:text-slate-500',
               state.errors?.contact_target && 'border-red-500'
             )}
           />
@@ -176,7 +176,7 @@ export function QrForm({
             placeholder="Hello! I'd like to chat..."
             rows={3}
             className={cn(
-              'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500 resize-none',
+              'bg-surface-raised border-surface-overlay text-white placeholder:text-slate-500 resize-none',
               state.errors?.default_message && 'border-red-500'
             )}
           />
