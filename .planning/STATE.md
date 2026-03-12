@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-12T23:41:14.274Z"
+stopped_at: Completed 08-02-PLAN.md
+last_updated: "2026-03-12T23:45:15.604Z"
 last_activity: "2026-03-12 - Completed quick task 18: default route after login is / not /dashboard"
 progress:
   total_phases: 9
   completed_phases: 7
   total_plans: 29
-  completed_plans: 24
+  completed_plans: 25
   percent: 6
 ---
 
@@ -73,6 +73,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 07-codereview P02 | 5 | 1 tasks | 16 files |
 | Phase 07-codereview P03 | 7 | 2 tasks | 9 files |
 | Phase 08-add-unit-tests P01 | 3 | 2 tasks | 12 files |
+| Phase 08-add-unit-tests PP02 | 1 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -159,6 +160,9 @@ Recent decisions affecting current work:
 - [Phase 08-add-unit-tests]: Co-located test files (*.test.ts beside source) chosen over separate __tests__/ directories
 - [Phase 08-add-unit-tests]: vitest/globals in tsconfig.json types — eliminates per-file describe/it/expect/vi imports across all test files
 - [Phase 08-add-unit-tests]: useSlugCheck error path maps asyncStatus='idle' to external 'checking' — hook contract clarified in tests
+- [Phase 08-add-unit-tests]: Fixed next/link and next/image mocks in setup.ts to use React.createElement — DOM nodes have read-only children getter which crashes React 19
+- [Phase 08-add-unit-tests]: ScannerError test needs no mocking — no 'use client', no next/image, pure Server Component with plain img
+- [Phase 08-add-unit-tests]: vi.mock('@/app/login/actions') pattern at module level mocks Server Action for GoogleSignInButton client component tests
 
 ### Roadmap Evolution
 
@@ -200,6 +204,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:41:14.271Z
-Stopped at: Completed 08-01-PLAN.md
+Last session: 2026-03-12T23:45:15.602Z
+Stopped at: Completed 08-02-PLAN.md
 Resume file: None
