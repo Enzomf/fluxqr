@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed quick task 5: Persist phone to profiles, use profiles as source of truth in dashboard"
-last_updated: "2026-03-11T22:58:00.000Z"
-last_activity: "2026-03-11 - Completed quick task 5: profiles.phone_number now authoritative for dashboard WhatsApp/SMS QR flows"
+stopped_at: "Completed quick task 6: Fix contact target to verified phone for all platforms"
+last_updated: "2026-03-12T12:37:35.000Z"
+last_activity: "2026-03-12 - Completed quick task 6: verified phone overrides contact_target for all platforms (WhatsApp, SMS, Telegram)"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -147,9 +147,10 @@ None yet.
 | 3 | Skip verification SMS if phone already verified via cookie | 2026-03-11 | 97ebd12 | [3-skip-verification-sms-if-phone-already-v](./quick/3-skip-verification-sms-if-phone-already-v/) |
 | 4 | Dashboard QR creation uses verified phone as read-only contact target for WhatsApp/SMS | 2026-03-11 | a441059 | [4-dashboard-qr-creation-uses-verified-phon](./quick/4-dashboard-qr-creation-uses-verified-phon/) |
 | 5 | Persist phone to profiles.phone_number on OTP verify; dashboard reads from profiles (not cookie) | 2026-03-11 | b74fe51 | [5-require-phone-verification-for-whatsapp-](./quick/5-require-phone-verification-for-whatsapp-/) |
+| 6 | Fix contact target to verified phone for all platforms (incl. Telegram) | 2026-03-12 | e818628 | [6-when-creating-a-new-qr-code-the-contact-](./quick/6-when-creating-a-new-qr-code-the-contact-/) |
 
 ## Session Continuity
 
-Last session: 2026-03-11T22:58:00Z
-Stopped at: Completed quick task 5 (profiles.phone_number as authoritative phone source for dashboard)
+Last session: 2026-03-12T12:37:35Z
+Stopped at: Completed quick task 6 (verified phone overrides contact_target for all platforms)
 Resume file: None
