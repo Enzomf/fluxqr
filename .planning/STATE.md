@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 08-02-PLAN.md
-last_updated: "2026-03-12T23:45:15.604Z"
+stopped_at: Completed 08-05-PLAN.md
+last_updated: "2026-03-12T23:47:38.563Z"
 last_activity: "2026-03-12 - Completed quick task 18: default route after login is / not /dashboard"
 progress:
   total_phases: 9
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 29
-  completed_plans: 25
+  completed_plans: 28
   percent: 6
 ---
 
@@ -74,6 +74,9 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 07-codereview P03 | 7 | 2 tasks | 9 files |
 | Phase 08-add-unit-tests P01 | 3 | 2 tasks | 12 files |
 | Phase 08-add-unit-tests PP02 | 1 | 2 tasks | 7 files |
+| Phase 08-add-unit-tests PP05 | 3 | 2 tasks | 8 files |
+| Phase 08-add-unit-tests P03 | 4 | 2 tasks | 7 files |
+| Phase 08-add-unit-tests P04 | 5 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -163,6 +166,9 @@ Recent decisions affecting current work:
 - [Phase 08-add-unit-tests]: Fixed next/link and next/image mocks in setup.ts to use React.createElement — DOM nodes have read-only children getter which crashes React 19
 - [Phase 08-add-unit-tests]: ScannerError test needs no mocking — no 'use client', no next/image, pure Server Component with plain img
 - [Phase 08-add-unit-tests]: vi.mock('@/app/login/actions') pattern at module level mocks Server Action for GoogleSignInButton client component tests
+- [Phase 08-add-unit-tests]: @base-ui/react/dialog mocked with Dialog.Root rendering children only when open=true — enables open/closed state testing in jsdom
+- [Phase 08-add-unit-tests]: InputOTP mocked via @/components/ui/input-otp alias not input-otp package directly — source component uses shadcn re-export path
+- [Phase 08-add-unit-tests]: window.confirm spied with vi.spyOn + restoreAllMocks for deactivate action guard tests — preserves test isolation
 
 ### Roadmap Evolution
 
@@ -204,6 +210,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:45:15.602Z
-Stopped at: Completed 08-02-PLAN.md
+Last session: 2026-03-12T23:47:29.701Z
+Stopped at: Completed 08-05-PLAN.md
 Resume file: None
