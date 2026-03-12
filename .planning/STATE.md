@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 Phase: 1 of 4 (Foundation)
 Plan: 1 of 4 in current phase
 Status: Executing — Plan 01-01 complete, advancing to 01-02
-Last activity: 2026-03-12 - Completed quick task 17: fix fixed button hiding form content in QR dialog
+Last activity: 2026-03-12 - Completed quick task 18: default route after login is / not /dashboard
 
 Progress: [░░░░░░░░░░] 6%
 
@@ -191,6 +191,7 @@ None yet.
 | 14 | Add owner name, email, and phone number to QR code preview dialog | 2026-03-12 | 598a664 | [14-add-owner-name-email-and-phone-number-to](./quick/14-add-owner-name-email-and-phone-number-to/) |
 | 15 | commit the staged changes | 2026-03-12 | 267b09a | [15-commit-the-staged-changes](./quick/15-commit-the-staged-changes/) |
 | 17 | Fix fixed button hiding form content in QR dialog | 2026-03-12 | fe2b41f | [17-fix-fixed-button-hiding-form-content-in-](./quick/17-fix-fixed-button-hiding-form-content-in-/) |
+| 18 | Default route after login is / not /dashboard | 2026-03-12 | ca65f18 | [18-default-route-after-login-is-not-dashboa](./quick/18-default-route-after-login-is-not-dashboa/) |
 
 ## Session Continuity
 
