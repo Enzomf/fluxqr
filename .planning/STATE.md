@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-10)
 Phase: 1 of 4 (Foundation)
 Plan: 1 of 4 in current phase
 Status: Executing — Plan 01-01 complete, advancing to 01-02
-Last activity: 2026-03-12 - Completed quick task 12: Fix modal not closing when adding a new QR code
+Last activity: 2026-03-12 - Completed quick task 13: add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard
 
 Progress: [░░░░░░░░░░] 6%
 
@@ -170,6 +170,7 @@ None yet.
 | 10 | Remove Telegram option from QR code generation across codebase | 2026-03-12 | 75b709d | [10-remove-telegram-option-from-qr-code-gene](./quick/10-remove-telegram-option-from-qr-code-gene/) |
 | 11 | Increase QR code thumbnail size on mobile devices (80px mobile, 40px desktop) | 2026-03-12 | 071dda5 | [11-increase-qr-code-size-on-mobile-devices](./quick/11-increase-qr-code-size-on-mobile-devices/) |
 | 12 | Fix modal not closing when adding a new QR code | 2026-03-12 | — | [12-the-modal-is-not-closing-when-adding-a-n](./quick/12-the-modal-is-not-closing-when-adding-a-n/) |
+| 13 | add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard | 2026-03-12 | ef141b8 | [13-add-public-logo-png-as-the-logo-from-thi](./quick/13-add-public-logo-png-as-the-logo-from-thi/) |
 
 ## Session Continuity
 
