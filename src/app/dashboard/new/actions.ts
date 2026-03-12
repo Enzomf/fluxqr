@@ -45,20 +45,19 @@ export async function createQrCode(
 
   const { platform, contact_target, ...rest } = validated.data
 
-  // Server-side enforcement: WhatsApp/SMS require verified phone from profile
-  let finalContactTarget = contact_target
-  if (platform === 'whatsapp' || platform === 'sms') {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('phone_number')
-      .eq('id', user.id)
-      .single()
+  // Server-side enforcement: all platforms require verified phone
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('phone_number')
+    .eq('id', user.id)
+    .single()
 
-    if (!profile?.phone_number) {
-      return { message: 'Phone verification required for WhatsApp/SMS QR codes. Please verify your phone number first.' }
-    }
-    finalContactTarget = profile.phone_number
+  if (!profile?.phone_number) {
+    return { message: 'Phone verification required. Please verify your phone number first.' }
   }
+
+  // Override contact_target with verified phone for all platforms
+  const finalContactTarget = profile.phone_number
 
   const { error } = await supabase
     .from('qr_codes')
