@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 8 context gathered
-last_updated: "2026-03-12T23:05:37.395Z"
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-12T23:41:14.274Z"
 last_activity: "2026-03-12 - Completed quick task 18: default route after login is / not /dashboard"
 progress:
   total_phases: 9
   completed_phases: 7
-  total_plans: 24
-  completed_plans: 23
+  total_plans: 29
+  completed_plans: 24
   percent: 6
 ---
 
@@ -72,6 +72,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 07-codereview P01 | 4 | 2 tasks | 30 files |
 | Phase 07-codereview P02 | 5 | 1 tasks | 16 files |
 | Phase 07-codereview P03 | 7 | 2 tasks | 9 files |
+| Phase 08-add-unit-tests P01 | 3 | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -155,6 +156,9 @@ Recent decisions affecting current work:
 - [Phase 07-codereview]: Plain <img> in ScannerError instead of next/image — next/image adds 15KB client JS to scanner route, violating CLAUDE.md under-10KB constraint
 - [Phase 07-codereview]: Admin page title is 'Admin' (not 'Admin — FluxQR') so root layout title template generates the correct output
 - [Phase 07-codereview]: Scanner bundle budget: zero page-specific client JS after removing next/image from ScannerError — shared layout chunks are not scanner-specific
+- [Phase 08-add-unit-tests]: Co-located test files (*.test.ts beside source) chosen over separate __tests__/ directories
+- [Phase 08-add-unit-tests]: vitest/globals in tsconfig.json types — eliminates per-file describe/it/expect/vi imports across all test files
+- [Phase 08-add-unit-tests]: useSlugCheck error path maps asyncStatus='idle' to external 'checking' — hook contract clarified in tests
 
 ### Roadmap Evolution
 
@@ -196,6 +200,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:05:37.388Z
-Stopped at: Phase 8 context gathered
-Resume file: .planning/phases/08-add-unit-tests-to-all-components-and-services/08-CONTEXT.md
+Last session: 2026-03-12T23:41:14.271Z
+Stopped at: Completed 08-01-PLAN.md
+Resume file: None
