@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed quick-13: Add logo to brand-facing surfaces"
-last_updated: "2026-03-12T15:11:07.839Z"
-last_activity: "2026-03-12 - Completed quick task 12: Fix modal not closing when adding a new QR code"
+stopped_at: "Completed quick-14: Add owner name, email, and phone to QR preview dialog"
+last_updated: "2026-03-12T15:21:54.079Z"
+last_activity: "2026-03-12 - Completed quick task 13: add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard"
 progress:
   total_phases: 7
   completed_phases: 6
@@ -139,6 +139,8 @@ Recent decisions affecting current work:
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: QrList owns all dialog state (dialogOpen, editingQr, pulseId) — single source of truth for dashboard modal orchestration
 - [Phase 06-refactor-add-edit-qr-pages-into-modals-with-platform-choice-ux]: key prop on QrForm (keyed to qr.id or 'create') ensures useActionState resets cleanly between dialog opens without manual reset logic
 - [Phase quick-13]: Used next/image for all logo placements — built-in optimization, no layout shift
+- [Phase quick-14]: ownerName derived from user_metadata.full_name with email fallback — Google OAuth puts display name there
+- [Phase quick-14]: formatPhoneDisplay helper co-located in qr-preview-dialog.tsx — utility specific to this component, not lib/utils
 
 ### Roadmap Evolution
 
@@ -174,6 +176,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T15:11:04.229Z
-Stopped at: Completed quick-13: Add logo to brand-facing surfaces
+Last session: 2026-03-12T15:21:47.451Z
+Stopped at: Completed quick-14: Add owner name, email, and phone to QR preview dialog
 Resume file: None
