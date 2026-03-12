@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 08-05-PLAN.md
-last_updated: "2026-03-12T23:47:38.563Z"
+stopped_at: Completed 08-04-PLAN.md
+last_updated: "2026-03-12T23:47:47.756Z"
 last_activity: "2026-03-12 - Completed quick task 18: default route after login is / not /dashboard"
 progress:
   total_phases: 9
@@ -169,6 +169,11 @@ Recent decisions affecting current work:
 - [Phase 08-add-unit-tests]: @base-ui/react/dialog mocked with Dialog.Root rendering children only when open=true — enables open/closed state testing in jsdom
 - [Phase 08-add-unit-tests]: InputOTP mocked via @/components/ui/input-otp alias not input-otp package directly — source component uses shadcn re-export path
 - [Phase 08-add-unit-tests]: window.confirm spied with vi.spyOn + restoreAllMocks for deactivate action guard tests — preserves test isolation
+- [Phase 08-add-unit-tests]: Global navigator.userAgent stub in setup.ts — prevents @base-ui detectBrowser crash in jsdom for all test plans using dialog primitives
+- [Phase 08-add-unit-tests]: Per-file next/navigation vi.fn() override for usePathname — global setup.ts mock is a factory (not vi.fn()) so file-level override needed for per-test mockReturnValue
+- [Phase 08-add-unit-tests]: Per-file @base-ui UI mocks chosen over global setup mock — @base-ui crashes at module import time in jsdom; per-file mocks intercept at component boundary and are cleaner
+- [Phase 08-add-unit-tests]: QrFormDialog mocks both QrTypeSelect and QrForm child components — each has its own test file; avoids cascading mock requirements for deeply nested components
+- [Phase 08-add-unit-tests]: useFormStatus mocked in react-dom for QrFormDialog tests — SubmitButton calls useFormStatus(); mock returns pending=false for static render tests
 
 ### Roadmap Evolution
 
@@ -210,6 +215,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:47:29.701Z
-Stopped at: Completed 08-05-PLAN.md
+Last session: 2026-03-12T23:47:47.753Z
+Stopped at: Completed 08-04-PLAN.md
 Resume file: None
