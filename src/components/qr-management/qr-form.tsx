@@ -33,7 +33,7 @@ export function QrForm({
   onSuccess,
 }: QrFormProps) {
   const router = useRouter()
-  const [state, formAction, pending] = useActionState(action, {
+  const [state, formAction] = useActionState(action, {
     errors: {},
     message: null,
   })
