@@ -1,8 +1,8 @@
 import { after } from 'next/server'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { createServerClient } from '@supabase/ssr'
 import { createClient } from '@/lib/supabase/server'
-import { ScannerLanding } from './scanner-landing'
+import { buildPlatformUrl } from '@/lib/redirect'
 import { ScannerError } from '@/components/scanner/scanner-error'
 
 export const metadata = { title: 'FluxQR' }
@@ -73,5 +73,6 @@ export default async function ScannerPage({
     await anonClient.rpc('increment_scan_count', { qr_slug: slug })
   })
 
-  return <ScannerLanding qr={qr} />
+  const platformUrl = buildPlatformUrl(qr.platform, qr.contact_target, qr.default_message ?? '')
+  redirect(platformUrl)
 }

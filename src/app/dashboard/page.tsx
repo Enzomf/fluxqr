@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { headers } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
 import { generateQrDataUrl } from '@/lib/qr-generator'
 import { QrList } from '@/components/dashboard/qr-list'
@@ -30,10 +31,15 @@ export default async function DashboardPage() {
   const ownerName = (user!.user_metadata?.full_name as string | undefined) ?? user!.email?.split('@')[0] ?? ''
   const ownerEmail = user!.email ?? ''
 
+  const headersList = await headers()
+  const host = headersList.get('x-forwarded-host') || headersList.get('host')
+  const proto = headersList.get('x-forwarded-proto') || 'https'
+  const baseUrl = `${proto}://${host}`
+
   const qrsWithImages = await Promise.all(
     (qrCodes ?? []).map(async (qr) => ({
       ...qr,
-      dataUrl: await generateQrDataUrl(qr.slug),
+      dataUrl: await generateQrDataUrl(qr.slug, baseUrl),
     }))
   )
 

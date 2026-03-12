@@ -1,6 +1,6 @@
 'use server'
 
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { generateQrDataUrl } from '@/lib/qr-generator'
 
@@ -92,7 +92,11 @@ export async function createPublicQr(
   )
 
   // Generate QR data URL
-  const dataUrl = await generateQrDataUrl(slug)
+  const headersList = await headers()
+  const host = headersList.get('x-forwarded-host') || headersList.get('host')
+  const proto = headersList.get('x-forwarded-proto') || 'https'
+  const baseUrl = `${proto}://${host}`
+  const dataUrl = await generateQrDataUrl(slug, baseUrl)
 
   return { qrData: { slug, dataUrl, label } }
 }

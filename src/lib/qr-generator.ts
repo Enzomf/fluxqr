@@ -2,10 +2,11 @@ import QRCode from 'qrcode'
 
 /**
  * Generates a QR code data URL for the given slug.
- * Call from Server Components / Server Actions only.
+ * @param slug - The QR code slug
+ * @param baseUrl - The base URL (e.g. https://fluxqr-olive.vercel.app)
  */
-export async function generateQrDataUrl(slug: string): Promise<string> {
-  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/q/${slug}`
+export async function generateQrDataUrl(slug: string, baseUrl: string): Promise<string> {
+  const url = `${baseUrl}/q/${slug}`
   return QRCode.toDataURL(url, {
     errorCorrectionLevel: 'H',
     width: 400,
