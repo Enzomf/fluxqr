@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { GoogleSignInButton } from '@/components/auth/google-sign-in-button'
 
@@ -14,7 +15,8 @@ export default async function LoginPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-surface">
-      <div className="bg-surface-raised rounded-lg p-8 shadow-brand-glow w-full max-w-sm">
+      <div className="bg-surface-raised rounded-lg p-8 w-full max-w-sm">
+        <Image src="/logo.png" alt="FluxQR" width={56} height={56} className="mx-auto mb-3" />
         <h1 className="text-brand-500 font-bold text-3xl text-center">FluxQR</h1>
         <p className="text-muted-foreground text-sm text-center mt-2">
           Smart links for instant messaging

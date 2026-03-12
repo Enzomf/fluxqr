@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { PhoneVerifyForm } from '@/components/public/phone-verify-form'
 import { OtpVerifyForm } from '@/components/public/otp-verify-form'
 import { QrTypeGrid } from '@/components/public/qr-type-grid'
@@ -38,10 +39,13 @@ export function HomeClient({
   return (
     <div className="min-h-screen bg-[#0F172A] flex flex-col items-center justify-center p-4">
       {/* Wordmark */}
-      <h1 className="text-[#6366F1] font-bold text-3xl mb-2">FluxQR</h1>
-      <p className="text-[#94A3B8] text-sm mb-8">
-        Smart links for instant messaging
-      </p>
+      <div className="flex flex-col items-center mb-8">
+        <Image src="/logo.png" alt="FluxQR" width={48} height={48} className="mb-2" />
+        <h1 className="text-[#6366F1] font-bold text-3xl mb-2">FluxQR</h1>
+        <p className="text-[#94A3B8] text-sm">
+          Smart links for instant messaging
+        </p>
+      </div>
 
       {/* Content area */}
       <div className="w-full max-w-lg mx-auto flex flex-col items-center">
