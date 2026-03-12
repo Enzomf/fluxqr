@@ -1,8 +1,9 @@
 'use client'
 
-import { useActionState, useState } from 'react'
+import { useActionState, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Phone, ShieldCheck } from 'lucide-react'
+import { toast } from 'sonner'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -12,16 +13,25 @@ import { PlatformSelector } from './platform-selector'
 import { PhoneVerifyDialog } from '@/components/dashboard/phone-verify-dialog'
 import { cn } from '@/lib/utils'
 import type { QrCode } from '@/types'
-import type { FormState } from '@/app/dashboard/new/actions'
+import type { FormState } from '@/app/dashboard/qr-actions'
 
 interface QrFormProps {
   action: (prevState: FormState, formData: FormData) => Promise<FormState>
   defaultValues?: Partial<QrCode>
   mode: 'create' | 'edit'
   verifiedPhone?: string | null
+  qrType?: 'default' | 'custom'
+  onSuccess?: (id?: string) => void
 }
 
-export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormProps) {
+export function QrForm({
+  action,
+  defaultValues,
+  mode,
+  verifiedPhone,
+  qrType = 'custom',
+  onSuccess,
+}: QrFormProps) {
   const router = useRouter()
   const [state, formAction, pending] = useActionState(action, {
     errors: {},
@@ -34,9 +44,17 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
   const showReadOnlyPhone = !!verifiedPhone || mode === 'edit'
   const displayPhone = mode === 'edit' ? defaultValues?.contact_target : verifiedPhone
 
+  useEffect(() => {
+    if (state.success) {
+      router.refresh()
+      onSuccess?.(state.id)
+      toast.success(mode === 'create' ? 'QR criado com sucesso' : 'QR atualizado')
+    }
+  }, [state.success, state.id, mode, onSuccess, router])
+
   return (
     <>
-    <form action={formAction} className="max-w-lg space-y-6">
+    <form id="qr-form" action={formAction} className="space-y-6">
       {!verifiedPhone && !justVerified && (
         <div className="rounded-lg border border-[#334155] bg-[#0F172A] p-4">
           <div className="flex items-center gap-2 mb-2">
@@ -141,41 +159,29 @@ export function QrForm({ action, defaultValues, mode, verifiedPhone }: QrFormPro
         </div>
       )}
 
-      {/* Default message field */}
-      <div className="space-y-1.5">
-        <Label htmlFor="default_message" className="text-slate-200">
-          Default Message{' '}
-          <span className="text-slate-500 font-normal">(optional)</span>
-        </Label>
-        <Textarea
-          id="default_message"
-          name="default_message"
-          defaultValue={defaultValues?.default_message ?? ''}
-          placeholder="Hello! I'd like to chat..."
-          rows={3}
-          className={cn(
-            'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500 resize-none',
-            state.errors?.default_message && 'border-red-500'
+      {/* Default message field — only shown for custom QR type */}
+      {qrType === 'custom' && (
+        <div className="space-y-1.5">
+          <Label htmlFor="default_message" className="text-slate-200">
+            Default Message{' '}
+            <span className="text-slate-500 font-normal">(optional)</span>
+          </Label>
+          <Textarea
+            id="default_message"
+            name="default_message"
+            defaultValue={defaultValues?.default_message ?? ''}
+            placeholder="Hello! I'd like to chat..."
+            rows={3}
+            className={cn(
+              'bg-[#1E293B] border-[#334155] text-white placeholder:text-slate-500 resize-none',
+              state.errors?.default_message && 'border-red-500'
+            )}
+          />
+          {state.errors?.default_message && (
+            <p className="text-xs text-red-400">{state.errors.default_message[0]}</p>
           )}
-        />
-        {state.errors?.default_message && (
-          <p className="text-xs text-red-400">{state.errors.default_message[0]}</p>
-        )}
-      </div>
-
-      <Button
-        type="submit"
-        disabled={pending || (!verifiedPhone && !justVerified)}
-        className="bg-[#6366F1] hover:bg-[#4F46E5] text-white font-medium transition-colors"
-      >
-        {mode === 'create'
-          ? pending
-            ? 'Creating...'
-            : 'Create QR Code'
-          : pending
-            ? 'Saving...'
-            : 'Save Changes'}
-      </Button>
+        </div>
+      )}
 
     </form>
 
