@@ -113,6 +113,7 @@ export function QrFormDialog({
             />
           )}
           {step === 'form' && (
+            <>
               <QrForm
                 key={open ? (qr?.id ?? 'create') : 'closed'}
                 action={action}
@@ -122,15 +123,12 @@ export function QrFormDialog({
                 verifiedPhone={verifiedPhone}
                 onSuccess={handleSuccess}
               />
+              <div className="pt-6 pb-2">
+                <SubmitButton label={isEdit ? 'Save Changes' : 'Create QR Code'} />
+              </div>
+            </>
           )}
         </div>
-
-        {/* Fixed footer */}
-        {step === 'form' && (
-          <div className="flex-shrink-0 border-t border-border px-6 py-4">
-            <SubmitButton label={isEdit ? 'Save Changes' : 'Create QR Code'} />
-          </div>
-        )}
       </DialogContent>
     </Dialog>
   )
