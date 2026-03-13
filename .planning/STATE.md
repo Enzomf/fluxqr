@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 08-04-PLAN.md
-last_updated: "2026-03-12T23:55:23.122Z"
+stopped_at: "Completed quick task 19: fix account takeover via verified phone"
+last_updated: "2026-03-13T00:07:26.774Z"
 last_activity: "2026-03-12 - Completed quick task 18: default route after login is / not /dashboard"
 progress:
   total_phases: 9
@@ -77,6 +77,7 @@ Progress: [░░░░░░░░░░] 6%
 | Phase 08-add-unit-tests PP05 | 3 | 2 tasks | 8 files |
 | Phase 08-add-unit-tests P03 | 4 | 2 tasks | 7 files |
 | Phase 08-add-unit-tests P04 | 5 | 2 tasks | 6 files |
+| Phase quick-19 P01 | 2 | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -174,6 +175,8 @@ Recent decisions affecting current work:
 - [Phase 08-add-unit-tests]: Per-file @base-ui UI mocks chosen over global setup mock — @base-ui crashes at module import time in jsdom; per-file mocks intercept at component boundary and are cleaner
 - [Phase 08-add-unit-tests]: QrFormDialog mocks both QrTypeSelect and QrForm child components — each has its own test file; avoids cascading mock requirements for deeply nested components
 - [Phase 08-add-unit-tests]: useFormStatus mocked in react-dom for QrFormDialog tests — SubmitButton calls useFormStatus(); mock returns pending=false for static render tests
+- [Phase quick-19]: SUPABASE_SERVICE_ROLE_KEY used as HMAC secret for phone link tokens — already server-only, no new env var needed
+- [Phase quick-19]: Dual-cookie pattern: verified_phone (plain, 30d, UI only) + phone_link_token (HMAC-signed, 10min, security only)
 
 ### Roadmap Evolution
 
@@ -215,6 +218,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:47:47.753Z
-Stopped at: Completed 08-04-PLAN.md
+Last session: 2026-03-13T00:07:19.841Z
+Stopped at: Completed quick task 19: fix account takeover via verified phone
 Resume file: None
