@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { verifyPhoneLinkToken } from '@/lib/phone-token'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -38,25 +39,29 @@ export async function GET(request: Request) {
         data: { user },
       } = await supabase.auth.getUser()
 
-      const verifiedPhone = cookieStore.get('verified_phone')?.value
+      const phoneLinkToken = cookieStore.get('phone_link_token')?.value
 
-      if (verifiedPhone && user) {
-        const admin = createAdminClient()
+      if (phoneLinkToken && user) {
+        const tokenResult = verifyPhoneLinkToken(phoneLinkToken)
 
-        // Link phone QR codes (user_id = null) to the authenticated user
-        await admin
-          .from('qr_codes')
-          .update({ user_id: user.id })
-          .eq('phone_number', verifiedPhone)
-          .is('user_id', null)
+        if (tokenResult.valid) {
+          const admin = createAdminClient()
 
-        // Upsert profile with the verified phone number (row may not exist for pre-migration users)
-        await admin
-          .from('profiles')
-          .upsert({ id: user.id, phone_number: verifiedPhone }, { onConflict: 'id' })
+          // Link phone QR codes (user_id = null) to the authenticated user
+          await admin
+            .from('qr_codes')
+            .update({ user_id: user.id })
+            .eq('phone_number', tokenResult.phone)
+            .is('user_id', null)
 
-        // Clean up the verified_phone cookie
-        cookieStore.delete('verified_phone')
+          // Upsert profile with the verified phone number
+          await admin
+            .from('profiles')
+            .upsert({ id: user.id, phone_number: tokenResult.phone }, { onConflict: 'id' })
+        }
+
+        // Always clean up the token cookie regardless of validity
+        cookieStore.delete('phone_link_token')
       }
     } catch (err) {
       // Non-blocking: log error but proceed with redirect
@@ -67,8 +72,9 @@ export async function GET(request: Request) {
     cookiesToApply.forEach(({ name, value, options }) => {
       response.cookies.set(name, value, options)
     })
-    // Ensure verified_phone cookie is removed from the response as well
+    // Ensure both cookies are removed from the response as well
     response.cookies.delete('verified_phone')
+    response.cookies.delete('phone_link_token')
     return response
   }
 
