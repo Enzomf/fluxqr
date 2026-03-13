@@ -84,7 +84,7 @@ export function OtpVerifyForm({ phone, onVerified }: OtpVerifyFormProps) {
   const maskedPhone = maskPhone(phone)
 
   return (
-    <div className="w-full max-w-sm rounded-lg bg-surface-raised p-6 shadow-lg">
+    <div className="w-full max-w-sm rounded-lg bg-surface-raised p-4 sm:p-6 shadow-lg">
       <h2 className="mb-1 text-xl font-semibold text-white">
         Enter verification code
       </h2>

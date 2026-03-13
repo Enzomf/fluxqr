@@ -42,7 +42,7 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
   )
 
   return (
-    <div className="w-full max-w-sm rounded-lg bg-surface-raised p-6 shadow-lg">
+    <div className="w-full max-w-sm rounded-lg bg-surface-raised p-4 sm:p-6 shadow-lg">
       <h2 className="mb-1 text-xl font-semibold text-white">
         Verify your phone number
       </h2>
@@ -53,12 +53,12 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
       <form action={formAction} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-medium text-white">Phone number</label>
-          <div className="flex gap-2">
+          <div className="flex gap-2 min-w-0">
             <select
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
               className={cn(
-                'rounded-md border border-surface-overlay bg-surface px-2 py-2',
+                'shrink-0 rounded-md border border-surface-overlay bg-surface px-2 py-2',
                 'text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-500',
                 'cursor-pointer'
               )}
@@ -76,7 +76,7 @@ export function PhoneVerifyForm({ onVerificationSent }: PhoneVerifyFormProps) {
               placeholder="555 123 4567"
               required
               className={cn(
-                'flex-1 rounded-md border border-surface-overlay bg-surface px-3 py-2',
+                'min-w-0 flex-1 rounded-md border border-surface-overlay bg-surface px-3 py-2',
                 'text-sm text-white placeholder:text-slate-500',
                 'focus:outline-none focus:ring-2 focus:ring-brand-500'
               )}
