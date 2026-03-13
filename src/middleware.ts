@@ -29,6 +29,11 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
+  // Redirect authenticated users away from public home and login
+  if ((pathname === '/' || pathname === '/login') && user) {
+    return NextResponse.redirect(new URL('/dashboard', request.url))
+  }
+
   // Dashboard protection: authentication required
   if (pathname.startsWith('/dashboard')) {
     if (!user) {
@@ -57,5 +62,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/admin/:path*'],
+  matcher: ['/', '/login', '/dashboard/:path*', '/admin/:path*'],
 }

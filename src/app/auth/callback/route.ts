@@ -7,7 +7,7 @@ import { verifyPhoneLinkToken } from '@/lib/phone-token'
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const redirectUrl = origin
+  const redirectUrl = origin + '/dashboard'
 
   if (code) {
     const cookieStore = await cookies()
