@@ -1,19 +1,19 @@
 'use client'
 
-import { useState, useCallback } from 'react'
-import { useFormStatus } from 'react-dom'
-import { ArrowLeft, X } from 'lucide-react'
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogClose,
-} from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { QrTypeSelect } from './qr-type-select'
-import { QrForm } from './qr-form'
 import { createQrCode, updateQrCode } from '@/app/dashboard/qr-actions'
 import type { QrCodeWithImage } from '@/components/dashboard/qr-list-row'
+import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { ArrowLeft, X } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { useFormStatus } from 'react-dom'
+import { QrForm } from './qr-form'
+import { QrTypeSelect } from './qr-type-select'
 
 interface QrFormDialogProps {
   open: boolean
@@ -113,21 +113,21 @@ export function QrFormDialog({
             />
           )}
           {step === 'form' && (
-            <QrForm
-              key={open ? (qr?.id ?? 'create') : 'closed'}
-              action={action}
-              mode={isEdit ? 'edit' : 'create'}
-              defaultValues={qr ?? undefined}
-              qrType={qrType}
-              verifiedPhone={verifiedPhone}
-              onSuccess={handleSuccess}
-            />
+              <QrForm
+                key={open ? (qr?.id ?? 'create') : 'closed'}
+                action={action}
+                mode={isEdit ? 'edit' : 'create'}
+                defaultValues={qr ?? undefined}
+                qrType={qrType}
+                verifiedPhone={verifiedPhone}
+                onSuccess={handleSuccess}
+              />
           )}
         </div>
 
-        {/* Fixed footer — only on form step */}
+        {/* Fixed footer */}
         {step === 'form' && (
-          <div className="flex-shrink-0 bg-background border-t border-border px-6 py-4 rounded-b-xl">
+          <div className="flex-shrink-0 border-t border-border px-6 py-4">
             <SubmitButton label={isEdit ? 'Save Changes' : 'Create QR Code'} />
           </div>
         )}
