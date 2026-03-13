@@ -161,7 +161,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 6. Modal QR CRUD | 2/2 | Complete | 2026-03-12 |
 | 7. Code Review | 3/3 | Complete | 2026-03-12 |
 | 8. Unit Tests | 5/5 | Complete | 2026-03-12 |
-| 9. PWA Support | 0/2 | Not started | - |
+| 9. PWA Support | 1/2 | In Progress|  |
 
 ### Phase 7: Complete Code Review — Next.js Best Practices 2026 & Code Smells/Duplication
 
@@ -215,7 +215,7 @@ Plans:
   4. Navigating offline shows a branded "You're offline" page with FluxQR logo and "Try again" button
   5. Apple meta tags enable proper iOS home screen install experience (apple-touch-icon, appleWebApp)
   6. Scanner page (/q/[slug]) remains under 10KB JS — service worker does not add page-specific bundle weight
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 09-01-PLAN.md — Install deps, generate PWA icons, create manifest.ts, configure Serwist + tsconfig + Apple meta

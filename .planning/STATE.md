@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Phase 9 context gathered
-last_updated: "2026-03-13T01:29:54.197Z"
+status: completed
+stopped_at: Completed 09-01-PLAN.md
+last_updated: "2026-03-13T18:22:17.121Z"
 last_activity: "2026-03-13 - Completed quick task 20: Review backlog audit"
 progress:
   total_phases: 10
   completed_phases: 8
-  total_plans: 29
-  completed_plans: 28
+  total_plans: 31
+  completed_plans: 29
   percent: 97
 ---
 
@@ -78,6 +78,7 @@ Progress: [################--] 97%
 | Phase 08-add-unit-tests P03 | 4 | 2 tasks | 7 files |
 | Phase 08-add-unit-tests P04 | 5 | 2 tasks | 6 files |
 | Phase quick-19 P01 | 2 | 3 tasks | 4 files |
+| Phase 09-add-pwa-support-for-installable-application P01 | 3 | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -177,6 +178,9 @@ Recent decisions affecting current work:
 - [Phase 08-add-unit-tests]: useFormStatus mocked in react-dom for QrFormDialog tests — SubmitButton calls useFormStatus(); mock returns pending=false for static render tests
 - [Phase quick-19]: SUPABASE_SERVICE_ROLE_KEY used as HMAC secret for phone link tokens — already server-only, no new env var needed
 - [Phase quick-19]: Dual-cookie pattern: verified_phone (plain, 30d, UI only) + phone_link_token (HMAC-signed, 10min, security only)
+- [Phase 09]: reloadOnOnline: false in Serwist config to avoid destroying in-progress form state on reconnect
+- [Phase 09]: next build --webpack required for Serwist webpack plugin (does not run under Turbopack)
+- [Phase 09]: Serwist disabled in development (disable: NODE_ENV === development) to avoid cache confusion
 
 ### Roadmap Evolution
 
@@ -222,6 +226,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T01:29:54.195Z
-Stopped at: Phase 9 context gathered
-Resume file: .planning/phases/09-add-pwa-support-for-installable-application/09-CONTEXT.md
+Last session: 2026-03-13T18:22:17.118Z
+Stopped at: Completed 09-01-PLAN.md
+Resume file: None
