@@ -11,7 +11,7 @@ progress:
   completed_phases: 8
   total_plans: 29
   completed_plans: 28
-  percent: 6
+  percent: 97
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-10)
 
 **Core value:** Scanning a QR code opens the right messaging app with the right message — zero friction, zero accounts, zero downloads.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 9 — PWA Support (phases 1-8 complete except 04-02 deploy)
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation)
-Plan: 1 of 4 in current phase
-Status: Executing — Plan 01-01 complete, advancing to 01-02
+Phase: 9 of 10 (PWA Support)
+Plan: 0 of 2 in current phase (context gathered, plans written, not yet executed)
+Status: Phases 1-3.1, 5-8 complete. Phase 4 partial (1/2 — deploy pending). Phase 9 context gathered.
 Last activity: 2026-03-13 - Completed quick task 19: fix account takeover via verified_phone cookie in OAuth callback
 
-Progress: [░░░░░░░░░░] 6%
+Progress: [################--] 97%
 
 ## Performance Metrics
 
@@ -214,6 +214,7 @@ None yet.
 | 13 | add public/logo.png as the logo from this app, add it where it is suitable like the freemium screen and dashboard | 2026-03-12 | ef141b8 | [13-add-public-logo-png-as-the-logo-from-thi](./quick/13-add-public-logo-png-as-the-logo-from-thi/) |
 | 14 | Add owner name, email, and phone number to QR code preview dialog | 2026-03-12 | 598a664 | [14-add-owner-name-email-and-phone-number-to](./quick/14-add-owner-name-email-and-phone-number-to/) |
 | 15 | commit the staged changes | 2026-03-12 | 267b09a | [15-commit-the-staged-changes](./quick/15-commit-the-staged-changes/) |
+| 16 | Fix QR code scanner redirect (skipped — empty, no plan or summary) | - | - | [16-fix-qr-code-scanner-redirect-should-redi](./quick/16-fix-qr-code-scanner-redirect-should-redi/) |
 | 17 | Fix fixed button hiding form content in QR dialog | 2026-03-12 | fe2b41f | [17-fix-fixed-button-hiding-form-content-in-](./quick/17-fix-fixed-button-hiding-form-content-in-/) |
 | 18 | Default route after login is / not /dashboard | 2026-03-12 | ca65f18 | [18-default-route-after-login-is-not-dashboa](./quick/18-default-route-after-login-is-not-dashboa/) |
 | 19 | Fix account takeover via verified_phone cookie in OAuth callback | 2026-03-13 | 7f43e72 | [19-fix-account-takeover-via-verified-phone-](./quick/19-fix-account-takeover-via-verified-phone-/) |
