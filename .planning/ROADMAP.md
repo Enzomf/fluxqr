@@ -148,7 +148,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 → 8
+Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 → 8 → 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -161,6 +161,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 | 6. Modal QR CRUD | 0/2 | Not started | - |
 | 7. Code Review | 3/3 | Complete   | 2026-03-12 |
 | 8. Unit Tests | 5/5 | Complete   | 2026-03-12 |
+| 9. PWA Support | 0/2 | Not started | - |
 
 ### Phase 7: Complete Code Review — Next.js Best Practices 2026 & Code Smells/Duplication
 
@@ -201,3 +202,21 @@ Plans:
 - [ ] 08-03-PLAN.md — Dashboard component tests (sidebar-link, sidebar, qr-list-row, qr-list, qr-preview-dialog, phone-verify-dialog)
 - [ ] 08-04-PLAN.md — QR management component tests (delete-dialog, platform-selector, slug-input, qr-type-select, qr-form, qr-form-dialog)
 - [ ] 08-05-PLAN.md — Public component tests (freemium-gate, otp, phone, form, result dialog, grid) + admin tests (user-table, user-qr-table)
+
+### Phase 9: Add PWA Support for Installable Application
+
+**Goal:** Make FluxQR installable as a native-like app on mobile and desktop via PWA standards — web app manifest, Serwist service worker for static asset caching and branded offline fallback, generated app icons, and Apple-specific meta tags for iOS home screen support
+**Requirements**: PWA-01, PWA-02, PWA-03, PWA-04, PWA-05, PWA-06
+**Depends on:** Phase 8
+**Success Criteria** (what must be TRUE):
+  1. Web app manifest is served with name "FluxQR", standalone display, portrait orientation, brand colors, and three icon sizes
+  2. PWA icons (192x192, 512x512, maskable) exist in public/ and are referenced by the manifest
+  3. Service worker caches static assets (JS, CSS, fonts) for faster repeat loads via Serwist defaultCache
+  4. Navigating offline shows a branded "You're offline" page with FluxQR logo and "Try again" button
+  5. Apple meta tags enable proper iOS home screen install experience (apple-touch-icon, appleWebApp)
+  6. Scanner page (/q/[slug]) remains under 10KB JS — service worker does not add page-specific bundle weight
+**Plans:** 2 plans
+
+Plans:
+- [ ] 09-01-PLAN.md — Install deps, generate PWA icons, create manifest.ts, configure Serwist + tsconfig + Apple meta
+- [ ] 09-02-PLAN.md — Create service worker source, branded offline page, and unit tests for manifest + offline page
