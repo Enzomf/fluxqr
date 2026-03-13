@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FluxQR
+
+Create QR codes that open WhatsApp and SMS with pre-filled messages — zero friction, zero accounts for scanners.
+
+## Features
+
+- QR code generation for WhatsApp and SMS with pre-filled messages
+- Public freemium QR generation (phone-verified, usage-limited)
+- Dashboard for managing QR codes (create, edit, deactivate, preview)
+- Modal-based QR management with live slug availability check
+- Real-time scan count tracking
+- Phone verification via Twilio OTP (required for QR creation)
+- Admin dashboard for user and QR management
+- PWA support — installable, offline fallback page
+- Scanner proxy page — zero auth, zero sidebar, minimal JS
+- Google OAuth authentication
+- Dark-only theme with Tailwind CSS v4
+
+## Tech Stack
+
+- Next.js 16 (App Router) + React 19 + TypeScript
+- Supabase (PostgreSQL + RLS + Auth)
+- Tailwind CSS v4 + shadcn/ui
+- Serwist (PWA service worker)
+- Vitest + Testing Library (unit tests)
+- Twilio Verify API (phone OTP)
+- Deployed on Vercel
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies: `pnpm install`
+3. Set up environment variables (see `CLAUDE.MD` for the full list of required env vars)
+4. Start the development server: `pnpm dev`
+5. Build for production: `pnpm build` (uses webpack — required by Serwist)
+6. Run unit tests: `pnpm test`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See `CLAUDE.MD` for the detailed directory structure, coding conventions, database schema, and environment variable reference.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Script | Description |
+|--------|-------------|
+| `pnpm dev` | Development server (Turbopack) |
+| `pnpm build` | Production build (webpack, required for Serwist) |
+| `pnpm test` | Run unit tests |
+| `pnpm lint` | ESLint |
