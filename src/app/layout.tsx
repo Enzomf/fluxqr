@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     template: '%s — FluxQR',
   },
   description: 'Create QR codes that open WhatsApp and SMS with pre-filled messages.',
+  icons: {
+    apple: [{ url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'FluxQR',
+    statusBarStyle: 'black-translucent',
+  },
   openGraph: {
     siteName: 'FluxQR',
     type: 'website',
