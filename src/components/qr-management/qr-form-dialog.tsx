@@ -75,7 +75,7 @@ export function QrFormDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="sm:max-w-lg flex flex-col max-h-[85vh] p-0 gap-0"
+        className="sm:max-w-lg flex flex-col max-h-[85dvh] overflow-hidden p-0 gap-0"
       >
         {/* Fixed header */}
         <div className="flex-shrink-0 bg-background border-b border-border px-6 py-4 rounded-t-xl flex items-center gap-3">
@@ -103,7 +103,7 @@ export function QrFormDialog({
         </div>
 
         {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div className="flex-1 min-h-0 overflow-y-auto px-6 py-4">
           {step === 'grid' && (
             <QrTypeSelect
               onSelect={(type) => {
