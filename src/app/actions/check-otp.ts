@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { createPhoneLinkToken } from '@/lib/phone-token'
 
 export type CheckOtpResult = {
   error?: string
@@ -43,6 +44,15 @@ export async function checkOtp(
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 30, // 30 days
+      path: '/',
+    })
+
+    const phoneLinkToken = createPhoneLinkToken(phone)
+    cookieStore.set('phone_link_token', phoneLinkToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 10, // 10 minutes — matches token validity window
       path: '/',
     })
 
