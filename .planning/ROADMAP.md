@@ -15,10 +15,10 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Design system, database schema, auth, and app shell — everything the app stands on (completed 2026-03-11)
 - [x] **Phase 2: Scanner** - The core product: proxy route that opens messaging apps with pre-filled messages (completed 2026-03-11)
 - [x] **Phase 3: QR Management** - Dashboard CRUD for creating, editing, deleting, and tracking QR codes (completed 2026-03-11)
-- [ ] **Phase 3.1: QR Fullscreen Preview & Share** - Fullscreen QR preview dialog with grow-from-thumbnail animation, Web Share API, and copy link (INSERTED)
+- [x] **Phase 3.1: QR Fullscreen Preview & Share** - Fullscreen QR preview dialog with grow-from-thumbnail animation, Web Share API, and copy link (INSERTED) (completed 2026-03-11)
 - [ ] **Phase 4: Production** - Deploy to Vercel, configure production env vars, branded error pages
-- [ ] **Phase 5: Public QR Generation** - Public QR creation with phone verification, 5-use freemium gate, scan tracking, and admin dashboard
-- [ ] **Phase 6: Modal QR CRUD** - Refactor add/edit QR pages into dialog-based flows with QR type selection grid
+- [x] **Phase 5: Public QR Generation** - Public QR creation with phone verification, 5-use freemium gate, scan tracking, and admin dashboard (completed 2026-03-11)
+- [x] **Phase 6: Modal QR CRUD** - Refactor add/edit QR pages into dialog-based flows with QR type selection grid (completed 2026-03-12)
 
 ## Phase Details
 
@@ -36,9 +36,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md — Scaffold src/ directory, install deps, design system, Supabase clients, shared types
-- [ ] 01-02-PLAN.md — Database migration (qr_codes table, RLS, RPC, index, trigger)
-- [ ] 01-03-PLAN.md — Google OAuth login, callback route, proxy.ts route protection
-- [ ] 01-04-PLAN.md — Dashboard app shell with responsive sidebar and sign-out
+- [x] 01-02-PLAN.md — Database migration (qr_codes table, RLS, RPC, index, trigger)
+- [x] 01-03-PLAN.md — Google OAuth login, callback route, proxy.ts route protection
+- [x] 01-04-PLAN.md — Dashboard app shell with responsive sidebar and sign-out
 
 ### Phase 2: Scanner
 **Goal**: Scanning a QR code opens the correct messaging app with the pre-filled message — zero auth, minimal JS
@@ -53,8 +53,8 @@ Plans:
 **Plans:** 2/2 plans complete
 
 Plans:
-- [ ] 02-01-PLAN.md — Deep link URL builder, Telegram fallback component, scanner landing client component
-- [ ] 02-02-PLAN.md — Server component page with data fetch, after() scan increment, not-found/inactive states
+- [x] 02-01-PLAN.md — Deep link URL builder, Telegram fallback component, scanner landing client component
+- [x] 02-02-PLAN.md — Server component page with data fetch, after() scan increment, not-found/inactive states
 
 ### Phase 3: QR Management
 **Goal**: Owners can create, view, edit, delete, and download QR codes from the dashboard
@@ -69,10 +69,10 @@ Plans:
 **Plans:** 4/4 plans complete
 
 Plans:
-- [ ] 03-01-PLAN.md — Install deps (qrcode, shadcn), create QR generator, hooks, slug-check API, shared components
-- [ ] 03-02-PLAN.md — Create QR flow: Server Action + form components + /dashboard/new page
-- [ ] 03-03-PLAN.md — Dashboard list with QR thumbnails, actions, empty state, and soft-delete flow
-- [ ] 03-04-PLAN.md — Edit QR flow: update Server Action, edit page, success toast, CRUD verification
+- [x] 03-01-PLAN.md — Install deps (qrcode, shadcn), create QR generator, hooks, slug-check API, shared components
+- [x] 03-02-PLAN.md — Create QR flow: Server Action + form components + /dashboard/new page
+- [x] 03-03-PLAN.md — Dashboard list with QR thumbnails, actions, empty state, and soft-delete flow
+- [x] 03-04-PLAN.md — Edit QR flow: update Server Action, edit page, success toast, CRUD verification
 
 ### Phase 03.1: QR Fullscreen Preview & Share (INSERTED)
 
@@ -89,8 +89,8 @@ Plans:
 **Plans:** 2/2 plans complete
 
 Plans:
-- [ ] 03.1-01-PLAN.md — Install shadcn Dialog, create use-copy-to-clipboard hook, add QR pop animation keyframes
-- [ ] 03.1-02-PLAN.md — Build QrPreviewDialog component, wire into QrListRow with thumbnail click and animation
+- [x] 03.1-01-PLAN.md — Install shadcn Dialog, create use-copy-to-clipboard hook, add QR pop animation keyframes
+- [x] 03.1-02-PLAN.md — Build QrPreviewDialog component, wire into QrListRow with thumbnail click and animation
 
 ### Phase 4: Production
 **Goal**: The app is live on Vercel with correct OAuth, production URLs, and branded error pages
@@ -104,7 +104,7 @@ Plans:
 **Plans:** 1/2 plans executed
 
 Plans:
-- [ ] 04-01-PLAN.md — Branded error pages: ScannerError component, upgrade not-found and deactivated pages
+- [x] 04-01-PLAN.md — Branded error pages: ScannerError component, upgrade not-found and deactivated pages
 - [ ] 04-02-PLAN.md — Deploy to Vercel with env vars, configure OAuth for production, verify deployment
 
 ### Phase 5: Public QR Generation
@@ -119,14 +119,14 @@ Plans:
   4. Every QR code has a persistent scan counter visible to its owner
   5. Admin UI shows per-user QR code counts and per-code scan counts
   6. Users can choose between "display my default QR code" and "set my custom QR code" via a 2-option grid
-**Plans:** 3/5 plans executed
+**Plans:** 5/5 plans complete
 
 Plans:
-- [ ] 05-01-PLAN.md — Install deps (twilio, shadcn InputOTP), DB schema (profiles, phone_usage, qr_codes changes), Twilio + admin client utilities, types
-- [ ] 05-02-PLAN.md — Phone verification flow: Server Actions (send OTP, check OTP), phone input form, OTP entry component
-- [ ] 05-03-PLAN.md — Public home page: two-card QR type grid, public QR form, freemium gate, result dialog
-- [ ] 05-04-PLAN.md — Middleware (dashboard + admin route protection), OAuth callback account linking, sidebar admin link
-- [ ] 05-05-PLAN.md — Admin dashboard: layout, user table, user detail, deactivation actions
+- [x] 05-01-PLAN.md — Install deps (twilio, shadcn InputOTP), DB schema (profiles, phone_usage, qr_codes changes), Twilio + admin client utilities, types
+- [x] 05-02-PLAN.md — Phone verification flow: Server Actions (send OTP, check OTP), phone input form, OTP entry component
+- [x] 05-03-PLAN.md — Public home page: two-card QR type grid, public QR form, freemium gate, result dialog
+- [x] 05-04-PLAN.md — Middleware (dashboard + admin route protection), OAuth callback account linking, sidebar admin link
+- [x] 05-05-PLAN.md — Admin dashboard: layout, user table, user detail, deactivation actions
 
 ### Phase 6: Refactor add/edit QR pages into modals with platform choice UX
 
@@ -139,11 +139,11 @@ Plans:
   3. Server Actions return { success: true } instead of redirect(), enabling dialog-based flow
   4. After create/edit: dialog closes, list refreshes via router.refresh(), toast fires, edited row pulses
   5. Old routes /dashboard/new and /dashboard/[id]/edit are removed (404)
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 
 Plans:
-- [ ] 06-01-PLAN.md — Server Actions refactor (qr-actions.ts), QrTypeSelect component, QrForm dialog adaptation
-- [ ] 06-02-PLAN.md — QrFormDialog component, QrList/QrListRow/DashboardPage wiring, old route deletion
+- [x] 06-01-PLAN.md — Server Actions refactor (qr-actions.ts), QrTypeSelect component, QrForm dialog adaptation
+- [x] 06-02-PLAN.md — QrFormDialog component, QrList/QrListRow/DashboardPage wiring, old route deletion
 
 ## Progress
 
@@ -152,15 +152,15 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 4/4 | Complete   | 2026-03-11 |
-| 2. Scanner | 2/2 | Complete   | 2026-03-11 |
-| 3. QR Management | 4/4 | Complete   | 2026-03-11 |
-| 3.1 Preview & Share | 1/2 | In Progress|  |
-| 4. Production | 1/2 | In Progress|  |
-| 5. Public QR Generation | 3/5 | In Progress|  |
-| 6. Modal QR CRUD | 0/2 | Not started | - |
-| 7. Code Review | 3/3 | Complete   | 2026-03-12 |
-| 8. Unit Tests | 5/5 | Complete   | 2026-03-12 |
+| 1. Foundation | 4/4 | Complete | 2026-03-11 |
+| 2. Scanner | 2/2 | Complete | 2026-03-11 |
+| 3. QR Management | 4/4 | Complete | 2026-03-11 |
+| 3.1 Preview & Share | 2/2 | Complete | 2026-03-11 |
+| 4. Production | 1/2 | In Progress | - |
+| 5. Public QR Generation | 5/5 | Complete | 2026-03-11 |
+| 6. Modal QR CRUD | 2/2 | Complete | 2026-03-12 |
+| 7. Code Review | 3/3 | Complete | 2026-03-12 |
+| 8. Unit Tests | 5/5 | Complete | 2026-03-12 |
 | 9. PWA Support | 0/2 | Not started | - |
 
 ### Phase 7: Complete Code Review — Next.js Best Practices 2026 & Code Smells/Duplication
@@ -178,9 +178,9 @@ Phases execute in numeric order: 1 → 2 → 3 → 3.1 → 4 → 5 → 6 → 7 �
 **Plans:** 3/3 plans complete
 
 Plans:
-- [ ] 07-01-PLAN.md — Dead code removal, redundant wrappers, bug fixes, toast language, dynamic imports, defense-in-depth comments
-- [ ] 07-02-PLAN.md — Replace all hardcoded hex color values with Tailwind design tokens across ~10 files
-- [ ] 07-03-PLAN.md — SEO metadata, error boundaries, codebase map rewrite, summary report
+- [x] 07-01-PLAN.md — Dead code removal, redundant wrappers, bug fixes, toast language, dynamic imports, defense-in-depth comments
+- [x] 07-02-PLAN.md — Replace all hardcoded hex color values with Tailwind design tokens across ~10 files
+- [x] 07-03-PLAN.md — SEO metadata, error boundaries, codebase map rewrite, summary report
 
 ### Phase 8: Add Unit Tests to All Components and Services
 
@@ -197,11 +197,11 @@ Plans:
 **Plans:** 5/5 plans complete
 
 Plans:
-- [ ] 08-01-PLAN.md — Install Vitest + RTL, configure vitest.config.mts, global mocks, lib utility tests, hook tests
-- [ ] 08-02-PLAN.md — Shared component tests (platform-badge, empty-state, page-header, qr-pulse-wrapper), auth + scanner tests
-- [ ] 08-03-PLAN.md — Dashboard component tests (sidebar-link, sidebar, qr-list-row, qr-list, qr-preview-dialog, phone-verify-dialog)
-- [ ] 08-04-PLAN.md — QR management component tests (delete-dialog, platform-selector, slug-input, qr-type-select, qr-form, qr-form-dialog)
-- [ ] 08-05-PLAN.md — Public component tests (freemium-gate, otp, phone, form, result dialog, grid) + admin tests (user-table, user-qr-table)
+- [x] 08-01-PLAN.md — Install Vitest + RTL, configure vitest.config.mts, global mocks, lib utility tests, hook tests
+- [x] 08-02-PLAN.md — Shared component tests (platform-badge, empty-state, page-header, qr-pulse-wrapper), auth + scanner tests
+- [x] 08-03-PLAN.md — Dashboard component tests (sidebar-link, sidebar, qr-list-row, qr-list, qr-preview-dialog, phone-verify-dialog)
+- [x] 08-04-PLAN.md — QR management component tests (delete-dialog, platform-selector, slug-input, qr-type-select, qr-form, qr-form-dialog)
+- [x] 08-05-PLAN.md — Public component tests (freemium-gate, otp, phone, form, result dialog, grid) + admin tests (user-table, user-qr-table)
 
 ### Phase 9: Add PWA Support for Installable Application
 
