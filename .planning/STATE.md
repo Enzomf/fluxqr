@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 09-01-PLAN.md
-last_updated: "2026-03-13T18:22:17.121Z"
+stopped_at: Completed 09-02-PLAN.md
+last_updated: "2026-03-13T18:25:40.312Z"
 last_activity: "2026-03-13 - Completed quick task 20: Review backlog audit"
 progress:
   total_phases: 10
-  completed_phases: 8
+  completed_phases: 9
   total_plans: 31
-  completed_plans: 29
+  completed_plans: 30
   percent: 97
 ---
 
@@ -79,6 +79,7 @@ Progress: [################--] 97%
 | Phase 08-add-unit-tests P04 | 5 | 2 tasks | 6 files |
 | Phase quick-19 P01 | 2 | 3 tasks | 4 files |
 | Phase 09-add-pwa-support-for-installable-application P01 | 3 | 2 tasks | 10 files |
+| Phase 09-add-pwa-support-for-installable-application P02 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -181,6 +182,8 @@ Recent decisions affecting current work:
 - [Phase 09]: reloadOnOnline: false in Serwist config to avoid destroying in-progress form state on reconnect
 - [Phase 09]: next build --webpack required for Serwist webpack plugin (does not run under Turbopack)
 - [Phase 09]: Serwist disabled in development (disable: NODE_ENV === development) to avoid cache confusion
+- [Phase 09-add-pwa-support-for-installable-application]: Plain <img> in offline page (not next/image) — matches ScannerError pattern, zero client JS overhead on fallback route
+- [Phase 09-add-pwa-support-for-installable-application]: OfflinePage is a pure Server Component (no use client) — offline fallback has zero client-side overhead
 
 ### Roadmap Evolution
 
@@ -226,6 +229,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T18:22:17.118Z
-Stopped at: Completed 09-01-PLAN.md
+Last session: 2026-03-13T18:25:40.309Z
+Stopped at: Completed 09-02-PLAN.md
 Resume file: None
