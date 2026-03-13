@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 09-02-PLAN.md
-last_updated: "2026-03-13T18:28:42.074Z"
+stopped_at: Completed quick-21 PLAN.md
+last_updated: "2026-03-13T19:04:15.731Z"
 last_activity: "2026-03-13 - Completed quick task 20: Review backlog audit"
 progress:
   total_phases: 10
@@ -184,6 +184,7 @@ Recent decisions affecting current work:
 - [Phase 09]: Serwist disabled in development (disable: NODE_ENV === development) to avoid cache confusion
 - [Phase 09-add-pwa-support-for-installable-application]: Plain <img> in offline page (not next/image) — matches ScannerError pattern, zero client JS overhead on fallback route
 - [Phase 09-add-pwa-support-for-installable-application]: OfflinePage is a pure Server Component (no use client) — offline fallback has zero client-side overhead
+- [Phase quick-21]: Authenticated-user redirect added before dashboard/admin guards in middleware; matcher expanded to include / and /login; auth callback and login page redirect target changed from / to /dashboard
 
 ### Roadmap Evolution
 
@@ -229,6 +230,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T18:25:40.309Z
-Stopped at: Completed 09-02-PLAN.md
+Last session: 2026-03-13T19:04:11.884Z
+Stopped at: Completed quick-21 PLAN.md
 Resume file: None
